@@ -16,12 +16,12 @@ export type BookingWidgetProps = {
   externalBookingUrl: string | null;
   services: BookingWidgetService[];
   turnstileSiteKey?: string | null;
-  /** Optional className for embed layouts on Meridian client sites. */
+  /** Optional className for embed layouts on Mevero client sites. */
   className?: string;
 };
 
 /**
- * Reusable public booking surface for Meridian client templates.
+ * Reusable public booking surface for Mevero client templates.
  * Supports meridian / external / hybrid modes — no calendar-provider sync.
  */
 export function BookingWidget({
@@ -58,7 +58,7 @@ export function BookingWidget({
           </h1>
           <p className="text-meridian-text-muted">
             {bookingMode === "hybrid"
-              ? "Request a time through Meridian, or continue with the business’s existing booking provider."
+              ? "Request a time through Mevero, or continue with the business’s existing booking provider."
               : "Submit a request. This does not confirm your booking."}
           </p>
         </header>
@@ -80,7 +80,7 @@ export function BookingWidget({
         ) : null}
 
         <Card
-          title="Request via Meridian"
+          title="Request via Mevero"
           description="We’ll send your preferred time to the business for review."
         >
           {services.length === 0 ? (

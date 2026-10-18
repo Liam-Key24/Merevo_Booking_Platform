@@ -89,7 +89,7 @@ describe.runIf(hasLiveSupabase)("tenant isolation (live Supabase)", () => {
 describe.runIf(!hasLiveSupabase)(
   "tenant isolation (skipped without Supabase env)",
   () => {
-    it("documents that live RLS checks require Meridian Platform Development env", () => {
+    it("documents that live RLS checks require Mevero Platform Development env", () => {
       expect(hasLiveSupabase).toBe(false);
     });
   },

@@ -10,11 +10,11 @@ const meridianSans = Plus_Jakarta_Sans({
 
 export const metadata: Metadata = {
   title: {
-    default: "Meridian Booking Platform",
-    template: "%s · Meridian",
+    default: "Mevero Booking Platform",
+    template: "%s · Mevero",
   },
   description:
-    "Secure multi-tenant booking-request platform for Meridian client businesses.",
+    "Secure multi-tenant booking-request platform for Mevero client businesses.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

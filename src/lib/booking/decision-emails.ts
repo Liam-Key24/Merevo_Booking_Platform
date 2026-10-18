@@ -25,7 +25,7 @@ function getResendClient(): Resend | null {
 }
 
 function fromAddress(): string {
-  return process.env.EMAIL_FROM ?? "Meridian Bookings <onboarding@resend.dev>";
+  return process.env.EMAIL_FROM ?? "Mevero Bookings <onboarding@resend.dev>";
 }
 
 function whenLabel(date: string, time: string): string {

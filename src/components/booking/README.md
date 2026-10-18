@@ -1,9 +1,9 @@
 # Booking feature components
 
-- `BookingRequestForm` — public Meridian request form
+- `BookingRequestForm` — public Mevero request form
 - `BookingWidget` — reusable meridian / external / hybrid surface for client templates and `/book/[businessSlug]`
 
-Embed example for Meridian client sites:
+Embed example for Mevero client sites:
 
 ```tsx
 import { BookingWidget } from "@/components/booking/booking-widget";
@@ -17,4 +17,4 @@ import { BookingWidget } from "@/components/booking/booking-widget";
 />
 ```
 
-No Fresha / Treatwell / Google Calendar sync — modes only control Meridian requests vs an external link.
+No Fresha / Treatwell / Google Calendar sync — modes only control Mevero requests vs an external link.

@@ -163,7 +163,7 @@ export async function submitBookingRequest(
   ) {
     return {
       status: "error",
-      message: "Meridian booking requests are not enabled for this business.",
+      message: "Mevero booking requests are not enabled for this business.",
     };
   }
 

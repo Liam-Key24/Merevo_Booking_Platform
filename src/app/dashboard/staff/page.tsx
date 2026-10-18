@@ -29,7 +29,7 @@ export default async function StaffPage() {
         ) : data.staffWorkload.length === 0 ? (
           <EmptyState
             title="No staff members"
-            description="Add owners or staff via Meridian admin, then assign them to appointments."
+            description="Add owners or staff via Mevero admin, then assign them to appointments."
           />
         ) : (
           <ul className="divide-y divide-meridian-border">

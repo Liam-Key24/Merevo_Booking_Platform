@@ -1,3 +1,3 @@
 # Admin components
 
-Meridian-admin-only forms and helpers for `/admin` routes.
+Mevero-admin-only forms and helpers for `/admin` routes.

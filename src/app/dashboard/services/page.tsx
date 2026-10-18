@@ -28,7 +28,7 @@ export default async function ServicesPage() {
         ) : data.services.length === 0 ? (
           <EmptyState
             title="No services configured"
-            description="Ask a Meridian admin to add services for this business."
+            description="Ask a Mevero admin to add services for this business."
           />
         ) : (
           <ul className="divide-y divide-meridian-border">

@@ -17,7 +17,7 @@ export type EmailRetryState = {
 };
 
 function fromAddress(): string {
-  return process.env.EMAIL_FROM ?? "Meridian Bookings <onboarding@resend.dev>";
+  return process.env.EMAIL_FROM ?? "Mevero Bookings <onboarding@resend.dev>";
 }
 
 /**
@@ -32,7 +32,7 @@ export async function retryFailedEmail(
 ): Promise<EmailRetryState> {
   const snapshot = await getAuthSnapshot();
   if (!snapshot?.isMeridianAdmin) {
-    return { status: "error", message: "Meridian admin only." };
+    return { status: "error", message: "Mevero admin only." };
   }
 
   const logId = String(formData.get("logId") ?? "");
@@ -92,7 +92,7 @@ export async function retryFailedEmail(
     !Array.isArray(log.metadata) &&
     typeof (log.metadata as Record<string, unknown>).subject === "string"
       ? String((log.metadata as Record<string, unknown>).subject)
-      : `Update from Meridian Bookings (${log.email_type})`;
+      : `Update from Mevero Bookings (${log.email_type})`;
 
   const body =
     typeof log.metadata === "object" &&
@@ -101,7 +101,7 @@ export async function retryFailedEmail(
     typeof (log.metadata as Record<string, unknown>).text === "string"
       ? String((log.metadata as Record<string, unknown>).text)
       : [
-          "This is a retry of a previous Meridian booking notification.",
+          "This is a retry of a previous Mevero booking notification.",
           `Type: ${log.email_type}`,
           log.booking_id ? `Booking: ${log.booking_id}` : null,
           "",

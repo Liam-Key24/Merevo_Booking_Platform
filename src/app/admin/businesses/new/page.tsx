@@ -20,7 +20,7 @@ export default async function NewBusinessPage() {
           Create business
         </h1>
         <p className="text-meridian-text-muted">
-          Creates the tenant row and default Meridian booking settings.
+          Creates the tenant row and default Mevero booking settings.
         </p>
       </div>
       <Card title="Business details">

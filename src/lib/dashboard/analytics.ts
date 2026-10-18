@@ -191,7 +191,7 @@ export async function getDashboardMetrics(
   const warnings: string[] = [];
   if ((servicesActive.count ?? 0) === 0) {
     warnings.push(
-      "No active services — public Meridian requests cannot be taken.",
+      "No active services — public Mevero requests cannot be taken.",
     );
   }
   if (!settings.data?.notification_email) {

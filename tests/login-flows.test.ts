@@ -44,7 +44,7 @@ describe.runIf(hasLiveSupabase)("login auth flows (live Supabase)", () => {
     expect(memberships?.length).toBeGreaterThan(0);
   });
 
-  it("signs in a Meridian admin successfully", async () => {
+  it("signs in a Mevero admin successfully", async () => {
     const { client, error } = await signInAs(
       SEED.users.meridianAdmin.email,
       SEED.users.meridianAdmin.password,

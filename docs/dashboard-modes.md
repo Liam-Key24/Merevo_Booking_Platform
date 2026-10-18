@@ -1,6 +1,6 @@
 # Dashboard modes
 
-Meridian uses **one platform** with two server-resolved dashboard modes:
+Mevero uses **one platform** with two server-resolved dashboard modes:
 
 | Mode | Business types |
 |------|----------------|
@@ -13,7 +13,7 @@ Meridian uses **one platform** with two server-resolved dashboard modes:
 - New businesses require an explicit `business_type` at admin create time.
 - Effective mode is stored on `businesses.dashboard_mode` and resolved only on the server.
 - Browser query strings / client posts **cannot** override mode (`?mode=`, `dashboardMode`, etc. are ignored).
-- Only Meridian admins may change `business_type` or `dashboard_mode` (DB trigger + admin actions).
+- Only Mevero admins may change `business_type` or `dashboard_mode` (DB trigger + admin actions).
 - Capability changes store `updated_by` / `updated_at` and write audit log rows.
 - Active business is stored in an **httpOnly** cookie (`meridian_active_business_id`) after membership verification. Switching businesses revalidates `/dashboard` and redirects home so the correct mode/nav loads.
 
@@ -47,7 +47,7 @@ Nav items and routes are filtered/gated by these capabilities server-side.
 
 ## Admin controls
 
-Meridian admins can view and manage per business:
+Mevero admins can view and manage per business:
 
 - name, type, effective dashboard mode, subscription status (ops metadata only)
 - enabled capabilities (toggle + audit)
