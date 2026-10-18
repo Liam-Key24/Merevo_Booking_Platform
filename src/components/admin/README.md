@@ -1,3 +1,3 @@
 # Admin components
 
-Mevero-admin-only forms and helpers for `/admin` routes.
+Merevo-admin-only forms and helpers for `/admin` routes.

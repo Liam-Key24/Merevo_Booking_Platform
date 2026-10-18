@@ -34,7 +34,7 @@ values
     crypt('Password123!', gen_salt('bf')),
     timezone('utc', now()),
     '{"provider":"email","providers":["email"]}'::jsonb,
-    '{"full_name":"Mevero Admin"}'::jsonb,
+    '{"full_name":"Merevo Admin"}'::jsonb,
     timezone('utc', now()),
     timezone('utc', now()),
     '',
@@ -126,7 +126,7 @@ alter table public.profiles disable trigger profiles_enforce_platform_role;
 update public.profiles
 set
   platform_role = 'meridian_admin',
-  full_name = 'Mevero Admin'
+  full_name = 'Merevo Admin'
 where id = '01111111-1111-4111-8111-111111111101';
 
 alter table public.profiles enable trigger profiles_enforce_platform_role;

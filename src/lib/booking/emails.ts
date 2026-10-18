@@ -25,7 +25,7 @@ function getResendClient(): Resend | null {
 }
 
 function fromAddress(): string {
-  return process.env.EMAIL_FROM ?? "Mevero Bookings <onboarding@resend.dev>";
+  return process.env.EMAIL_FROM ?? "Merevo Bookings <onboarding@resend.dev>";
 }
 
 export async function sendBookingRequestEmails(
@@ -95,7 +95,7 @@ export async function sendBookingRequestEmails(
         "The business will review your request and get back to you.",
         "",
         "Thanks,",
-        "Mevero Bookings",
+        "Merevo Bookings",
       ]
         .filter(Boolean)
         .join("\n"),
@@ -136,7 +136,7 @@ export async function sendBookingRequestEmails(
         payload.guestCount ? `Guests: ${payload.guestCount}` : null,
         payload.notes ? `Notes: ${payload.notes}` : null,
         "",
-        "Status: Pending — review this request in your Mevero dashboard.",
+        "Status: Pending — review this request in your Merevo dashboard.",
       ]
         .filter(Boolean)
         .join("\n"),

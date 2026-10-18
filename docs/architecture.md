@@ -1,4 +1,4 @@
-# Mevero Booking Platform architecture
+# Merevo Booking Platform architecture
 
 ## Tenant model
 
@@ -23,7 +23,7 @@ Every future business-owned table must:
 1. Contain `business_id`
 2. Reference `businesses.id`
 3. Have RLS enabled
-4. Verify active business membership (or explicit Mevero admin policy)
+4. Verify active business membership (or explicit Merevo admin policy)
 5. Be tested for cross-tenant isolation before production use
 
 Examples (not built in Phase 1):
@@ -47,7 +47,7 @@ refunds
 | `staff` | Business membership | Works inside permitted business functionality |
 | `meridian_admin` | `profiles.platform_role` | Platform-level administration |
 
-Mevero admins are **not** fake members of every business. Platform access is separate and auditable. Phase 1 grants Mevero admins selective read/insert policies only — not a silent full bypass.
+Merevo admins are **not** fake members of every business. Platform access is separate and auditable. Phase 1 grants Merevo admins selective read/insert policies only — not a silent full bypass.
 
 ## Authentication
 
@@ -79,17 +79,17 @@ Business
 
 ## Future payment model (two separate money flows)
 
-### A. Mevero client subscription
+### A. Merevo client subscription
 
 ```text
 Business
   ↓
 Stripe Billing
   ↓
-Mevero
+Merevo
 ```
 
-Example: client pays Mevero £99/month for the platform.
+Example: client pays Merevo £99/month for the platform.
 
 ### B. Customer booking payment
 
@@ -103,7 +103,7 @@ Stripe (Connect)
 Client business
 ```
 
-Example: customer pays £50 for a service; the client business receives the funds. Mevero may take an optional application fee later.
+Example: customer pays £50 for a service; the client business receives the funds. Merevo may take an optional application fee later.
 
 These flows must remain conceptually and data-model separate.
 
@@ -159,7 +159,7 @@ Choose service → date/time → booking request → business approves
 ## Future Stripe security rules
 
 - Never store raw card numbers
-- Never collect client bank details directly in Mevero
+- Never collect client bank details directly in Merevo
 - Prefer Stripe-hosted payment/onboarding UIs
 - Stripe secret keys and webhook secrets stay server-side
 - Never trust browser redirect alone as payment success

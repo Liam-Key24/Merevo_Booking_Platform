@@ -75,7 +75,7 @@ export function buildBookingIcs(input: BuildIcsInput): string {
   const lines = [
     "BEGIN:VCALENDAR",
     "VERSION:2.0",
-    "PRODID:-//Mevero//Booking Platform//EN",
+    "PRODID:-//Merevo//Booking Platform//EN",
     "CALSCALE:GREGORIAN",
     "METHOD:REQUEST",
     "BEGIN:VEVENT",

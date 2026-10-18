@@ -19,6 +19,6 @@
 | Client dashboard actions | Implemented |
 | Dashboard analytics / charts | Real Supabase data only |
 | Calendar | Enhanced existing route; sidebar link |
-| Mevero admin | Businesses, memberships, settings, CSV, audit/email logs |
+| Merevo admin | Businesses, memberships, settings, CSV, audit/email logs |
 | Controlled templates | Registry + assignment + safe preview |
 | Google Calendar / Stripe / SMS | Not started |

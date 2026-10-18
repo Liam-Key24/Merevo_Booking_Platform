@@ -2,7 +2,7 @@
 
 ## Current project phase
 
-Booking requests, client dashboard (actions + analytics + calendar), Mevero admin operations, public-flow hardening (idempotency, Upstash rate limit, Turnstile, URL validation, email log retry), and controlled site-template assignment are implemented. Remaining integrations: Google Calendar, Stripe/payments, SMS, and external booking APIs beyond a validated URL.
+Booking requests, client dashboard (actions + analytics + calendar), Merevo admin operations, public-flow hardening (idempotency, Upstash rate limit, Turnstile, URL validation, email log retry), and controlled site-template assignment are implemented. Remaining integrations: Google Calendar, Stripe/payments, SMS, and external booking APIs beyond a validated URL.
 
 ## Supabase migrations
 
@@ -83,7 +83,7 @@ Statuses: `pending`, `sent`, `failed`, `skipped`.
 - Deterministic `operation_key` (booking + email type + recipient) prevents duplicate **sent** rows.
 - `attempt_count`, `last_attempt_at`, `last_error` support safe visibility.
 - Provider message IDs preserved when Resend returns them.
-- Mevero admins can retry **failed** messages from `/admin/email-logs` via a server action (no large queue yet).
+- Merevo admins can retry **failed** messages from `/admin/email-logs` via a server action (no large queue yet).
 
 ## Template publishing rules
 
@@ -91,7 +91,7 @@ Statuses: `pending`, `sent`, `failed`, `skipped`.
 - One assignment per business: `business_template_assignments`.
 - Preview: `/preview/[businessSlug]` only when an **active** template is assigned.
 - No public client-site publish without an assigned active template.
-- No drag-and-drop editor in this phase. Seeded placeholders: **Mevero Classic**, **Mevero Minimal**.
+- No drag-and-drop editor in this phase. Seeded placeholders: **Merevo Classic**, **Merevo Minimal**.
 - Assign templates on `/admin/businesses/[id]`.
 
 ## Admin onboarding process
@@ -113,7 +113,7 @@ Statuses: `pending`, `sent`, `failed`, `skipped`.
   3. Sign in as a seeded owner and confirm tenant isolation still holds.
   4. Document the restore timestamp and outcome in the incident log.
 
-Do not restore production backups into Mevero Marketing (`uibtkxlnhqxmesgfooui`).
+Do not restore production backups into Merevo Marketing (`uibtkxlnhqxmesgfooui`).
 
 ## Data retention
 
@@ -126,7 +126,7 @@ Do not restore production backups into Mevero Marketing (`uibtkxlnhqxmesgfooui`)
 | Profiles / memberships | Until account closure |
 | Template assignments | Until business closure |
 
-Retention jobs are not automated in this phase — schedule manually or via future cron. Mevero owns backup/retention configuration on the Platform Supabase project; clients do not hold production DB credentials.
+Retention jobs are not automated in this phase — schedule manually or via future cron. Merevo owns backup/retention configuration on the Platform Supabase project; clients do not hold production DB credentials.
 
 ## Client data export and account closure
 

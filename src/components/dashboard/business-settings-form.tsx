@@ -451,7 +451,7 @@ export function BusinessSettingsForm({
 
           <Section
             title="Booking mode"
-            description="How guests request a table through Mevero."
+            description="How guests request a table through Merevo."
           >
             <div className="grid gap-4">
               <Select
@@ -460,7 +460,7 @@ export function BusinessSettingsForm({
                 defaultValue={bookingMode}
                 disabled={!canEdit}
                 options={[
-                  { value: "meridian", label: "Mevero requests" },
+                  { value: "meridian", label: "Merevo requests" },
                   { value: "external", label: "External provider only" },
                   { value: "hybrid", label: "Hybrid (both)" },
                 ]}

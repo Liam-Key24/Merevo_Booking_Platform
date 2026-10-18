@@ -75,7 +75,7 @@ export function AppointmentsSettingsPanel({
           </div>
         </dl>
         <p className="mt-4 text-sm text-meridian-text-muted">
-          Ask a Mevero admin to update contact details or booking mode. Full
+          Ask a Merevo admin to update contact details or booking mode. Full
           appointment settings editing lands in a later phase.
         </p>
         <Link

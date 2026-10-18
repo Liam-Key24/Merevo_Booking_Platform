@@ -70,7 +70,7 @@ export async function createBusiness(
 ): Promise<AdminActionState> {
   const actor = await requireAdminActor();
   if (!actor) {
-    return { status: "error", message: "Mevero admin only." };
+    return { status: "error", message: "Merevo admin only." };
   }
 
   const name = String(formData.get("name") ?? "").trim();
@@ -181,7 +181,7 @@ export async function updateBusinessStatus(
 ): Promise<AdminActionState> {
   const actor = await requireAdminActor();
   if (!actor) {
-    return { status: "error", message: "Mevero admin only." };
+    return { status: "error", message: "Merevo admin only." };
   }
 
   const businessId = String(formData.get("businessId") ?? "");
@@ -220,7 +220,7 @@ export async function updateBusinessDashboardMode(
 ): Promise<AdminActionState> {
   const actor = await requireAdminActor();
   if (!actor) {
-    return { status: "error", message: "Mevero admin only." };
+    return { status: "error", message: "Merevo admin only." };
   }
 
   const businessId = String(formData.get("businessId") ?? "");
@@ -306,7 +306,7 @@ export async function updateBusinessSubscription(
 ): Promise<AdminActionState> {
   const actor = await requireAdminActor();
   if (!actor) {
-    return { status: "error", message: "Mevero admin only." };
+    return { status: "error", message: "Merevo admin only." };
   }
 
   const businessId = String(formData.get("businessId") ?? "");
@@ -366,7 +366,7 @@ export async function updateBusinessCapabilities(
 ): Promise<AdminActionState> {
   const actor = await requireAdminActor();
   if (!actor) {
-    return { status: "error", message: "Mevero admin only." };
+    return { status: "error", message: "Merevo admin only." };
   }
 
   const businessId = String(formData.get("businessId") ?? "");
@@ -424,7 +424,7 @@ export async function addBusinessMembership(
 ): Promise<AdminActionState> {
   const actor = await requireAdminActor();
   if (!actor) {
-    return { status: "error", message: "Mevero admin only." };
+    return { status: "error", message: "Merevo admin only." };
   }
 
   const businessId = String(formData.get("businessId") ?? "");
@@ -490,7 +490,7 @@ export async function updateBusinessMembership(
 ): Promise<AdminActionState> {
   const actor = await requireAdminActor();
   if (!actor) {
-    return { status: "error", message: "Mevero admin only." };
+    return { status: "error", message: "Merevo admin only." };
   }
 
   const businessId = String(formData.get("businessId") ?? "");
@@ -535,7 +535,7 @@ export async function updateAdminBookingSettings(
 ): Promise<AdminActionState> {
   const actor = await requireAdminActor();
   if (!actor) {
-    return { status: "error", message: "Mevero admin only." };
+    return { status: "error", message: "Merevo admin only." };
   }
 
   const businessId = String(formData.get("businessId") ?? "");
@@ -607,7 +607,7 @@ export async function upsertAdminService(
 ): Promise<AdminActionState> {
   const actor = await requireAdminActor();
   if (!actor) {
-    return { status: "error", message: "Mevero admin only." };
+    return { status: "error", message: "Merevo admin only." };
   }
 
   const businessId = String(formData.get("businessId") ?? "");
