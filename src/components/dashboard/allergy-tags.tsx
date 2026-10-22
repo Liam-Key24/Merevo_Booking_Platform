@@ -19,13 +19,7 @@ import {
 } from "@phosphor-icons/react";
 import { cn } from "@/lib/cn";
 import {
-  CLIENT_SURFACE_ERROR,
-  CLIENT_SURFACE_FIELD,
-  CLIENT_SURFACE_FIELD_ERROR,
-  CLIENT_SURFACE_HINT,
-  CLIENT_SURFACE_LABEL,
   CLIENT_SURFACE_MUTED,
-  CLIENT_SURFACE_PANEL,
   type SurfaceTheme,
 } from "@/lib/templates/client-surface-theme";
 import {

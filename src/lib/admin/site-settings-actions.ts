@@ -10,7 +10,6 @@ import {
   menuPdfsToJson,
   menuToJson,
   parseBusinessMenu,
-  parseMenuPdfs,
   type BusinessMenu,
   type BusinessMenuPdfs,
   type MenuPdfDocument,
