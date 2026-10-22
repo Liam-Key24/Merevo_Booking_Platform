@@ -5,12 +5,12 @@ export default function HomePage() {
   return (
     <main className="mx-auto flex w-full max-w-3xl flex-1 flex-col gap-10 px-[var(--meridian-space-page)] py-16">
       <header className="space-y-4">
-        <Badge tone="teal">Meridian Booking Platform</Badge>
+        <Badge tone="teal">Merevo Booking Platform</Badge>
         <h1 className="max-w-xl text-4xl font-semibold tracking-tight text-meridian-text sm:text-5xl">
-          Meridian
+          Merevo
         </h1>
         <p className="max-w-lg text-base leading-relaxed text-meridian-text-muted sm:text-lg">
-          Shared booking-request platform for Meridian client sites. Simple
+          Shared booking-request platform for Merevo client sites. Simple
           requests, clear decisions, and confirmed bookings — without live
           availability or payment complexity in this foundation phase.
         </p>
@@ -25,7 +25,7 @@ export default function HomePage() {
             { href: "/book/demo-salon", label: "Public booking form" },
             { href: "/login", label: "Client login" },
             { href: "/dashboard", label: "Client dashboard" },
-            { href: "/admin", label: "Meridian admin" },
+            { href: "/admin", label: "Merevo admin" },
           ].map((item) => (
             <li key={item.href}>
               <Link

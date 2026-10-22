@@ -1,6 +1,6 @@
 /**
  * Validate external booking provider URLs.
- * Shared by client dashboard settings and Meridian admin settings.
+ * Shared by client dashboard settings and Merevo admin settings.
  */
 export type ExternalUrlValidation =
   | { ok: true; url: string }

@@ -62,7 +62,7 @@ export default async function DashboardSettingsPage() {
         <Card>
           <EmptyState
             title="Settings not configured"
-            description="Ask a Meridian admin to create booking settings for this business."
+            description="Ask a Merevo admin to create booking settings for this business."
           />
         </Card>
       ) : isAppointments ? (

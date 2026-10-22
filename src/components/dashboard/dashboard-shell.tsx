@@ -133,7 +133,7 @@ export function DashboardShell({
           </span>
           <div>
             <p className="text-xs font-semibold tracking-wide text-meridian-blue uppercase">
-              Meridian
+              Merevo
             </p>
             <p className="text-sm font-semibold text-meridian-text">
               {productLabel}

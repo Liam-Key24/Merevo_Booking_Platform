@@ -32,7 +32,7 @@ export default async function BookPage({ params }: BookPageProps) {
       <main className="mx-auto flex w-full max-w-xl flex-1 flex-col gap-8 px-[var(--meridian-space-page)] py-14">
         <EmptyState
           title="Business not found"
-          description="This booking page is unavailable or the business is not accepting Meridian requests."
+          description="This booking page is unavailable or the business is not accepting Merevo requests."
         />
       </main>
     );

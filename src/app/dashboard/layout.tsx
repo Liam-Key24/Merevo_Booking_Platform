@@ -29,7 +29,7 @@ export default async function DashboardLayout({
   // Active business from verified cookie / membership — never from mode query.
   const context = await getBusinessContext();
   const business = context?.business;
-  const businessName = business?.name ?? "Meridian";
+  const businessName = business?.name ?? "Merevo";
   const role = context?.role ?? "staff";
   const dashboardMode = context?.dashboardMode ?? "hospitality";
   const capabilities = context?.capabilities;

@@ -1,15 +1,15 @@
-# Meridian Booking Platform
+# Merevo Booking Platform
 
-Secure, multi-tenant booking-request product used by Meridian client sites. The marketing website is separate; this repository is the shared booking platform only.
+Secure, multi-tenant booking-request product used by Merevo client sites. The marketing website is separate; this repository is the shared booking platform only.
 
-> **Supabase project:** use **Meridian Platform Development** only.  
+> **Supabase project:** use **Meridian Platform Development** only *(legacy cloud project name; product branding is Merevo)*.  
 > Never connect to, alter, or reuse the Meridian Marketing Supabase project.  
 > **Never commit secrets** (`.env.local`, service-role keys, publishable keys with real values, passwords).
 
 ## Stack
 
 - **Next.js** (App Router) + **TypeScript**
-- **Tailwind CSS** with Meridian design tokens (`#16697A`, `#489FB5`, `#82C0CC`, `#FFA62B`, Plus Jakarta Sans)
+- **Tailwind CSS** with Merevo design tokens (`#16697A`, `#489FB5`, `#82C0CC`, `#FFA62B`, Plus Jakarta Sans)
 - **Supabase** (Auth, Postgres, RLS) — Meridian Platform Development
 - **Resend** — transactional booking emails (optional locally; required in production)
 - **Upstash Redis** (`@upstash/ratelimit`) — durable public booking rate limits (in-memory only locally; fail closed in production)
@@ -25,13 +25,13 @@ Platform work through **hardening**, **dashboard analytics**, and **controlled t
 - Client authentication and multi-tenant businesses / memberships
 - Dashboard: pending queue, booking list/filters/detail, approve / decline / suggest-time / cancel
 - Internal calendar with day/week navigation
-- Booking modes: Meridian, external, hybrid (external URLs validated server-side)
+- Booking modes: Merevo, external, hybrid (external URLs validated server-side)
 - Real dashboard analytics and charts from Supabase (no fabricated metrics)
 - Responsive sidebar shell (drawer on mobile)
 
-### Admin (Meridian)
+### Admin (Merevo)
 
-- Meridian admin routes (businesses, memberships, services, booking settings)
+- Merevo admin routes (businesses, memberships, services, booking settings)
 - Booking CSV export, audit logs, email-delivery logs with safe retry
 - Controlled site-template registry and business assignment
 - Safe template preview (`/preview/[businessSlug]`) — no publish without an assigned active template
@@ -123,4 +123,4 @@ Local-only: `BOOKING_TURNSTILE_BYPASS=true` (never in production). Without Upsta
 
 ## License
 
-Private — Meridian internal use.
+Private — Merevo internal use.

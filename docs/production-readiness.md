@@ -1,6 +1,6 @@
 # Production readiness checklist
 
-Use this before promoting Meridian Platform traffic beyond development.
+Use this before promoting Merevo Platform traffic beyond development.
 
 ## Merge order
 

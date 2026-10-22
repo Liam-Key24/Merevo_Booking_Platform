@@ -38,7 +38,7 @@ export default async function TemplatePreviewPage({ params }: PageProps) {
       <main className="mx-auto flex w-full max-w-3xl flex-1 flex-col gap-8 px-[var(--meridian-space-page)] py-14">
         <EmptyState
           title="No publishable template"
-          description="This business has no assigned active Meridian template matching its dashboard mode. Assign Hospitality Classic under Admin → Settings → Template."
+          description="This business has no assigned active Merevo template matching its dashboard mode. Assign Hospitality Classic under Admin → Settings → Template."
         />
       </main>
     );

@@ -419,7 +419,7 @@ export function AdminSettingsForm({
         name="bookingMode"
         defaultValue={bookingMode}
         options={[
-          { value: "meridian", label: "Meridian requests" },
+          { value: "meridian", label: "Merevo requests" },
           { value: "external", label: "External provider only" },
           { value: "hybrid", label: "Hybrid (both)" },
         ]}

@@ -23,12 +23,12 @@ export type BookingWidgetProps = {
   /** Hide template-level chrome when embedded inside a client-site layout. */
   embed?: boolean;
   submitLabel?: string;
-  /** Optional className for embed layouts on Meridian client sites. */
+  /** Optional className for embed layouts on Merevo client sites. */
   className?: string;
 };
 
 /**
- * Reusable public booking surface for Meridian client templates.
+ * Reusable public booking surface for Merevo client templates.
  * Supports meridian / external / hybrid modes — no calendar-provider sync.
  */
 export function BookingWidget({
@@ -72,7 +72,7 @@ export function BookingWidget({
             </h1>
             <p className="text-meridian-text-muted">
               {bookingMode === "hybrid"
-                ? "Request a time through Meridian, or continue with the business’s existing booking provider."
+                ? "Request a time through Merevo, or continue with the business’s existing booking provider."
                 : isHospitality
                   ? "Request a table. This does not confirm your booking."
                   : "Submit a request. This does not confirm your booking."}
@@ -102,7 +102,7 @@ export function BookingWidget({
               ? undefined
               : isHospitality
                 ? "Request a table"
-                : "Request via Meridian"
+                : "Request via Merevo"
           }
           description={
             embed

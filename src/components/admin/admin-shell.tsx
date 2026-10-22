@@ -95,7 +95,7 @@ export function AdminShell({
         </span>
         <div>
           <p className="text-xs font-semibold tracking-wide text-meridian-accent uppercase">
-            Meridian
+            Merevo
           </p>
           <p className="text-sm font-semibold text-meridian-text">
             Platform admin
@@ -143,7 +143,7 @@ export function AdminShell({
             {accountEmail}
           </p>
           <p className="mt-0.5 text-[11px] font-semibold tracking-wide text-meridian-accent uppercase">
-            Meridian admin
+            Merevo admin
           </p>
         </div>
         <form action={signOut}>
