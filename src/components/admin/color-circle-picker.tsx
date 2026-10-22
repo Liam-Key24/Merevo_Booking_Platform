@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { cn } from "@/lib/cn";
 
 export function ColorCirclePicker({
@@ -15,12 +15,16 @@ export function ColorCirclePicker({
   size?: "md" | "lg" | "xl";
 }) {
   const [value, setValue] = useState(defaultValue);
+  const [prevDefault, setPrevDefault] = useState(defaultValue);
+
+  // Sync when the parent default changes (React-recommended render-time adjust).
+  if (defaultValue !== prevDefault) {
+    setPrevDefault(defaultValue);
+    setValue(defaultValue);
+  }
+
   const dimension =
     size === "xl" ? "size-20" : size === "lg" ? "size-11" : "size-8";
-
-  useEffect(() => {
-    setValue(defaultValue);
-  }, [defaultValue]);
 
   return (
     <label className="flex flex-col items-center gap-1.5">
