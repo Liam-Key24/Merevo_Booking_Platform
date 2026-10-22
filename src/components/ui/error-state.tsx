@@ -10,7 +10,7 @@ export type ErrorStateProps = HTMLAttributes<HTMLDivElement> & {
 export function ErrorState({
   className,
   title = "Something went wrong",
-  description = "Please try again. If the problem continues, contact Meridian support.",
+  description = "Please try again. If the problem continues, contact Merevo support.",
   action,
   ...props
 }: ErrorStateProps) {

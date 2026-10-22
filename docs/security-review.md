@@ -13,7 +13,7 @@ Confirm before merging platform work:
 
 Additional notes:
 
-- Meridian admin access is `profiles.platform_role = meridian_admin`, not a fake membership on every business.
+- Merevo admin access is `profiles.platform_role = meridian_admin`, not a fake membership on every business.
 - Public booking inserts use the service-role client; anon has no direct table writes.
 - Email delivery attempts are logged for support visibility without exposing Resend keys to the browser.
 - Rate-limit keys are HMAC-SHA256 hashed with `BOOKING_RATE_LIMIT_SECRET`; raw IPs/emails are never stored or logged for limiting.

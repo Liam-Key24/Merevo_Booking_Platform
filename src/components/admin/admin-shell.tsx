@@ -54,6 +54,9 @@ function isActive(pathname: string, href: string): boolean {
 
 function pageTitleForPath(pathname: string): string {
   if (pathname.startsWith("/admin/businesses/new")) return "New business";
+  if (pathname.startsWith("/admin/businesses/") && pathname.includes("/settings")) {
+    return "Business settings";
+  }
   if (pathname.startsWith("/admin/businesses/")) return "Business detail";
   if (pathname.startsWith("/admin/bookings")) return "Bookings list";
   if (pathname.startsWith("/admin/audit-logs")) return "Audit logs";
@@ -92,7 +95,7 @@ export function AdminShell({
         </span>
         <div>
           <p className="text-xs font-semibold tracking-wide text-meridian-accent uppercase">
-            Meridian
+            Merevo
           </p>
           <p className="text-sm font-semibold text-meridian-text">
             Platform admin
@@ -140,7 +143,7 @@ export function AdminShell({
             {accountEmail}
           </p>
           <p className="mt-0.5 text-[11px] font-semibold tracking-wide text-meridian-accent uppercase">
-            Meridian admin
+            Merevo admin
           </p>
         </div>
         <form action={signOut}>

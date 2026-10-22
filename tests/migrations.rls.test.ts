@@ -120,6 +120,7 @@ describe("dashboard modes migration", () => {
 
   it("blocks non-admin mode/type changes via trigger", () => {
     expect(sql).toMatch(/prevent_non_admin_dashboard_mode_change/);
+    // Migration SQL is historical — message text still says Meridian; do not rewrite applied migrations.
     expect(sql).toMatch(/Only Meridian admins may change business type/);
   });
 

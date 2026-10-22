@@ -25,7 +25,7 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
                 M
               </span>
               <p className="text-lg font-semibold tracking-tight text-meridian-text">
-                Meridian
+                Merevo
               </p>
             </div>
 
@@ -43,13 +43,13 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
         </div>
 
         <footer className="mx-auto mt-12 flex w-full max-w-md items-center justify-between gap-4 text-xs text-meridian-text-muted">
-          <p>© {new Date().getFullYear()} Meridian</p>
+          <p>© {new Date().getFullYear()} Merevo</p>
           <p>Secure shared access</p>
         </footer>
       </section>
 
       <aside
-        aria-label="Meridian product"
+        aria-label="Merevo product"
         className="relative hidden overflow-hidden bg-meridian-teal px-[var(--meridian-space-page)] py-16 text-meridian-text-inverse lg:flex lg:w-1/2 lg:flex-col lg:justify-center"
       >
         <div aria-hidden="true" className="pointer-events-none absolute inset-0">
@@ -61,7 +61,7 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
 
         <div className="relative mx-auto max-w-md space-y-5">
           <p className="text-xs font-semibold tracking-[0.18em] text-meridian-soft-blue uppercase">
-            Meridian
+            Merevo
           </p>
           <h2 className="text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
             One calm place for the bookings that keep your business moving.

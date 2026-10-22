@@ -5,7 +5,7 @@ the session Supabase client (RLS).
 
 ## Modes
 
-Meridian targets **one platform, two dashboard modes**:
+Merevo targets **one platform, two dashboard modes**:
 
 1. **Hospitality** (approved baseline) — restaurants, cafés, pubs
 2. **Appointments** (forthcoming) — barbers, salons, studios, beauty
