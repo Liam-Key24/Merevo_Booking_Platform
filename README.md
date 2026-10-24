@@ -17,7 +17,7 @@ Secure, multi-tenant booking-request product used by Merevo client sites. The ma
 
 ## Current status
 
-Platform work through **hardening**, **dashboard analytics**, and **controlled templates** is implemented on feature branches (merge in order; do not assume `main` is current until merged):
+Production-ready multi-tenant booking platform with comprehensive security hardening, dashboard analytics, and controlled site templates.
 
 ### Booking (public + client)
 
@@ -44,7 +44,7 @@ Google Calendar sync, Stripe / payments, SMS, live availability APIs, drag-and-d
 
 ### Requirements
 
-- Node.js 20+
+- Node.js 22+
 - npm 10+
 - Supabase CLI access to **Meridian Platform Development**
 
@@ -87,14 +87,6 @@ RLS / tenant isolation procedures: [docs/tenant-isolation.md](docs/tenant-isolat
 Runbook (env, Resend, Upstash, Turnstile, email retry, templates, backups): [docs/operations.md](docs/operations.md).  
 Cloudflare edge setup: [docs/cloudflare.md](docs/cloudflare.md).  
 Production checklist: [docs/production-readiness.md](docs/production-readiness.md).
-
-## Feature branch merge order
-
-1. `codex/meridian-platform-security-foundation`
-2. `codex/meridian-platform-domain-foundation`
-3. `codex/meridian-platform-production-readiness`
-
-Do not merge from older stale branches once these land.
 
 ## Tenant model
 
