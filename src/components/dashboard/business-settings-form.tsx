@@ -58,14 +58,14 @@ function Section({
   children?: React.ReactNode;
 }) {
   return (
-    <section className="space-y-4 border-t border-meridian-border pt-6 first:border-t-0 first:pt-0">
+    <section className="space-y-4 border-t border-merevo-border pt-6 first:border-t-0 first:pt-0">
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div className="space-y-1">
-          <h3 className="text-base font-semibold tracking-tight text-meridian-text">
+          <h3 className="text-base font-semibold tracking-tight text-merevo-text">
             {title}
           </h3>
           {description ? (
-            <p className="text-sm text-meridian-text-muted">{description}</p>
+            <p className="text-sm text-merevo-text-muted">{description}</p>
           ) : null}
         </div>
         {action ? <div className="shrink-0">{action}</div> : null}
@@ -90,7 +90,7 @@ function OnOffToggle({
     <label className="inline-flex cursor-pointer items-center gap-2.5 text-sm select-none">
       <span
         className={
-          checked ? "font-medium text-meridian-text" : "text-meridian-text-muted"
+          checked ? "font-medium text-merevo-text" : "text-merevo-text-muted"
         }
       >
         {checked ? "On" : "Off"}
@@ -107,11 +107,11 @@ function OnOffToggle({
         />
         <span
           aria-hidden
-          className="h-7 w-full rounded-full border border-meridian-border bg-meridian-surface-subtle transition-colors peer-checked:border-meridian-teal peer-checked:bg-meridian-teal peer-focus-visible:shadow-[var(--meridian-focus-ring)] peer-disabled:opacity-60"
+          className="h-7 w-full rounded-full border border-merevo-border bg-merevo-surface-subtle transition-colors peer-checked:border-merevo-teal peer-checked:bg-merevo-teal peer-focus-visible:shadow-[var(--merevo-focus-ring)] peer-disabled:opacity-60"
         />
         <span
           aria-hidden
-          className="pointer-events-none absolute top-0.5 left-0.5 size-6 rounded-full bg-meridian-surface shadow-sm transition-transform peer-checked:translate-x-5"
+          className="pointer-events-none absolute top-0.5 left-0.5 size-6 rounded-full bg-merevo-surface shadow-sm transition-transform peer-checked:translate-x-5"
         />
       </span>
     </label>
@@ -129,7 +129,7 @@ function WeeklyHoursFields({
 }) {
   return (
     <div className="space-y-2">
-      <div className="hidden grid-cols-[7rem_1fr_1fr_4.5rem] gap-3 text-xs font-medium uppercase tracking-wide text-meridian-text-muted sm:grid">
+      <div className="hidden grid-cols-[7rem_1fr_1fr_4.5rem] gap-3 text-xs font-medium uppercase tracking-wide text-merevo-text-muted sm:grid">
         <span>Day</span>
         <span>Opens</span>
         <span>Closes</span>
@@ -146,11 +146,11 @@ function WeeklyHoursFields({
             key={`${prefix}-${day}`}
             className="grid grid-cols-1 gap-2 sm:grid-cols-[7rem_1fr_1fr_4.5rem] sm:items-end"
           >
-            <span className="text-sm font-medium text-meridian-text sm:pb-2.5">
+            <span className="text-sm font-medium text-merevo-text sm:pb-2.5">
               {WEEKDAY_LABELS[day]}
             </span>
             <label className="flex w-full flex-col gap-1.5 text-sm sm:gap-0">
-              <span className="font-medium text-meridian-text sm:sr-only">
+              <span className="font-medium text-merevo-text sm:sr-only">
                 Opens ({WEEKDAY_LABELS[day]})
               </span>
               <input
@@ -158,11 +158,11 @@ function WeeklyHoursFields({
                 type="time"
                 defaultValue={value.open}
                 disabled={disabled}
-                className="h-11 w-full rounded-meridian border border-meridian-border bg-meridian-surface px-4 text-meridian-text transition-[border-color,box-shadow] focus-visible:border-meridian-blue focus-visible:shadow-[var(--meridian-focus-ring)] disabled:cursor-not-allowed disabled:bg-meridian-surface-subtle disabled:opacity-70"
+                className="h-11 w-full rounded-merevo border border-merevo-border bg-merevo-surface px-4 text-merevo-text transition-[border-color,box-shadow] focus-visible:border-merevo-blue focus-visible:shadow-[var(--merevo-focus-ring)] disabled:cursor-not-allowed disabled:bg-merevo-surface-subtle disabled:opacity-70"
               />
             </label>
             <label className="flex w-full flex-col gap-1.5 text-sm sm:gap-0">
-              <span className="font-medium text-meridian-text sm:sr-only">
+              <span className="font-medium text-merevo-text sm:sr-only">
                 Closes ({WEEKDAY_LABELS[day]})
               </span>
               <input
@@ -170,16 +170,16 @@ function WeeklyHoursFields({
                 type="time"
                 defaultValue={value.close}
                 disabled={disabled}
-                className="h-11 w-full rounded-meridian border border-meridian-border bg-meridian-surface px-4 text-meridian-text transition-[border-color,box-shadow] focus-visible:border-meridian-blue focus-visible:shadow-[var(--meridian-focus-ring)] disabled:cursor-not-allowed disabled:bg-meridian-surface-subtle disabled:opacity-70"
+                className="h-11 w-full rounded-merevo border border-merevo-border bg-merevo-surface px-4 text-merevo-text transition-[border-color,box-shadow] focus-visible:border-merevo-blue focus-visible:shadow-[var(--merevo-focus-ring)] disabled:cursor-not-allowed disabled:bg-merevo-surface-subtle disabled:opacity-70"
               />
             </label>
-            <label className="flex h-11 items-center justify-center gap-2 text-sm text-meridian-text">
+            <label className="flex h-11 items-center justify-center gap-2 text-sm text-merevo-text">
               <input
                 type="checkbox"
                 name={`${prefix}.${day}.closed`}
                 defaultChecked={value.closed}
                 disabled={disabled}
-                className="size-4 rounded border-meridian-border"
+                className="size-4 rounded border-merevo-border"
               />
               <span className="sm:sr-only">Closed</span>
             </label>
@@ -332,10 +332,10 @@ export function BusinessSettingsForm({
             </div>
 
             <div className="space-y-3">
-              <p className="text-sm font-medium text-meridian-text">
+              <p className="text-sm font-medium text-merevo-text">
                 Custom tables
               </p>
-              <p className="text-sm text-meridian-text-muted">
+              <p className="text-sm text-merevo-text-muted">
                 e.g. 10 seats on Booth A, or 12 seats on Private dining.
               </p>
               <div className="space-y-2">
@@ -507,7 +507,7 @@ export function BusinessSettingsForm({
                 disabled={!canEdit}
               />
             ) : (
-              <p className="text-sm text-meridian-text-muted">
+              <p className="text-sm text-merevo-text-muted">
                 Turn on to set kitchen close times separately from venue hours.
               </p>
             )}
@@ -532,7 +532,7 @@ export function BusinessSettingsForm({
                 disabled={!canEdit}
               />
             ) : (
-              <p className="text-sm text-meridian-text-muted">
+              <p className="text-sm text-merevo-text-muted">
                 Turn on to set bar hours separately from venue opening times.
               </p>
             )}
@@ -604,8 +604,8 @@ export function BusinessSettingsForm({
         <p
           className={
             state.status === "error"
-              ? "text-sm text-meridian-status-declined"
-              : "text-sm text-meridian-status-confirmed"
+              ? "text-sm text-merevo-status-declined"
+              : "text-sm text-merevo-status-confirmed"
           }
           role="status"
         >
@@ -618,7 +618,7 @@ export function BusinessSettingsForm({
           {pending ? "Saving…" : "Save settings"}
         </Button>
       ) : (
-        <p className="text-sm text-meridian-text-muted">
+        <p className="text-sm text-merevo-text-muted">
           Only business owners can change these settings.
         </p>
       )}

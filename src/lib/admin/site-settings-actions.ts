@@ -40,7 +40,7 @@ const MAX_IMAGE_BYTES = 5 * 1024 * 1024;
 
 async function requireAdminActor() {
   const snapshot = await getAuthSnapshot();
-  if (!snapshot?.isMeridianAdmin) return null;
+  if (!snapshot?.isMerevoAdmin) return null;
   return snapshot;
 }
 
@@ -222,7 +222,7 @@ export async function updateBusinessBranding(
 ): Promise<SiteSettingsActionState> {
   const actor = await requireAdminActor();
   if (!actor) {
-    return { status: "error", message: "Meridian admin only." };
+    return { status: "error", message: "Merevo admin only." };
   }
 
   const businessId = String(formData.get("businessId") ?? "");
@@ -326,7 +326,7 @@ export async function updateBusinessContent(
 ): Promise<SiteSettingsActionState> {
   const actor = await requireAdminActor();
   if (!actor) {
-    return { status: "error", message: "Meridian admin only." };
+    return { status: "error", message: "Merevo admin only." };
   }
 
   const businessId = String(formData.get("businessId") ?? "");
@@ -457,7 +457,7 @@ export async function updateBusinessMenus(
 ): Promise<SiteSettingsActionState> {
   const actor = await requireAdminActor();
   if (!actor) {
-    return { status: "error", message: "Meridian admin only." };
+    return { status: "error", message: "Merevo admin only." };
   }
 
   const businessId = String(formData.get("businessId") ?? "");
@@ -520,7 +520,7 @@ export async function updateBusinessMenuPdfs(
 ): Promise<SiteSettingsActionState> {
   const actor = await requireAdminActor();
   if (!actor) {
-    return { status: "error", message: "Meridian admin only." };
+    return { status: "error", message: "Merevo admin only." };
   }
 
   const businessId = String(formData.get("businessId") ?? "");

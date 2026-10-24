@@ -58,13 +58,13 @@ export function AdminAuditLogsList({
           />
         }
       >
-        <p className="pb-1 text-sm text-meridian-text-muted">
+        <p className="pb-1 text-sm text-merevo-text-muted">
           Showing {filtered.length} of {logs.length}
         </p>
       </AdminListToolbar>
 
       {loadError ? (
-        <p className="text-sm text-meridian-status-declined">
+        <p className="text-sm text-merevo-status-declined">
           Could not load audit logs.
         </p>
       ) : (
@@ -81,17 +81,17 @@ export function AdminAuditLogsList({
               cells={[
                 <span
                   key="when"
-                  className="text-meridian-text-muted tabular-nums"
+                  className="text-merevo-text-muted tabular-nums"
                 >
                   {new Date(log.created_at).toLocaleString()}
                 </span>,
                 <span key="action" className="font-medium">
                   {log.action}
                 </span>,
-                <span key="business" className="text-meridian-text-muted">
+                <span key="business" className="text-merevo-text-muted">
                   {log.business_name ?? "—"}
                 </span>,
-                <span key="entity" className="text-meridian-text-muted">
+                <span key="entity" className="text-merevo-text-muted">
                   {log.entity_type}
                   {log.entity_id ? ` · ${log.entity_id.slice(0, 8)}…` : ""}
                 </span>,

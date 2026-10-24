@@ -78,30 +78,30 @@ export default async function AdminBusinessDetailPage({ params }: PageProps) {
       <header className="space-y-4">
         <Link
           href="/admin"
-          className="text-sm font-semibold text-meridian-accent hover:underline"
+          className="text-sm font-semibold text-merevo-accent hover:underline"
         >
           ← Businesses
         </Link>
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div className="space-y-2">
-            <h1 className="text-3xl font-semibold tracking-tight text-meridian-text">
+            <h1 className="text-3xl font-semibold tracking-tight text-merevo-text">
               {business.name}
             </h1>
-            <p className="max-w-2xl text-sm text-meridian-text-muted">
+            <p className="max-w-2xl text-sm text-merevo-text-muted">
               Usage overview — bookings, emails, and last activity. Configure
               the tenant from settings.
             </p>
             <div className="flex flex-wrap items-center gap-2 pt-1">
-              <span className="inline-flex items-center rounded-meridian-sm bg-meridian-surface-muted px-2.5 py-1 text-[11px] font-semibold tracking-wide text-meridian-accent uppercase">
+              <span className="inline-flex items-center rounded-merevo-sm bg-merevo-surface-muted px-2.5 py-1 text-[11px] font-semibold tracking-wide text-merevo-accent uppercase">
                 {DASHBOARD_MODE_LABELS[dashboardMode]}
               </span>
-              <span className="inline-flex items-center rounded-meridian-sm bg-meridian-surface-muted px-2.5 py-1 text-[11px] font-semibold tracking-wide text-meridian-text-muted uppercase">
+              <span className="inline-flex items-center rounded-merevo-sm bg-merevo-surface-muted px-2.5 py-1 text-[11px] font-semibold tracking-wide text-merevo-text-muted uppercase">
                 {typeLabel}
               </span>
-              <span className="inline-flex items-center rounded-meridian-sm bg-meridian-surface-muted px-2.5 py-1 text-[11px] font-semibold tracking-wide text-meridian-text-muted uppercase">
+              <span className="inline-flex items-center rounded-merevo-sm bg-merevo-surface-muted px-2.5 py-1 text-[11px] font-semibold tracking-wide text-merevo-text-muted uppercase">
                 {business.status}
               </span>
-              <span className="inline-flex items-center rounded-meridian-sm bg-meridian-surface-muted px-2.5 py-1 text-[11px] font-semibold tracking-wide text-meridian-text-muted uppercase">
+              <span className="inline-flex items-center rounded-merevo-sm bg-merevo-surface-muted px-2.5 py-1 text-[11px] font-semibold tracking-wide text-merevo-text-muted uppercase">
                 {SUBSCRIPTION_STATUS_LABELS[subscriptionStatus]}
               </span>
             </div>
@@ -113,20 +113,20 @@ export default async function AdminBusinessDetailPage({ params }: PageProps) {
         <div className="flex flex-wrap gap-3 text-sm font-semibold">
           <Link
             href={settingsHref}
-            className="text-meridian-accent hover:underline"
+            className="text-merevo-accent hover:underline"
           >
             Settings
           </Link>
           <Link
             href={`/book/${business.slug}`}
-            className="text-meridian-accent hover:underline"
+            className="text-merevo-accent hover:underline"
           >
             Public book page
           </Link>
           {assignment ? (
             <a
               href={`/preview/${business.slug}`}
-              className="text-meridian-accent hover:underline"
+              className="text-merevo-accent hover:underline"
               target="_blank"
               rel="noreferrer"
             >
@@ -135,13 +135,13 @@ export default async function AdminBusinessDetailPage({ params }: PageProps) {
           ) : null}
           <Link
             href={bookingsHref}
-            className="text-meridian-accent hover:underline"
+            className="text-merevo-accent hover:underline"
           >
             Bookings
           </Link>
           <a
             href={`/admin/bookings/export?businessId=${business.id}`}
-            className="text-meridian-accent hover:underline"
+            className="text-merevo-accent hover:underline"
           >
             Export CSV
           </a>
@@ -149,7 +149,7 @@ export default async function AdminBusinessDetailPage({ params }: PageProps) {
       </header>
 
       <section className="space-y-4">
-        <h2 className="text-xl font-semibold tracking-tight text-meridian-text sm:text-2xl">
+        <h2 className="text-xl font-semibold tracking-tight text-merevo-text sm:text-2xl">
           Live metrics
         </h2>
         {metrics ? (
@@ -181,26 +181,26 @@ export default async function AdminBusinessDetailPage({ params }: PageProps) {
               />
             </div>
             <div className="grid gap-4 sm:grid-cols-2">
-              <div className="rounded-meridian border border-meridian-border bg-meridian-surface p-5">
-                <p className="text-xs font-semibold tracking-wide text-meridian-text-muted uppercase">
+              <div className="rounded-merevo border border-merevo-border bg-merevo-surface p-5">
+                <p className="text-xs font-semibold tracking-wide text-merevo-text-muted uppercase">
                   Emails sent
                 </p>
-                <p className="mt-2 text-2xl font-semibold tracking-tight text-meridian-text">
+                <p className="mt-2 text-2xl font-semibold tracking-tight text-merevo-text">
                   {metrics.emailSent}
                 </p>
-                <p className="mt-1 text-sm text-meridian-text-muted">
+                <p className="mt-1 text-sm text-merevo-text-muted">
                   {metrics.emailFailed} failed · {metrics.emailTotal} recent
                   samples · {metrics.noShowVolume} no-shows
                 </p>
               </div>
-              <div className="rounded-meridian border border-meridian-border bg-meridian-surface p-5">
-                <p className="text-xs font-semibold tracking-wide text-meridian-text-muted uppercase">
+              <div className="rounded-merevo border border-merevo-border bg-merevo-surface p-5">
+                <p className="text-xs font-semibold tracking-wide text-merevo-text-muted uppercase">
                   Last activity
                 </p>
-                <p className="mt-2 text-lg font-semibold tracking-tight text-meridian-text">
+                <p className="mt-2 text-lg font-semibold tracking-tight text-merevo-text">
                   {formatWhen(metrics.lastActivityAt)}
                 </p>
-                <p className="mt-1 text-sm text-meridian-text-muted">
+                <p className="mt-1 text-sm text-merevo-text-muted">
                   Booking {formatWhen(metrics.lastBookingAt)} · Email{" "}
                   {formatWhen(metrics.lastEmailAt)} · Audit{" "}
                   {formatWhen(metrics.lastAuditAt)}
@@ -209,7 +209,7 @@ export default async function AdminBusinessDetailPage({ params }: PageProps) {
             </div>
           </>
         ) : (
-          <p className="text-sm text-meridian-status-declined">
+          <p className="text-sm text-merevo-status-declined">
             Could not load operational metrics.
           </p>
         )}

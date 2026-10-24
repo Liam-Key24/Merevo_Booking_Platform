@@ -22,8 +22,8 @@ export function EmailRetryButton({ logId }: { logId: string }) {
         <p
           className={
             state.status === "error"
-              ? "text-xs text-meridian-status-declined"
-              : "text-xs text-meridian-teal"
+              ? "text-xs text-merevo-status-declined"
+              : "text-xs text-merevo-teal"
           }
         >
           {state.message}

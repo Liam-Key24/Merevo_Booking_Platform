@@ -42,14 +42,14 @@ export function HospitalityDashboardHome({
     <main className="flex flex-1 flex-col gap-8 px-[var(--meridian-space-page)] py-8 lg:py-10">
       {metrics.warnings.length > 0 ? (
         <Card title="Configuration warnings">
-          <ul className="list-disc space-y-1 pl-5 text-sm text-meridian-status-pending">
+          <ul className="list-disc space-y-1 pl-5 text-sm text-merevo-status-pending">
             {metrics.warnings.map((warning) => (
               <li key={warning}>{warning}</li>
             ))}
           </ul>
           <Link
             href="/dashboard/settings"
-            className="mt-3 inline-block text-sm font-semibold text-meridian-accent hover:underline"
+            className="mt-3 inline-block text-sm font-semibold text-merevo-accent hover:underline"
           >
             Open settings
           </Link>
@@ -58,23 +58,23 @@ export function HospitalityDashboardHome({
 
       <section className="space-y-4">
         <div className="flex flex-wrap items-center justify-between gap-3">
-          <h2 className="text-xl font-semibold tracking-tight text-meridian-text sm:text-2xl">
+          <h2 className="text-xl font-semibold tracking-tight text-merevo-text sm:text-2xl">
             Live metrics
           </h2>
-          <div className="flex items-center gap-2 rounded-meridian border border-meridian-border bg-meridian-surface px-2 py-1.5">
+          <div className="flex items-center gap-2 rounded-merevo border border-merevo-border bg-merevo-surface px-2 py-1.5">
             <Link
               href={`/dashboard?week=${week.prevWeekStart}${periodQuery}`}
-              className="inline-flex size-8 items-center justify-center rounded-meridian-sm text-meridian-accent hover:bg-[color-mix(in_srgb,var(--meridian-accent)_14%,white)]"
+              className="inline-flex size-8 items-center justify-center rounded-merevo-sm text-merevo-accent hover:bg-[color-mix(in_srgb,var(--merevo-accent)_14%,white)]"
               aria-label="Previous week"
             >
               ‹
             </Link>
-            <p className="min-w-[11rem] text-center text-sm font-semibold text-meridian-text tabular-nums">
+            <p className="min-w-[11rem] text-center text-sm font-semibold text-merevo-text tabular-nums">
               {weekLabel}
             </p>
             <Link
               href={`/dashboard?week=${week.nextWeekStart}${periodQuery}`}
-              className="inline-flex size-8 items-center justify-center rounded-meridian-sm text-meridian-accent hover:bg-[color-mix(in_srgb,var(--meridian-accent)_14%,white)]"
+              className="inline-flex size-8 items-center justify-center rounded-merevo-sm text-merevo-accent hover:bg-[color-mix(in_srgb,var(--merevo-accent)_14%,white)]"
               aria-label="Next week"
             >
               ›
@@ -132,7 +132,7 @@ export function HospitalityDashboardHome({
               description="New public requests will appear here."
             />
           ) : (
-            <ul className="divide-y divide-meridian-border">
+            <ul className="divide-y divide-merevo-border">
               {metrics.recentPending.map((booking) => (
                 <li
                   key={booking.id}
@@ -141,11 +141,11 @@ export function HospitalityDashboardHome({
                   <div>
                     <Link
                       href={`/dashboard/bookings?open=${encodeURIComponent(booking.id)}&period=custom`}
-                      className="cursor-pointer font-medium text-meridian-text hover:text-meridian-accent"
+                      className="cursor-pointer font-medium text-merevo-text hover:text-merevo-accent"
                     >
                       {booking.customer_name}
                     </Link>
-                    <p className="text-xs text-meridian-text-muted">
+                    <p className="text-xs text-merevo-text-muted">
                       {booking.service_name ?? "Service"} ·{" "}
                       {booking.preferred_date}{" "}
                       {booking.preferred_time.slice(0, 5)}
@@ -165,7 +165,7 @@ export function HospitalityDashboardHome({
               description="Approved bookings will show here."
             />
           ) : (
-            <ul className="divide-y divide-meridian-border">
+            <ul className="divide-y divide-merevo-border">
               {metrics.upcomingConfirmed.map((booking) => (
                 <li
                   key={booking.id}
@@ -174,11 +174,11 @@ export function HospitalityDashboardHome({
                   <div>
                     <Link
                       href={`/dashboard/bookings?open=${encodeURIComponent(booking.id)}&period=custom`}
-                      className="cursor-pointer font-medium text-meridian-text hover:text-meridian-accent"
+                      className="cursor-pointer font-medium text-merevo-text hover:text-merevo-accent"
                     >
                       {booking.customer_name}
                     </Link>
-                    <p className="text-xs text-meridian-text-muted">
+                    <p className="text-xs text-merevo-text-muted">
                       {booking.service_name ?? "Service"} ·{" "}
                       {booking.preferred_date}{" "}
                       {booking.preferred_time.slice(0, 5)}

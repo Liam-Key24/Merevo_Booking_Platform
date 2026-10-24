@@ -26,7 +26,7 @@ export function Card({
   return (
     <div
       className={cn(
-        "rounded-meridian border border-meridian-border bg-meridian-surface",
+        "rounded-merevo border border-merevo-border bg-merevo-surface",
         paddingClasses[padding],
         className,
       )}
@@ -36,12 +36,12 @@ export function Card({
         <div className="mb-5 flex items-start justify-between gap-4">
           <div className="space-y-1">
             {title ? (
-              <h2 className="text-lg font-semibold tracking-tight text-meridian-text">
+              <h2 className="text-lg font-semibold tracking-tight text-merevo-text">
                 {title}
               </h2>
             ) : null}
             {description ? (
-              <p className="text-sm text-meridian-text-muted">{description}</p>
+              <p className="text-sm text-merevo-text-muted">{description}</p>
             ) : null}
           </div>
           {actions ? <div className="shrink-0">{actions}</div> : null}

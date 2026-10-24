@@ -80,13 +80,13 @@ export function AdminEmailLogsList({
           />
         }
       >
-        <p className="pb-1 text-sm text-meridian-text-muted">
+        <p className="pb-1 text-sm text-merevo-text-muted">
           Showing {filtered.length} of {logs.length}
         </p>
       </AdminListToolbar>
 
       {loadError ? (
-        <p className="text-sm text-meridian-status-declined">
+        <p className="text-sm text-merevo-status-declined">
           Could not load email logs.
         </p>
       ) : (
@@ -105,27 +105,27 @@ export function AdminEmailLogsList({
                 columns={COLUMNS}
                 cells={[
                   <div key="when" className="space-y-0.5">
-                    <p className="text-meridian-text-muted tabular-nums">
+                    <p className="text-merevo-text-muted tabular-nums">
                       {new Date(
                         log.last_attempt_at ?? log.created_at,
                       ).toLocaleString()}
                     </p>
-                    <p className="text-xs text-meridian-text-muted">
+                    <p className="text-xs text-merevo-text-muted">
                       attempts: {log.attempt_count ?? 1}
                     </p>
                   </div>,
                   <div key="type" className="space-y-1">
                     <p className="font-medium">{log.email_type}</p>
                     {log.last_error || log.error_message ? (
-                      <p className="line-clamp-2 text-xs text-meridian-status-declined">
+                      <p className="line-clamp-2 text-xs text-merevo-status-declined">
                         {log.last_error ?? log.error_message}
                       </p>
                     ) : null}
                   </div>,
-                  <span key="recipient" className="break-all text-meridian-text-muted">
+                  <span key="recipient" className="break-all text-merevo-text-muted">
                     {log.recipient_email}
                   </span>,
-                  <span key="business" className="text-meridian-text-muted">
+                  <span key="business" className="text-merevo-text-muted">
                     {log.business_name ?? "—"}
                   </span>,
                   <AdminSoftStatus

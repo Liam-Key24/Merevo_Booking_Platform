@@ -57,7 +57,7 @@ export function BookingActionsPanel({
 
   if (!canDecide && !canCancel) {
     return (
-      <p className="text-sm text-meridian-text-muted">
+      <p className="text-sm text-merevo-text-muted">
         No further actions for a {status} booking.
       </p>
     );
@@ -69,8 +69,8 @@ export function BookingActionsPanel({
         <p
           className={
             feedback.status === "error"
-              ? "text-sm text-meridian-status-declined"
-              : "text-sm text-meridian-teal"
+              ? "text-sm text-merevo-status-declined"
+              : "text-sm text-merevo-teal"
           }
           role="status"
         >
@@ -83,7 +83,7 @@ export function BookingActionsPanel({
           <form action={approveAction} className="space-y-3">
             <input type="hidden" name="businessId" value={businessId} />
             <input type="hidden" name="bookingId" value={bookingId} />
-            <p className="text-sm text-meridian-text-muted">
+            <p className="text-sm text-merevo-text-muted">
               Confirm at the preferred time
               {status === "suggested" && suggestedDate
                 ? ` (or the suggested ${suggestedDate} ${suggestedTime?.slice(0, 5) ?? ""})`
@@ -96,7 +96,7 @@ export function BookingActionsPanel({
             </Button>
           </form>
 
-          <form action={declineAction} className="space-y-3 border-t border-meridian-border pt-6">
+          <form action={declineAction} className="space-y-3 border-t border-merevo-border pt-6">
             <input type="hidden" name="businessId" value={businessId} />
             <input type="hidden" name="bookingId" value={bookingId} />
             <Textarea
@@ -110,7 +110,7 @@ export function BookingActionsPanel({
             </Button>
           </form>
 
-          <form action={suggestAction} className="space-y-3 border-t border-meridian-border pt-6">
+          <form action={suggestAction} className="space-y-3 border-t border-merevo-border pt-6">
             <input type="hidden" name="businessId" value={businessId} />
             <input type="hidden" name="bookingId" value={bookingId} />
             <div className="grid gap-3 sm:grid-cols-2">
@@ -140,7 +140,7 @@ export function BookingActionsPanel({
         <form action={cancelAction} className="space-y-3">
           <input type="hidden" name="businessId" value={businessId} />
           <input type="hidden" name="bookingId" value={bookingId} />
-          <p className="text-sm text-meridian-text-muted">
+          <p className="text-sm text-merevo-text-muted">
             Cancels this confirmed booking and notifies the customer when email
             is configured.
           </p>

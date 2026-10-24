@@ -27,7 +27,7 @@ export default async function BusinessBookingSettingsPage({ params }: PageProps)
   return (
     <SettingsPanel
       title="Booking"
-      description="How guests request bookings — Meridian, external provider, or hybrid."
+      description="How guests request bookings — Merevo, external provider, or hybrid."
     >
       {settings ? (
         <AdminSettingsForm

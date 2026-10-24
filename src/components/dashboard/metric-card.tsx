@@ -11,23 +11,23 @@ type MetricCardProps = {
 };
 
 const metricShellClass = cn(
-  "flex h-full items-stretch gap-4 rounded-meridian border border-meridian-border bg-meridian-surface p-5",
+  "flex h-full items-stretch gap-4 rounded-merevo border border-merevo-border bg-merevo-surface p-5",
 );
 
 export function MetricCard({ label, value, href, icon }: MetricCardProps) {
   const body = (
     <>
       <span
-        className="flex size-11 shrink-0 items-center justify-center rounded-meridian-sm bg-[color-mix(in_srgb,var(--meridian-accent)_18%,white)] text-meridian-accent"
+        className="flex size-11 shrink-0 items-center justify-center rounded-merevo-sm bg-[color-mix(in_srgb,var(--merevo-accent)_18%,white)] text-merevo-accent"
         aria-hidden
       >
         {icon}
       </span>
       <span className="flex min-w-0 flex-1 flex-col justify-center gap-1">
-        <span className="text-xs font-semibold tracking-wide text-meridian-text-muted uppercase">
+        <span className="text-xs font-semibold tracking-wide text-merevo-text-muted uppercase">
           {label}
         </span>
-        <span className="text-3xl font-semibold tracking-tight text-meridian-text">
+        <span className="text-3xl font-semibold tracking-tight text-merevo-text">
           {value}
         </span>
       </span>
@@ -44,13 +44,13 @@ export function MetricCard({ label, value, href, icon }: MetricCardProps) {
       className={cn(
         "group",
         metricShellClass,
-        "transition-[border-color,box-shadow,transform] hover:border-[color-mix(in_srgb,var(--meridian-accent)_55%,var(--meridian-border))] hover:shadow-[0_8px_24px_color-mix(in_srgb,var(--meridian-accent)_12%,transparent)]",
-        "focus-visible:outline-none focus-visible:shadow-[var(--meridian-focus-ring)]",
+        "transition-[border-color,box-shadow,transform] hover:border-[color-mix(in_srgb,var(--merevo-accent)_55%,var(--merevo-border))] hover:shadow-[0_8px_24px_color-mix(in_srgb,var(--merevo-accent)_12%,transparent)]",
+        "focus-visible:outline-none focus-visible:shadow-[var(--merevo-focus-ring)]",
       )}
     >
       {body}
       <span
-        className="flex items-center self-center text-meridian-accent transition-transform group-hover:translate-x-0.5"
+        className="flex items-center self-center text-merevo-accent transition-transform group-hover:translate-x-0.5"
         aria-hidden
       >
         <svg width="20" height="20" viewBox="0 0 20 20" fill="none">

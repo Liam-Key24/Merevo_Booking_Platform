@@ -126,7 +126,7 @@ export function BookingsExplorer({
     <div className="space-y-4">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div
-          className="inline-flex rounded-meridian-sm border border-meridian-border bg-meridian-surface p-0.5"
+          className="inline-flex rounded-merevo-sm border border-merevo-border bg-merevo-surface p-0.5"
           role="group"
           aria-label="Booking date range"
         >
@@ -139,8 +139,8 @@ export function BookingsExplorer({
                 className={cn(
                   "cursor-pointer rounded-[10px] px-3 py-1.5 text-xs font-semibold capitalize transition-colors",
                   active
-                    ? "bg-meridian-accent text-meridian-text"
-                    : "text-meridian-text-muted hover:text-meridian-text",
+                    ? "bg-merevo-accent text-merevo-text"
+                    : "text-merevo-text-muted hover:text-merevo-text",
                 )}
                 aria-current={active ? "true" : undefined}
               >
@@ -149,7 +149,7 @@ export function BookingsExplorer({
             );
           })}
         </div>
-        <p className="text-sm text-meridian-text-muted">
+        <p className="text-sm text-merevo-text-muted">
           {bookings.length} booking{bookings.length === 1 ? "" : "s"}
           {pendingNav ? " · updating…" : ""}
         </p>
@@ -158,11 +158,11 @@ export function BookingsExplorer({
       <form
         method="get"
         action="/dashboard/bookings"
-        className="flex flex-col gap-3 rounded-meridian border border-meridian-border bg-meridian-surface px-3 py-2.5 sm:flex-row sm:items-end sm:justify-between"
+        className="flex flex-col gap-3 rounded-merevo border border-merevo-border bg-merevo-surface px-3 py-2.5 sm:flex-row sm:items-end sm:justify-between"
         onSubmit={() => startTransition(() => undefined)}
       >
         <input type="hidden" name="period" value={period} />
-        <div className="flex w-full max-w-xs flex-col gap-1 text-xs font-medium text-meridian-text-muted sm:max-w-sm">
+        <div className="flex w-full max-w-xs flex-col gap-1 text-xs font-medium text-merevo-text-muted sm:max-w-sm">
           <span>Search</span>
           <BookingSearchAutocomplete
             key={q}
@@ -172,7 +172,7 @@ export function BookingsExplorer({
             size="sm"
             showIcon
             className="w-full"
-            inputClassName="bg-meridian-surface"
+            inputClassName="bg-merevo-surface"
             onSelectHit={(hit) => {
               if (bookings.some((booking) => booking.id === hit.id)) {
                 setSelectedId(hit.id);
@@ -183,13 +183,13 @@ export function BookingsExplorer({
           />
         </div>
         <div className="flex flex-wrap items-end gap-2 sm:justify-end">
-          <label className="relative flex w-full flex-col gap-1 text-xs font-medium text-meridian-text-muted sm:w-[10.5rem]">
+          <label className="relative flex w-full flex-col gap-1 text-xs font-medium text-merevo-text-muted sm:w-[10.5rem]">
             Status
             <span className="relative block">
               <select
                 name="status"
                 defaultValue={status}
-                className="h-9 w-full cursor-pointer appearance-none rounded-meridian-sm border border-meridian-border bg-meridian-surface py-0 pr-9 pl-2.5 text-sm text-meridian-text"
+                className="h-9 w-full cursor-pointer appearance-none rounded-merevo-sm border border-merevo-border bg-merevo-surface py-0 pr-9 pl-2.5 text-sm text-merevo-text"
               >
                 {statuses.map((item) => (
                   <option key={item.value} value={item.value}>
@@ -197,27 +197,27 @@ export function BookingsExplorer({
                   </option>
                 ))}
               </select>
-              <StatusChevronIcon className="pointer-events-none absolute top-1/2 right-2.5 -translate-y-1/2 text-meridian-text-muted" />
+              <StatusChevronIcon className="pointer-events-none absolute top-1/2 right-2.5 -translate-y-1/2 text-merevo-text-muted" />
             </span>
           </label>
           {period === "custom" ? (
             <>
-              <label className="flex flex-col gap-1 text-xs font-medium text-meridian-text-muted">
+              <label className="flex flex-col gap-1 text-xs font-medium text-merevo-text-muted">
                 From
                 <input
                   name="from"
                   type="date"
                   defaultValue={from}
-                  className="h-9 cursor-pointer rounded-meridian-sm border border-meridian-border bg-meridian-surface px-2 text-sm text-meridian-text"
+                  className="h-9 cursor-pointer rounded-merevo-sm border border-merevo-border bg-merevo-surface px-2 text-sm text-merevo-text"
                 />
               </label>
-              <label className="flex flex-col gap-1 text-xs font-medium text-meridian-text-muted">
+              <label className="flex flex-col gap-1 text-xs font-medium text-merevo-text-muted">
                 To
                 <input
                   name="to"
                   type="date"
                   defaultValue={to}
-                  className="h-9 cursor-pointer rounded-meridian-sm border border-meridian-border bg-meridian-surface px-2 text-sm text-meridian-text"
+                  className="h-9 cursor-pointer rounded-merevo-sm border border-merevo-border bg-merevo-surface px-2 text-sm text-merevo-text"
                 />
               </label>
             </>
@@ -228,8 +228,8 @@ export function BookingsExplorer({
         </div>
       </form>
 
-      <div className="overflow-hidden rounded-meridian border border-meridian-border bg-meridian-surface">
-        <div className="grid grid-cols-[3.5rem_minmax(0,1fr)_minmax(4.5rem,0.9fr)_auto] gap-3 border-b border-meridian-border bg-meridian-surface-muted px-4 py-2.5 pr-5 text-xs font-semibold tracking-wide text-meridian-text-muted uppercase sm:grid-cols-[3.5rem_minmax(0,1.1fr)_minmax(7rem,1.2fr)_5.5rem_6.5rem_1.75rem]">
+      <div className="overflow-hidden rounded-merevo border border-merevo-border bg-merevo-surface">
+        <div className="grid grid-cols-[3.5rem_minmax(0,1fr)_minmax(4.5rem,0.9fr)_auto] gap-3 border-b border-merevo-border bg-merevo-surface-muted px-4 py-2.5 pr-5 text-xs font-semibold tracking-wide text-merevo-text-muted uppercase sm:grid-cols-[3.5rem_minmax(0,1.1fr)_minmax(7rem,1.2fr)_5.5rem_6.5rem_1.75rem]">
           <span>Seats</span>
           <span>Name</span>
           <span>Allergy</span>
@@ -238,15 +238,15 @@ export function BookingsExplorer({
           <span className="sr-only">Open</span>
         </div>
         {error ? (
-          <p className="px-4 py-8 text-sm text-meridian-status-declined">
+          <p className="px-4 py-8 text-sm text-merevo-status-declined">
             {error}
           </p>
         ) : bookings.length === 0 ? (
-          <p className="px-4 py-10 text-center text-sm text-meridian-text-muted">
+          <p className="px-4 py-10 text-center text-sm text-merevo-text-muted">
             No bookings match this range.
           </p>
         ) : (
-          <ul className="divide-y divide-meridian-border">
+          <ul className="divide-y divide-merevo-border">
             {bookings.map((booking, index) => {
               const active = booking.id === selectedId;
               const allergyAlert = hasAllergies(booking.allergies);
@@ -259,22 +259,22 @@ export function BookingsExplorer({
                     className={cn(
                       "grid w-full cursor-pointer grid-cols-[3.5rem_minmax(0,1fr)_minmax(4.5rem,0.9fr)_auto] items-center gap-3 px-4 py-3.5 pr-5 text-left transition-colors sm:grid-cols-[3.5rem_minmax(0,1.1fr)_minmax(7rem,1.2fr)_5.5rem_6.5rem_1.75rem]",
                       active
-                        ? "bg-[color-mix(in_srgb,var(--meridian-accent)_14%,white)]"
+                        ? "bg-[color-mix(in_srgb,var(--merevo-accent)_14%,white)]"
                         : allergyAlert
                           ? "bg-[color-mix(in_srgb,#e11d48_4.5%,white)] hover:bg-[color-mix(in_srgb,#e11d48_8%,white)]"
                           : zebra
                             ? "bg-[color-mix(in_srgb,#82C0CC_15%,white)] hover:bg-[color-mix(in_srgb,#82C0CC_22%,white)]"
-                            : "bg-white hover:bg-meridian-surface-muted",
+                            : "bg-white hover:bg-merevo-surface-muted",
                     )}
                   >
-                    <span className="text-sm font-semibold text-meridian-text tabular-nums">
+                    <span className="text-sm font-semibold text-merevo-text tabular-nums">
                       {seatsValue(booking.guest_count)}
                     </span>
                     <span className="min-w-0">
-                      <span className="block truncate font-medium text-meridian-text">
+                      <span className="block truncate font-medium text-merevo-text">
                         {booking.customer_name}
                       </span>
-                      <span className="mt-0.5 block truncate text-xs text-meridian-text-muted sm:hidden">
+                      <span className="mt-0.5 block truncate text-xs text-merevo-text-muted sm:hidden">
                         Table {tableValue(booking.assigned_table)} ·{" "}
                         <StatusLabel status={booking.status} />
                       </span>
@@ -283,14 +283,14 @@ export function BookingsExplorer({
                       allergies={booking.allergies}
                       className="min-w-0"
                     />
-                    <span className="hidden truncate text-sm text-meridian-text sm:block">
+                    <span className="hidden truncate text-sm text-merevo-text sm:block">
                       {tableValue(booking.assigned_table)}
                     </span>
                     <span className="hidden sm:flex">
                       <StatusLabel status={booking.status} />
                     </span>
                     <ArrowUpRight
-                      className="size-4 justify-self-end text-meridian-blue"
+                      className="size-4 justify-self-end text-merevo-blue"
                       weight="bold"
                       aria-hidden
                     />

@@ -23,7 +23,7 @@ export function BusinessSettingsNav({
     <nav className="space-y-5" aria-label="Business settings">
       {groups.map((group) => (
         <div key={group.label} className="space-y-2">
-          <p className="px-2 text-[11px] font-semibold tracking-wide text-meridian-text-muted uppercase">
+          <p className="px-2 text-[11px] font-semibold tracking-wide text-merevo-text-muted uppercase">
             {group.label}
           </p>
           <ul className="space-y-1">
@@ -36,10 +36,10 @@ export function BusinessSettingsNav({
                   <Link
                     href={href}
                     className={cn(
-                      "block rounded-meridian-sm px-3 py-2 text-sm font-medium transition-colors",
+                      "block rounded-merevo-sm px-3 py-2 text-sm font-medium transition-colors",
                       active
-                        ? "bg-meridian-accent/10 text-meridian-accent"
-                        : "text-meridian-text hover:bg-meridian-surface-muted",
+                        ? "bg-merevo-accent/10 text-merevo-accent"
+                        : "text-merevo-text hover:bg-merevo-surface-muted",
                     )}
                   >
                     {item.label}

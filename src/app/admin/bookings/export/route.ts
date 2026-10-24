@@ -12,7 +12,7 @@ function csvEscape(value: string | number | null | undefined): string {
 
 export async function GET(request: Request) {
   const snapshot = await getAuthSnapshot();
-  if (!snapshot?.isMeridianAdmin) {
+  if (!snapshot?.isMerevoAdmin) {
     return NextResponse.json({ error: "Forbidden" }, { status: 403 });
   }
 
