@@ -58,12 +58,12 @@ export default async function BusinessMembersSettingsPage({ params }: PageProps)
               return (
                 <li
                   key={membership.id}
-                  className="rounded-meridian border border-meridian-border bg-meridian-surface-muted/40 p-4"
+                  className="rounded-merevo border border-merevo-border bg-merevo-surface-muted/40 p-4"
                 >
-                  <p className="mb-3 font-medium text-meridian-text">
+                  <p className="mb-3 font-medium text-merevo-text">
                     {profile?.email ?? membership.user_id}
                     {profile?.full_name ? (
-                      <span className="text-meridian-text-muted">
+                      <span className="text-merevo-text-muted">
                         {" "}
                         · {profile.full_name}
                       </span>

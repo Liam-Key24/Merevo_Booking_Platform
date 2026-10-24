@@ -14,7 +14,7 @@ export default async function AdminLayout({
     redirect("/login?next=/admin");
   }
 
-  if (!snapshot.isMeridianAdmin) {
+  if (!snapshot.isMerevoAdmin) {
     return (
       <div className="flex min-h-full flex-1 flex-col">
         <main className="mx-auto flex w-full max-w-3xl flex-1 flex-col gap-8 px-[var(--meridian-space-page)] py-12">
@@ -25,7 +25,7 @@ export default async function AdminLayout({
           <p className="text-center text-sm">
             <Link
               href="/dashboard"
-              className="font-semibold text-meridian-accent hover:underline"
+              className="font-semibold text-merevo-accent hover:underline"
             >
               Back to dashboard
             </Link>

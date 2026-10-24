@@ -28,12 +28,12 @@ export default async function DashboardCalendarPage({ searchParams }: PageProps)
   return (
     <main className="flex w-full flex-1 flex-col gap-6 px-[var(--meridian-space-page)] py-6 lg:py-8">
       <header>
-        <h2 className="text-3xl font-semibold tracking-tight text-meridian-text">
+        <h2 className="text-3xl font-semibold tracking-tight text-merevo-text">
           Confirmed bookings
         </h2>
       </header>
 
-      <section className="w-full rounded-meridian border border-meridian-border bg-meridian-surface p-4 sm:p-6">
+      <section className="w-full rounded-merevo border border-merevo-border bg-merevo-surface p-4 sm:p-6">
         {error ? (
           <ErrorState title="Could not load calendar" description={error} />
         ) : (

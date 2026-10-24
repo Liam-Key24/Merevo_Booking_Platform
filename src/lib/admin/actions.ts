@@ -48,7 +48,7 @@ const TIMEZONE_RE = /^[A-Za-z_]+\/[A-Za-z0-9_+\-]+$/;
 
 async function requireAdminActor() {
   const snapshot = await getAuthSnapshot();
-  if (!snapshot?.isMeridianAdmin) {
+  if (!snapshot?.isMerevoAdmin) {
     return null;
   }
   return snapshot;
@@ -723,7 +723,7 @@ export async function updateBusinessDetails(
 ): Promise<AdminActionState> {
   const actor = await requireAdminActor();
   if (!actor) {
-    return { status: "error", message: "Meridian admin only." };
+    return { status: "error", message: "Merevo admin only." };
   }
 
   const businessId = String(formData.get("businessId") ?? "");
@@ -790,7 +790,7 @@ export async function updateAdminHospitalityHours(
 ): Promise<AdminActionState> {
   const actor = await requireAdminActor();
   if (!actor) {
-    return { status: "error", message: "Meridian admin only." };
+    return { status: "error", message: "Merevo admin only." };
   }
 
   const businessId = String(formData.get("businessId") ?? "");
@@ -857,7 +857,7 @@ export async function updateAdminHospitalityTables(
 ): Promise<AdminActionState> {
   const actor = await requireAdminActor();
   if (!actor) {
-    return { status: "error", message: "Meridian admin only." };
+    return { status: "error", message: "Merevo admin only." };
   }
 
   const businessId = String(formData.get("businessId") ?? "");

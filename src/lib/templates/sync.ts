@@ -43,8 +43,8 @@ export async function syncBusinessTemplate(
   options?: { quiet?: boolean },
 ): Promise<TemplateSyncState> {
   const snapshot = await getAuthSnapshot();
-  if (!snapshot?.isMeridianAdmin) {
-    return { status: "error", message: "Meridian admin only." };
+  if (!snapshot?.isMerevoAdmin) {
+    return { status: "error", message: "Merevo admin only." };
   }
   if (!businessId) {
     return { status: "error", message: "Missing business." };

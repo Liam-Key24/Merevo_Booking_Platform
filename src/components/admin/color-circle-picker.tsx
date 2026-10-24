@@ -32,7 +32,7 @@ export function ColorCirclePicker({
         <span
           aria-hidden
           className={cn(
-            "rounded-full border border-meridian-border shadow-sm",
+            "rounded-full border border-merevo-border shadow-sm",
             dimension,
           )}
           style={{ backgroundColor: value }}
@@ -52,8 +52,8 @@ export function ColorCirclePicker({
       <span
         className={
           size === "xl"
-            ? "text-sm font-medium text-meridian-text"
-            : "text-[11px] text-meridian-text-muted"
+            ? "text-sm font-medium text-merevo-text"
+            : "text-[11px] text-merevo-text-muted"
         }
       >
         {label}

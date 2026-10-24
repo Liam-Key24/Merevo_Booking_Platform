@@ -11,10 +11,10 @@ export default async function ServicesPage() {
   return (
     <main className="flex flex-1 flex-col gap-8 px-[var(--meridian-space-page)] py-8 lg:py-10">
       <header className="space-y-2">
-        <h2 className="text-2xl font-semibold tracking-tight text-meridian-text">
+        <h2 className="text-2xl font-semibold tracking-tight text-merevo-text">
           Services
         </h2>
-        <p className="max-w-2xl text-meridian-text-muted">
+        <p className="max-w-2xl text-merevo-text-muted">
           Appointment services and durations for {context.business.name}.
         </p>
       </header>
@@ -31,23 +31,23 @@ export default async function ServicesPage() {
             description="Ask a Merevo admin to add services for this business."
           />
         ) : (
-          <ul className="divide-y divide-meridian-border">
+          <ul className="divide-y divide-merevo-border">
             {data.services.map((service) => (
               <li
                 key={service.id}
                 className="flex flex-wrap items-center justify-between gap-3 py-3"
               >
                 <div>
-                  <p className="font-medium text-meridian-text">{service.name}</p>
-                  <p className="text-xs text-meridian-text-muted">
+                  <p className="font-medium text-merevo-text">{service.name}</p>
+                  <p className="text-xs text-merevo-text-muted">
                     Duration {service.duration_minutes} minutes
                   </p>
                 </div>
                 <span
                   className={
                     service.is_active
-                      ? "text-xs font-semibold text-meridian-teal"
-                      : "text-xs font-semibold text-meridian-text-muted"
+                      ? "text-xs font-semibold text-merevo-teal"
+                      : "text-xs font-semibold text-merevo-text-muted"
                   }
                 >
                   {service.is_active ? "Active" : "Inactive"}
@@ -65,16 +65,16 @@ export default async function ServicesPage() {
             description="Demand appears from confirmed and requested appointments."
           />
         ) : (
-          <ul className="divide-y divide-meridian-border">
+          <ul className="divide-y divide-merevo-border">
             {data.busiestServices.map((service) => (
               <li
                 key={service.serviceId ?? service.name}
                 className="flex items-center justify-between gap-3 py-3 text-sm"
               >
-                <span className="font-medium text-meridian-text">
+                <span className="font-medium text-merevo-text">
                   {service.name}
                 </span>
-                <span className="tabular-nums text-meridian-text-muted">
+                <span className="tabular-nums text-merevo-text-muted">
                   {service.count}
                 </span>
               </li>

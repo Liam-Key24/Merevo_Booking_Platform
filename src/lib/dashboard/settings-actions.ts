@@ -55,7 +55,7 @@ export async function updateBusinessSettings(
     return { status: "error", message: "Not authorised for this business." };
   }
 
-  if (context.role !== "owner" && !context.isMeridianAdmin) {
+  if (context.role !== "owner" && !context.isMerevoAdmin) {
     return {
       status: "error",
       message: "Only business owners can update settings.",

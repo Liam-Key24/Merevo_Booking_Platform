@@ -34,11 +34,11 @@ export function AdminListHeader({
   return (
     <div className="flex flex-wrap items-end justify-between gap-4">
       <div className="space-y-1">
-        <h2 className="text-2xl font-semibold tracking-tight text-meridian-text sm:text-3xl">
+        <h2 className="text-2xl font-semibold tracking-tight text-merevo-text sm:text-3xl">
           {title}
         </h2>
         {description ? (
-          <p className="max-w-2xl text-sm text-meridian-text-muted">
+          <p className="max-w-2xl text-sm text-merevo-text-muted">
             {description}
           </p>
         ) : null}
@@ -63,7 +63,7 @@ export function AdminLocalSearch({
   return (
     <div className="relative w-full">
       <span
-        className="pointer-events-none absolute inset-y-0 left-3 z-10 flex items-center text-meridian-accent"
+        className="pointer-events-none absolute inset-y-0 left-3 z-10 flex items-center text-merevo-accent"
         aria-hidden
       >
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
@@ -75,7 +75,7 @@ export function AdminLocalSearch({
         value={value}
         placeholder={placeholder}
         onChange={(event) => onChange(event.target.value)}
-        className="h-9 w-full rounded-meridian border border-meridian-border bg-meridian-surface pr-3 pl-9 text-sm text-meridian-text placeholder:text-meridian-text-muted transition-[border-color,box-shadow] focus-visible:border-meridian-accent focus-visible:shadow-[0_0_0_3px_color-mix(in_srgb,var(--meridian-accent)_35%,transparent)] focus-visible:outline-none"
+        className="h-9 w-full rounded-merevo border border-merevo-border bg-merevo-surface pr-3 pl-9 text-sm text-merevo-text placeholder:text-merevo-text-muted transition-[border-color,box-shadow] focus-visible:border-merevo-accent focus-visible:shadow-[0_0_0_3px_color-mix(in_srgb,var(--merevo-accent)_35%,transparent)] focus-visible:outline-none"
         aria-label={placeholder}
       />
     </div>
@@ -90,13 +90,13 @@ export function AdminListToolbar({
   searchSlot: React.ReactNode;
 }) {
   return (
-    <div className="flex flex-col gap-3 rounded-meridian border border-meridian-border bg-meridian-surface px-3 py-2.5 lg:flex-row lg:items-end lg:justify-between">
+    <div className="flex flex-col gap-3 rounded-merevo border border-merevo-border bg-merevo-surface px-3 py-2.5 lg:flex-row lg:items-end lg:justify-between">
       {children ? (
         <div className="flex flex-wrap items-end gap-2">{children}</div>
       ) : (
         <div />
       )}
-      <div className="flex w-full max-w-md flex-col gap-1 text-xs font-medium text-meridian-text-muted lg:ml-auto">
+      <div className="flex w-full max-w-md flex-col gap-1 text-xs font-medium text-merevo-text-muted lg:ml-auto">
         <span>Search</span>
         {searchSlot}
       </div>
@@ -120,7 +120,7 @@ export function AdminBookingSearchSlot({
       size="sm"
       showIcon
       className="w-full"
-      inputClassName="bg-meridian-surface"
+      inputClassName="bg-merevo-surface"
       onSelectHit={(hit) => {
         router.push(
           `/admin/bookings?q=${encodeURIComponent(hit.customer_name)}`,
@@ -149,24 +149,24 @@ export function AdminDataTable({
 }) {
   if (rowCount === 0) {
     return (
-      <div className="rounded-meridian border border-meridian-border bg-meridian-surface p-6">
+      <div className="rounded-merevo border border-merevo-border bg-merevo-surface p-6">
         <EmptyState title={emptyTitle} description={emptyDescription} />
       </div>
     );
   }
 
   return (
-    <div className="overflow-x-auto rounded-meridian border border-meridian-border bg-meridian-surface">
+    <div className="overflow-x-auto rounded-merevo border border-merevo-border bg-merevo-surface">
       <div className="min-w-[52rem]">
         <div
-          className="grid gap-3 border-b border-meridian-border bg-meridian-surface-muted px-4 py-2.5 text-xs font-semibold tracking-wide text-meridian-text-muted uppercase"
+          className="grid gap-3 border-b border-merevo-border bg-merevo-surface-muted px-4 py-2.5 text-xs font-semibold tracking-wide text-merevo-text-muted uppercase"
           style={{ gridTemplateColumns: tracks(columns) }}
         >
           {columns.map((column) => (
             <span key={column.key}>{column.label}</span>
           ))}
         </div>
-        <ul className="divide-y divide-meridian-border">{children}</ul>
+        <ul className="divide-y divide-merevo-border">{children}</ul>
       </div>
     </div>
   );
@@ -181,7 +181,7 @@ export function AdminDataRow({
 }) {
   return (
     <li
-      className="grid items-center gap-3 px-4 py-3.5 text-sm text-meridian-text"
+      className="grid items-center gap-3 px-4 py-3.5 text-sm text-merevo-text"
       style={{ gridTemplateColumns: tracks(columns) }}
     >
       {cells.map((cell, index) => (
@@ -202,12 +202,12 @@ export function AdminSoftStatus({
 }) {
   const toneClass =
     tone === "success"
-      ? "bg-meridian-status-confirmed-bg text-meridian-status-confirmed"
+      ? "bg-merevo-status-confirmed-bg text-merevo-status-confirmed"
       : tone === "pending"
-        ? "bg-meridian-status-pending-bg text-meridian-status-pending"
+        ? "bg-merevo-status-pending-bg text-merevo-status-pending"
         : tone === "danger"
-          ? "bg-meridian-status-declined-bg text-meridian-status-declined"
-          : "bg-meridian-surface-muted text-meridian-text-muted";
+          ? "bg-merevo-status-declined-bg text-merevo-status-declined"
+          : "bg-merevo-surface-muted text-merevo-text-muted";
 
   return (
     <span

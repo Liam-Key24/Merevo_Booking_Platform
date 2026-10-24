@@ -8,9 +8,9 @@ export type BadgeProps = HTMLAttributes<HTMLSpanElement> & {
 };
 
 const toneClasses: Record<BadgeTone, string> = {
-  neutral: "bg-meridian-surface-subtle text-meridian-text-muted",
-  teal: "bg-[#e8f4f7] text-meridian-teal",
-  blue: "bg-[#eaf5f8] text-meridian-blue",
+  neutral: "bg-merevo-surface-subtle text-merevo-text-muted",
+  teal: "bg-[#e8f4f7] text-merevo-teal",
+  blue: "bg-[#eaf5f8] text-merevo-blue",
   accent: "bg-[#fff4e5] text-[#9a5b00]",
   soft: "bg-[#eef8fa] text-[#2f6f7c]",
 };
@@ -23,7 +23,7 @@ export function Badge({
   return (
     <span
       className={cn(
-        "inline-flex items-center rounded-meridian-sm px-2.5 py-1 text-xs font-semibold tracking-wide",
+        "inline-flex items-center rounded-merevo-sm px-2.5 py-1 text-xs font-semibold tracking-wide",
         toneClasses[tone],
         className,
       )}

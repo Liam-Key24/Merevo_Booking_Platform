@@ -47,7 +47,7 @@ function statusTone(
 }
 
 const selectClass =
-  "h-9 rounded-meridian border border-meridian-border bg-meridian-surface px-3 text-sm text-meridian-text";
+  "h-9 rounded-merevo border border-merevo-border bg-merevo-surface px-3 text-sm text-merevo-text";
 
 export function AdminBookingsList({
   bookings,
@@ -81,7 +81,7 @@ export function AdminBookingsList({
           businessId ? (
             <a
               href={`/admin/bookings/export?businessId=${businessId}`}
-              className="inline-flex h-10 items-center rounded-meridian border border-meridian-border bg-meridian-surface px-4 text-sm font-semibold text-meridian-text hover:border-meridian-accent"
+              className="inline-flex h-10 items-center rounded-merevo border border-merevo-border bg-merevo-surface px-4 text-sm font-semibold text-merevo-text hover:border-merevo-accent"
             >
               Export CSV
             </a>
@@ -99,7 +99,7 @@ export function AdminBookingsList({
         }
       >
         <form method="get" className="flex flex-wrap items-end gap-2">
-          <label className="space-y-1 text-xs font-medium text-meridian-text-muted">
+          <label className="space-y-1 text-xs font-medium text-merevo-text-muted">
             <span className="block">Business</span>
             <select
               name="businessId"
@@ -114,7 +114,7 @@ export function AdminBookingsList({
               ))}
             </select>
           </label>
-          <label className="space-y-1 text-xs font-medium text-meridian-text-muted">
+          <label className="space-y-1 text-xs font-medium text-merevo-text-muted">
             <span className="block">Status</span>
             <select name="status" defaultValue={status} className={selectClass}>
               <option value="">All statuses</option>
@@ -128,19 +128,19 @@ export function AdminBookingsList({
           </label>
           <button
             type="submit"
-            className="inline-flex h-9 items-center rounded-meridian bg-meridian-accent px-4 text-sm font-semibold text-meridian-text-inverse"
+            className="inline-flex h-9 items-center rounded-merevo bg-merevo-accent px-4 text-sm font-semibold text-merevo-text-inverse"
           >
             Apply
           </button>
         </form>
       </AdminListToolbar>
 
-      <p className="text-sm text-meridian-text-muted">
+      <p className="text-sm text-merevo-text-muted">
         Showing {filtered.length} of {bookings.length}
       </p>
 
       {loadError ? (
-        <p className="text-sm text-meridian-status-declined">
+        <p className="text-sm text-merevo-status-declined">
           Could not load bookings.
         </p>
       ) : (
@@ -158,18 +158,18 @@ export function AdminBookingsList({
                 <span key="guest" className="font-medium">
                   {booking.customer_name}
                 </span>,
-                <span key="business" className="text-meridian-text-muted">
+                <span key="business" className="text-merevo-text-muted">
                   {booking.business_name ?? "—"}
                 </span>,
                 <span
                   key="when"
-                  className="text-meridian-text-muted tabular-nums"
+                  className="text-merevo-text-muted tabular-nums"
                 >
                   {booking.preferred_date} {booking.preferred_time.slice(0, 5)}
                 </span>,
                 <span
                   key="email"
-                  className="break-all text-meridian-text-muted"
+                  className="break-all text-merevo-text-muted"
                 >
                   {booking.customer_email}
                 </span>,
@@ -181,7 +181,7 @@ export function AdminBookingsList({
                 <Link
                   key="actions"
                   href={`/admin/businesses/${booking.business_id}`}
-                  className="text-sm font-semibold text-meridian-accent hover:underline"
+                  className="text-sm font-semibold text-merevo-accent hover:underline"
                 >
                   Business
                 </Link>,

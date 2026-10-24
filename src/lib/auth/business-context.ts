@@ -24,7 +24,7 @@ export type BusinessContext = {
   membership: Tables<"business_memberships">;
   business: Tables<"businesses">;
   role: MembershipRole;
-  isMeridianAdmin: boolean;
+  isMerevoAdmin: boolean;
   /** Server-resolved effective mode — never from the browser. */
   dashboardMode: DashboardMode;
   capabilities: CapabilityMap;
@@ -40,7 +40,7 @@ export type AuthSnapshot = {
     membership: Tables<"business_memberships">;
     business: Tables<"businesses">;
   }>;
-  isMeridianAdmin: boolean;
+  isMerevoAdmin: boolean;
 };
 
 /**
@@ -87,7 +87,7 @@ export async function getAuthSnapshot(): Promise<AuthSnapshot | null> {
     user: { id: user.id, email: user.email },
     profile: profile ?? null,
     memberships,
-    isMeridianAdmin: profile?.platform_role === "meridian_admin",
+    isMerevoAdmin: profile?.platform_role === "meridian_admin",
   };
 }
 
@@ -167,7 +167,7 @@ export async function getBusinessContext(
     membership: match.membership,
     business: match.business,
     role: match.membership.role,
-    isMeridianAdmin: snapshot.isMeridianAdmin,
+    isMerevoAdmin: snapshot.isMerevoAdmin,
     dashboardMode,
     capabilities,
   };

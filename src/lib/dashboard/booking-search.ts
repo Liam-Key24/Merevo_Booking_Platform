@@ -36,7 +36,7 @@ export async function searchBookingsAutocomplete(
     .order("preferred_date", { ascending: false })
     .limit(8);
 
-  if (!snapshot.isMeridianAdmin) {
+  if (!snapshot.isMerevoAdmin) {
     const businessId = snapshot.memberships[0]?.business.id;
     if (!businessId) return [];
     request = request.eq("business_id", businessId);

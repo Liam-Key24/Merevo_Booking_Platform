@@ -110,7 +110,7 @@ export function LoginForm({ next }: LoginFormProps) {
       <input type="hidden" name="next" value={next} />
 
       <label className="flex w-full flex-col gap-1.5 text-sm">
-        <span className="font-medium text-meridian-text">Email</span>
+        <span className="font-medium text-merevo-text">Email</span>
         <input
           id={emailFieldId}
           name="email"
@@ -125,12 +125,12 @@ export function LoginForm({ next }: LoginFormProps) {
           required
           aria-invalid={emailError ? true : undefined}
           aria-describedby={emailError ? `${emailFieldId}-error` : undefined}
-          className="h-11 w-full rounded-meridian border border-meridian-border bg-meridian-surface px-4 text-meridian-text placeholder:text-meridian-text-muted/70 transition-[border-color,box-shadow] focus-visible:border-meridian-blue focus-visible:shadow-[var(--meridian-focus-ring)] disabled:cursor-not-allowed disabled:bg-meridian-surface-subtle disabled:opacity-70 aria-[invalid=true]:border-meridian-status-declined"
+          className="h-11 w-full rounded-merevo border border-merevo-border bg-merevo-surface px-4 text-merevo-text placeholder:text-merevo-text-muted/70 transition-[border-color,box-shadow] focus-visible:border-merevo-blue focus-visible:shadow-[var(--merevo-focus-ring)] disabled:cursor-not-allowed disabled:bg-merevo-surface-subtle disabled:opacity-70 aria-[invalid=true]:border-merevo-status-declined"
         />
         {emailError ? (
           <span
             id={`${emailFieldId}-error`}
-            className="text-meridian-status-declined"
+            className="text-merevo-status-declined"
           >
             {emailError}
           </span>
@@ -139,7 +139,7 @@ export function LoginForm({ next }: LoginFormProps) {
 
       <div className="space-y-2">
         <label className="flex w-full flex-col gap-1.5 text-sm">
-          <span className="font-medium text-meridian-text">Password</span>
+          <span className="font-medium text-merevo-text">Password</span>
           <span className="relative block">
             <input
               id={passwordFieldId}
@@ -155,11 +155,11 @@ export function LoginForm({ next }: LoginFormProps) {
               aria-describedby={
                 passwordError ? `${passwordFieldId}-error` : undefined
               }
-              className="h-11 w-full rounded-meridian border border-meridian-border bg-meridian-surface px-4 pr-12 text-meridian-text placeholder:text-meridian-text-muted/70 transition-[border-color,box-shadow] focus-visible:border-meridian-blue focus-visible:shadow-[var(--meridian-focus-ring)] disabled:cursor-not-allowed disabled:bg-meridian-surface-subtle disabled:opacity-70 aria-[invalid=true]:border-meridian-status-declined"
+              className="h-11 w-full rounded-merevo border border-merevo-border bg-merevo-surface px-4 pr-12 text-merevo-text placeholder:text-merevo-text-muted/70 transition-[border-color,box-shadow] focus-visible:border-merevo-blue focus-visible:shadow-[var(--merevo-focus-ring)] disabled:cursor-not-allowed disabled:bg-merevo-surface-subtle disabled:opacity-70 aria-[invalid=true]:border-merevo-status-declined"
             />
             <button
               type="button"
-              className="absolute top-1/2 right-2 inline-flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-meridian-sm text-meridian-text-muted transition-colors hover:bg-meridian-surface-subtle hover:text-meridian-text focus-visible:shadow-[var(--meridian-focus-ring)] disabled:opacity-50"
+              className="absolute top-1/2 right-2 inline-flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-merevo-sm text-merevo-text-muted transition-colors hover:bg-merevo-surface-subtle hover:text-merevo-text focus-visible:shadow-[var(--merevo-focus-ring)] disabled:opacity-50"
               onClick={() => setShowPassword((value) => !value)}
               aria-label={showPassword ? "Hide password" : "Show password"}
               aria-pressed={showPassword}
@@ -171,7 +171,7 @@ export function LoginForm({ next }: LoginFormProps) {
           {passwordError ? (
             <span
               id={`${passwordFieldId}-error`}
-              className="text-meridian-status-declined"
+              className="text-merevo-status-declined"
             >
               {passwordError}
             </span>
@@ -182,7 +182,7 @@ export function LoginForm({ next }: LoginFormProps) {
           <p className="text-sm">
             <Link
               href={PASSWORD_RESET_HREF}
-              className="font-medium text-meridian-teal hover:text-[#125a69] hover:underline"
+              className="font-medium text-merevo-teal hover:text-[#125a69] hover:underline"
             >
               Forgot password?
             </Link>
@@ -193,7 +193,7 @@ export function LoginForm({ next }: LoginFormProps) {
       {formError ? (
         <p
           id={formErrorId}
-          className="rounded-meridian-sm border border-meridian-status-declined/25 bg-meridian-status-declined-bg px-3.5 py-3 text-sm text-meridian-status-declined"
+          className="rounded-merevo-sm border border-merevo-status-declined/25 bg-merevo-status-declined-bg px-3.5 py-3 text-sm text-merevo-status-declined"
           role="alert"
           aria-live="assertive"
         >

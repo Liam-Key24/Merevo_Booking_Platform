@@ -31,7 +31,7 @@ export async function retryFailedEmail(
   formData: FormData,
 ): Promise<EmailRetryState> {
   const snapshot = await getAuthSnapshot();
-  if (!snapshot?.isMeridianAdmin) {
+  if (!snapshot?.isMerevoAdmin) {
     return { status: "error", message: "Merevo admin only." };
   }
 

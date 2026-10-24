@@ -43,10 +43,10 @@ export default async function DashboardSettingsPage() {
   return (
     <main className="flex w-full flex-1 flex-col gap-8 px-[var(--meridian-space-page)] py-10 lg:pl-12">
       <header className="space-y-2">
-        <h1 className="text-3xl font-semibold tracking-tight text-meridian-text">
+        <h1 className="text-3xl font-semibold tracking-tight text-merevo-text">
           {isAppointments ? "Appointment settings" : "Business settings"}
         </h1>
-        <p className="max-w-2xl text-meridian-text-muted">
+        <p className="max-w-2xl text-merevo-text-muted">
           {isAppointments
             ? `Contact details, booking mode, and availability for ${context.business.name}.`
             : `Contact details, table plan, service hours, and booking limits for ${context.business.name}.`}
@@ -115,7 +115,7 @@ export default async function DashboardSettingsPage() {
             maxBookingsPerDay={settings.max_bookings_per_day}
             maxPartySize={settings.max_party_size}
             bookingSlotMinutes={settings.booking_slot_minutes ?? 15}
-            canEdit={context.role === "owner" || context.isMeridianAdmin}
+            canEdit={context.role === "owner" || context.isMerevoAdmin}
           />
         </Card>
       )}

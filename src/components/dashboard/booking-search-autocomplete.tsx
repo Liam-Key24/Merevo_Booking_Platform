@@ -95,7 +95,7 @@ export function BookingSearchAutocomplete({
       </label>
       {showIcon ? (
         <span
-          className="pointer-events-none absolute inset-y-0 left-3 z-10 flex items-center text-meridian-accent"
+          className="pointer-events-none absolute inset-y-0 left-3 z-10 flex items-center text-merevo-accent"
           aria-hidden
         >
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
@@ -142,8 +142,8 @@ export function BookingSearchAutocomplete({
           }
         }}
         className={cn(
-          "w-full rounded-meridian border border-meridian-border bg-meridian-surface text-meridian-text placeholder:text-meridian-text-muted",
-          "transition-[border-color,box-shadow] focus-visible:border-meridian-accent focus-visible:shadow-[0_0_0_3px_color-mix(in_srgb,var(--meridian-accent)_35%,transparent)] focus-visible:outline-none",
+          "w-full rounded-merevo border border-merevo-border bg-merevo-surface text-merevo-text placeholder:text-merevo-text-muted",
+          "transition-[border-color,box-shadow] focus-visible:border-merevo-accent focus-visible:shadow-[0_0_0_3px_color-mix(in_srgb,var(--merevo-accent)_35%,transparent)] focus-visible:outline-none",
           heightClass,
           showIcon ? "pr-3 pl-9" : "px-3",
           inputClassName,
@@ -153,14 +153,14 @@ export function BookingSearchAutocomplete({
         <ul
           id={listId}
           role="listbox"
-          className="absolute top-[calc(100%+0.35rem)] right-0 left-0 z-40 overflow-hidden rounded-meridian border border-meridian-border bg-meridian-surface shadow-[0_16px_40px_rgba(20,58,68,0.14)]"
+          className="absolute top-[calc(100%+0.35rem)] right-0 left-0 z-40 overflow-hidden rounded-merevo border border-merevo-border bg-merevo-surface shadow-[0_16px_40px_rgba(20,58,68,0.14)]"
         >
           {pending && hits.length === 0 ? (
-            <li className="px-3 py-3 text-sm text-meridian-text-muted">
+            <li className="px-3 py-3 text-sm text-merevo-text-muted">
               Searching…
             </li>
           ) : hits.length === 0 ? (
-            <li className="px-3 py-3 text-sm text-meridian-text-muted">
+            <li className="px-3 py-3 text-sm text-merevo-text-muted">
               No bookings found
             </li>
           ) : (
@@ -172,16 +172,16 @@ export function BookingSearchAutocomplete({
                   className={cn(
                     "flex w-full flex-col gap-0.5 px-3 py-2.5 text-left transition-colors",
                     index === activeIndex
-                      ? "bg-[color-mix(in_srgb,var(--meridian-accent)_14%,white)]"
-                      : "hover:bg-meridian-surface-muted",
+                      ? "bg-[color-mix(in_srgb,var(--merevo-accent)_14%,white)]"
+                      : "hover:bg-merevo-surface-muted",
                   )}
                   onMouseEnter={() => setActiveIndex(index)}
                   onClick={() => choose(hit)}
                 >
-                  <span className="truncate text-sm font-semibold text-meridian-text">
+                  <span className="truncate text-sm font-semibold text-merevo-text">
                     {hit.customer_name}
                   </span>
-                  <span className="truncate text-xs text-meridian-text-muted">
+                  <span className="truncate text-xs text-merevo-text-muted">
                     {formatHitTime(hit)}
                   </span>
                 </button>

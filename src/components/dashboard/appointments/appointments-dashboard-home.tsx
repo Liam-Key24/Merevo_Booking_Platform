@@ -41,14 +41,14 @@ export function AppointmentsDashboardHome({
     <main className="flex flex-1 flex-col gap-8 px-[var(--meridian-space-page)] py-8 lg:py-10">
       {metrics.warnings.length > 0 ? (
         <Card title="Configuration warnings">
-          <ul className="list-disc space-y-1 pl-5 text-sm text-meridian-status-pending">
+          <ul className="list-disc space-y-1 pl-5 text-sm text-merevo-status-pending">
             {metrics.warnings.map((warning) => (
               <li key={warning}>{warning}</li>
             ))}
           </ul>
           <Link
             href="/dashboard/settings"
-            className="mt-3 inline-block text-sm font-semibold text-meridian-accent hover:underline"
+            className="mt-3 inline-block text-sm font-semibold text-merevo-accent hover:underline"
           >
             Open appointment settings
           </Link>
@@ -58,27 +58,27 @@ export function AppointmentsDashboardHome({
       <section className="space-y-4">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
-            <h2 className="text-xl font-semibold tracking-tight text-meridian-text sm:text-2xl">
+            <h2 className="text-xl font-semibold tracking-tight text-merevo-text sm:text-2xl">
               Appointment overview
             </h2>
-            <p className="text-sm text-meridian-text-muted">
+            <p className="text-sm text-merevo-text-muted">
               Real counts from your booking requests — empty until clients book.
             </p>
           </div>
-          <div className="flex items-center gap-2 rounded-meridian border border-meridian-border bg-meridian-surface px-2 py-1.5">
+          <div className="flex items-center gap-2 rounded-merevo border border-merevo-border bg-merevo-surface px-2 py-1.5">
             <Link
               href={`/dashboard?week=${week.prevWeekStart}${periodQuery}`}
-              className="inline-flex size-8 items-center justify-center rounded-meridian-sm text-meridian-accent hover:bg-[color-mix(in_srgb,var(--meridian-accent)_14%,white)]"
+              className="inline-flex size-8 items-center justify-center rounded-merevo-sm text-merevo-accent hover:bg-[color-mix(in_srgb,var(--merevo-accent)_14%,white)]"
               aria-label="Previous week"
             >
               ‹
             </Link>
-            <p className="min-w-[11rem] text-center text-sm font-semibold text-meridian-text tabular-nums">
+            <p className="min-w-[11rem] text-center text-sm font-semibold text-merevo-text tabular-nums">
               {weekLabel}
             </p>
             <Link
               href={`/dashboard?week=${week.nextWeekStart}${periodQuery}`}
-              className="inline-flex size-8 items-center justify-center rounded-meridian-sm text-meridian-accent hover:bg-[color-mix(in_srgb,var(--meridian-accent)_14%,white)]"
+              className="inline-flex size-8 items-center justify-center rounded-merevo-sm text-merevo-accent hover:bg-[color-mix(in_srgb,var(--merevo-accent)_14%,white)]"
               aria-label="Next week"
             >
               ›
@@ -121,7 +121,7 @@ export function AppointmentsDashboardHome({
                 description="Marked no-shows will appear here."
               />
             ) : (
-              <p className="text-3xl font-semibold text-meridian-text">
+              <p className="text-3xl font-semibold text-merevo-text">
                 {metrics.noShowsInRange}
               </p>
             )}
@@ -133,7 +133,7 @@ export function AppointmentsDashboardHome({
                 description="Conversion appears once appointments are confirmed, declined, cancelled, or marked no-show."
               />
             ) : (
-              <p className="text-3xl font-semibold text-meridian-text">
+              <p className="text-3xl font-semibold text-merevo-text">
                 {metrics.conversionRate}%
               </p>
             )}
@@ -144,7 +144,7 @@ export function AppointmentsDashboardHome({
                 href={metrics.externalBookingUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="break-all text-sm font-semibold text-meridian-accent hover:underline"
+                className="break-all text-sm font-semibold text-merevo-accent hover:underline"
               >
                 {metrics.externalBookingUrl}
               </a>
@@ -181,7 +181,7 @@ export function AppointmentsDashboardHome({
               description="New client requests will appear here."
             />
           ) : (
-            <ul className="divide-y divide-meridian-border">
+            <ul className="divide-y divide-merevo-border">
               {metrics.recentPending.map((item) => (
                 <li
                   key={item.id}
@@ -190,11 +190,11 @@ export function AppointmentsDashboardHome({
                   <div>
                     <Link
                       href={`/dashboard/bookings?open=${encodeURIComponent(item.id)}&period=custom`}
-                      className="cursor-pointer font-medium text-meridian-text hover:text-meridian-accent"
+                      className="cursor-pointer font-medium text-merevo-text hover:text-merevo-accent"
                     >
                       {item.customer_name}
                     </Link>
-                    <p className="text-xs text-meridian-text-muted">
+                    <p className="text-xs text-merevo-text-muted">
                       {item.service_name ?? "Service"}
                       {item.duration_minutes
                         ? ` · ${item.duration_minutes} min`
@@ -216,7 +216,7 @@ export function AppointmentsDashboardHome({
               description="Approved appointments will show here."
             />
           ) : (
-            <ul className="divide-y divide-meridian-border">
+            <ul className="divide-y divide-merevo-border">
               {metrics.upcomingConfirmed.map((item) => (
                 <li
                   key={item.id}
@@ -225,11 +225,11 @@ export function AppointmentsDashboardHome({
                   <div>
                     <Link
                       href={`/dashboard/bookings?open=${encodeURIComponent(item.id)}&period=custom`}
-                      className="cursor-pointer font-medium text-meridian-text hover:text-meridian-accent"
+                      className="cursor-pointer font-medium text-merevo-text hover:text-merevo-accent"
                     >
                       {item.customer_name}
                     </Link>
-                    <p className="text-xs text-meridian-text-muted">
+                    <p className="text-xs text-merevo-text-muted">
                       {item.service_name ?? "Service"}
                       {item.staff_name ? ` · ${item.staff_name}` : ""} ·{" "}
                       {item.preferred_date} {item.preferred_time.slice(0, 5)}
@@ -251,16 +251,16 @@ export function AppointmentsDashboardHome({
               description="Service popularity appears from real appointments."
             />
           ) : (
-            <ul className="divide-y divide-meridian-border">
+            <ul className="divide-y divide-merevo-border">
               {metrics.busiestServices.map((service) => (
                 <li
                   key={service.serviceId ?? service.name}
                   className="flex items-center justify-between gap-3 py-3 text-sm"
                 >
-                  <span className="font-medium text-meridian-text">
+                  <span className="font-medium text-merevo-text">
                     {service.name}
                   </span>
-                  <span className="tabular-nums text-meridian-text-muted">
+                  <span className="tabular-nums text-merevo-text-muted">
                     {service.count}
                   </span>
                 </li>
@@ -276,19 +276,19 @@ export function AppointmentsDashboardHome({
               description="Add team members in admin, then assign them to appointments."
             />
           ) : (
-            <ul className="divide-y divide-meridian-border">
+            <ul className="divide-y divide-merevo-border">
               {metrics.staffWorkload.map((member) => (
                 <li
                   key={member.userId}
                   className="flex items-center justify-between gap-3 py-3 text-sm"
                 >
                   <div>
-                    <p className="font-medium text-meridian-text">{member.name}</p>
-                    <p className="text-xs text-meridian-text-muted capitalize">
+                    <p className="font-medium text-merevo-text">{member.name}</p>
+                    <p className="text-xs text-merevo-text-muted capitalize">
                       {member.role}
                     </p>
                   </div>
-                  <span className="tabular-nums text-meridian-text-muted">
+                  <span className="tabular-nums text-merevo-text-muted">
                     {member.assignedCount} assigned
                   </span>
                 </li>

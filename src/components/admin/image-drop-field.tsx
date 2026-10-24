@@ -90,15 +90,15 @@ export function ImageDropField({
           if (!disabled) assignFile(event.dataTransfer.files[0]);
         }}
         className={cn(
-          "flex min-h-40 cursor-pointer flex-col items-center justify-center gap-3 rounded-meridian border-2 border-dashed px-6 py-8 text-center transition-colors",
+          "flex min-h-40 cursor-pointer flex-col items-center justify-center gap-3 rounded-merevo border-2 border-dashed px-6 py-8 text-center transition-colors",
           disabled && "cursor-not-allowed opacity-60",
           dragging
-            ? "border-meridian-blue bg-[color-mix(in_srgb,var(--meridian-soft-blue)_28%,white)]"
-            : "border-meridian-border bg-meridian-surface hover:border-meridian-border-strong hover:bg-meridian-surface-subtle",
+            ? "border-merevo-blue bg-[color-mix(in_srgb,var(--merevo-soft-blue)_28%,white)]"
+            : "border-merevo-border bg-merevo-surface hover:border-merevo-border-strong hover:bg-merevo-surface-subtle",
         )}
       >
         <span
-          className="flex size-12 items-center justify-center rounded-full bg-[color-mix(in_srgb,var(--meridian-soft-blue)_35%,white)] text-meridian-blue"
+          className="flex size-12 items-center justify-center rounded-full bg-[color-mix(in_srgb,var(--merevo-soft-blue)_35%,white)] text-merevo-blue"
           aria-hidden
         >
           <svg viewBox="0 0 24 24" className="size-6" fill="none">
@@ -120,46 +120,46 @@ export function ImageDropField({
             />
           </svg>
         </span>
-        <span className="text-sm text-meridian-text">
+        <span className="text-sm text-merevo-text">
           {dragging ? (
             "Drop your files here"
           ) : (
             <>
               Drop your image here, or{" "}
-              <span className="font-semibold text-meridian-teal">browse</span>
+              <span className="font-semibold text-merevo-teal">browse</span>
             </>
           )}
         </span>
-        <span className="text-xs text-meridian-text-muted">{formatsHint}</span>
+        <span className="text-xs text-merevo-text-muted">{formatsHint}</span>
       </label>
       {selected ? (
-        <div className="flex items-center gap-3 rounded-meridian border border-meridian-border bg-meridian-surface px-3 py-2.5">
+        <div className="flex items-center gap-3 rounded-merevo border border-merevo-border bg-merevo-surface px-3 py-2.5">
           {selected.preview ? (
             // eslint-disable-next-line @next/next/no-img-element
             <img
               src={selected.preview}
               alt=""
-              className="size-10 rounded-meridian-sm object-cover"
+              className="size-10 rounded-merevo-sm object-cover"
             />
           ) : (
-            <span className="size-10 rounded-meridian-sm bg-meridian-surface-subtle" />
+            <span className="size-10 rounded-merevo-sm bg-merevo-surface-subtle" />
           )}
           <div className="min-w-0 flex-1">
-            <p className="truncate text-sm font-medium text-meridian-text">
+            <p className="truncate text-sm font-medium text-merevo-text">
               {selected.name}
             </p>
-            <p className="text-xs text-meridian-text-muted">
+            <p className="text-xs text-merevo-text-muted">
               {formatFileSize(selected.size)} · Ready to save
             </p>
             <span
-              className="mt-1.5 block h-1.5 overflow-hidden rounded-full bg-meridian-surface-subtle"
+              className="mt-1.5 block h-1.5 overflow-hidden rounded-full bg-merevo-surface-subtle"
               aria-hidden
             >
-              <span className="block h-full w-full rounded-full bg-meridian-teal" />
+              <span className="block h-full w-full rounded-full bg-merevo-teal" />
             </span>
           </div>
           <span
-            className="flex size-7 items-center justify-center rounded-full bg-meridian-status-confirmed-bg text-meridian-status-confirmed"
+            className="flex size-7 items-center justify-center rounded-full bg-merevo-status-confirmed-bg text-merevo-status-confirmed"
             aria-hidden
           >
             <svg viewBox="0 0 16 16" className="size-3.5" fill="none">
@@ -175,7 +175,7 @@ export function ImageDropField({
           <button
             type="button"
             onClick={clearSelected}
-            className="rounded-meridian-sm p-1 text-meridian-text-muted hover:bg-meridian-surface-subtle hover:text-meridian-text"
+            className="rounded-merevo-sm p-1 text-merevo-text-muted hover:bg-merevo-surface-subtle hover:text-merevo-text"
             aria-label="Remove selected file"
           >
             <svg viewBox="0 0 16 16" className="size-4" fill="none">

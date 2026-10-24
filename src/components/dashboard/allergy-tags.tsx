@@ -75,7 +75,7 @@ export function AllergyTag({
     <span
       title={def.label}
       className={cn(
-        "inline-flex max-w-full items-center gap-1 rounded-meridian-sm px-1.5 py-0.5 text-[10px] font-semibold tracking-wide uppercase",
+        "inline-flex max-w-full items-center gap-1 rounded-merevo-sm px-1.5 py-0.5 text-[10px] font-semibold tracking-wide uppercase",
         def.bgClass,
         def.textClass,
         compact && "px-1",
@@ -103,7 +103,7 @@ export function AllergyTagStack({
   const codes = normalizeAllergies(allergies);
   if (codes.length === 0) {
     return (
-      <span className={cn("text-sm text-meridian-text-muted", className)}>
+      <span className={cn("text-sm text-merevo-text-muted", className)}>
         {emptyLabel}
       </span>
     );
@@ -148,7 +148,7 @@ export function AllergyEditor({
 
   return (
     <div className={cn("space-y-2.5", className)}>
-      <p className={cn("text-xs", isClient ? CLIENT_SURFACE_MUTED : "text-meridian-text-muted")}>
+      <p className={cn("text-xs", isClient ? CLIENT_SURFACE_MUTED : "text-merevo-text-muted")}>
         Tap to add or remove allergens for this booking.
       </p>
       <div
@@ -167,14 +167,14 @@ export function AllergyEditor({
               aria-pressed={isOn}
               title={def.label}
               className={cn(
-                "inline-flex cursor-pointer items-center gap-1 rounded-meridian-sm border px-1.5 py-1 text-[10px] font-semibold tracking-wide uppercase transition-colors",
+                "inline-flex cursor-pointer items-center gap-1 rounded-merevo-sm border px-1.5 py-1 text-[10px] font-semibold tracking-wide uppercase transition-colors",
                 isOn
                   ? isClient
                     ? "border-transparent bg-[var(--client-accent)] text-[var(--client-background)]"
                     : cn(def.bgClass, def.textClass, "border-transparent")
                   : isClient
                     ? "border-[color-mix(in_srgb,var(--client-text)_20%,transparent)] bg-[var(--client-background)] text-[color-mix(in_srgb,var(--client-text)_60%,transparent)] hover:border-[var(--client-accent)] hover:text-[var(--client-text)]"
-                    : "border-meridian-border bg-meridian-surface text-meridian-text-muted hover:border-meridian-accent hover:text-meridian-text",
+                    : "border-merevo-border bg-merevo-surface text-merevo-text-muted hover:border-merevo-accent hover:text-merevo-text",
               )}
             >
               <AllergyGlyph code={code} className="size-3" />
