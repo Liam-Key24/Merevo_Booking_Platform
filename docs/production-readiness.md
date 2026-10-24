@@ -2,20 +2,12 @@
 
 Use this before promoting Merevo Platform traffic beyond development.
 
-## Merge order
-
-1. `codex/meridian-platform-security-foundation`
-2. `codex/meridian-platform-domain-foundation`
-3. `codex/meridian-platform-production-readiness`
-
-Do not merge from stale older feature branches.
-
 ## Supabase
 
 - [ ] `npx supabase projects list` shows only work against **Meridian Platform Development**
 - [ ] Never link Meridian Marketing
 - [ ] `npx supabase db push` after confirming project ref
-- [ ] Migration `20260824000012_business_modes_and_capabilities.sql` applied
+- [ ] All migrations applied successfully
 - [ ] Live tenant-isolation tests against Platform Development or local Supabase
 
 ## Secrets and env
