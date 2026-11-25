@@ -1,4 +1,9 @@
 import type { ComponentType } from "react";
+import {
+  AppointmentsClassicLayout,
+  AppointmentsMinimalLayout,
+  AppointmentsStudioLayout,
+} from "@/components/client-site/layouts/appointments-classic";
 import { HospitalityClassicLayout } from "@/components/client-site/layouts/hospitality-classic";
 import type { ClientSitePagePayload } from "@/lib/templates/payload";
 
@@ -12,6 +17,9 @@ export const TEMPLATE_LAYOUTS: Record<
   ComponentType<ClientSiteLayoutProps>
 > = {
   "hospitality-classic": HospitalityClassicLayout,
+  "appointments-classic": AppointmentsClassicLayout,
+  "appointments-minimal": AppointmentsMinimalLayout,
+  "appointments-studio": AppointmentsStudioLayout,
 };
 
 export const AVAILABLE_TEMPLATE_LAYOUT_SLUGS = new Set(
