@@ -439,6 +439,84 @@ export async function updateBusinessCapabilities(
   };
 }
 
+function randomTemporaryPassword(): string {
+  const alphabet =
+    "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789!@$%";
+  const bytes = new Uint8Array(16);
+  crypto.getRandomValues(bytes);
+  return Array.from(bytes, (b) => alphabet[b % alphabet.length]).join("");
+}
+
+async function resolveOrCreateMemberProfile(email: string): Promise<
+  | {
+      ok: true;
+      userId: string;
+      provisioned: "existing" | "invited" | "created";
+      temporaryPassword: string | null;
+    }
+  | { ok: false; message: string }
+> {
+  const { createServiceRoleClient } = await import("@/lib/supabase/admin");
+  const admin = createServiceRoleClient();
+
+  const { data: existing } = await admin
+    .from("profiles")
+    .select("id, email")
+    .eq("email", email)
+    .maybeSingle();
+
+  if (existing) {
+    return {
+      ok: true,
+      userId: existing.id,
+      provisioned: "existing",
+      temporaryPassword: null,
+    };
+  }
+
+  const siteUrl =
+    process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
+    "http://localhost:3000";
+
+  const invite = await admin.auth.admin.inviteUserByEmail(email, {
+    redirectTo: `${siteUrl}/login`,
+  });
+
+  if (!invite.error && invite.data.user?.id) {
+    return {
+      ok: true,
+      userId: invite.data.user.id,
+      provisioned: "invited",
+      temporaryPassword: null,
+    };
+  }
+
+  const temporaryPassword = randomTemporaryPassword();
+  const created = await admin.auth.admin.createUser({
+    email,
+    password: temporaryPassword,
+    email_confirm: true,
+  });
+
+  if (created.error || !created.data.user?.id) {
+    console.error("[admin] create member user", invite.error, created.error);
+    return {
+      ok: false,
+      message:
+        created.error?.message ||
+        invite.error?.message ||
+        "Could not create a login for that email.",
+    };
+  }
+
+  return {
+    ok: true,
+    userId: created.data.user.id,
+    provisioned: "created",
+    temporaryPassword,
+  };
+}
+
 export async function addBusinessMembership(
   _prev: AdminActionState,
   formData: FormData,
@@ -459,24 +537,15 @@ export async function addBusinessMembership(
     return { status: "error", message: "Choose owner or staff." };
   }
 
-  const supabase = await createClient();
-  const { data: profile } = await supabase
-    .from("profiles")
-    .select("id, email")
-    .eq("email", email)
-    .maybeSingle();
-
-  if (!profile) {
-    return {
-      status: "error",
-      message:
-        "No profile found for that email. The user must sign up before membership can be added.",
-    };
+  const provisioned = await resolveOrCreateMemberProfile(email);
+  if (!provisioned.ok) {
+    return { status: "error", message: provisioned.message };
   }
 
+  const supabase = await createClient();
   const { error } = await supabase.from("business_memberships").insert({
     business_id: businessId,
-    user_id: profile.id,
+    user_id: provisioned.userId,
     role,
     status: "active",
   });
@@ -497,12 +566,32 @@ export async function addBusinessMembership(
     businessId,
     action: "admin.membership.add",
     entityType: "business_membership",
-    entityId: profile.id,
-    metadata: { email, role },
+    entityId: provisioned.userId,
+    metadata: {
+      email,
+      role,
+      provisioned: provisioned.provisioned,
+    },
   });
 
   revalidatePath(`/admin/businesses/${businessId}`);
-  return { status: "success", message: "Membership added." };
+
+  if (provisioned.provisioned === "invited") {
+    return {
+      status: "success",
+      message: `Invite sent to ${email}. Membership added as ${role}.`,
+    };
+  }
+  if (provisioned.provisioned === "created" && provisioned.temporaryPassword) {
+    return {
+      status: "success",
+      message: `Account created for ${email}. Temporary password (share once): ${provisioned.temporaryPassword}. Membership added as ${role}.`,
+    };
+  }
+  return {
+    status: "success",
+    message: `Membership added as ${role}.`,
+  };
 }
 
 export async function updateBusinessMembership(
