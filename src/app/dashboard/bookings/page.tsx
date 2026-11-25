@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { EmptyState } from "@/components/ui";
 import {
   BookingsExplorer,
@@ -143,7 +144,18 @@ export default async function DashboardBookingsPage({ searchParams }: PageProps)
       </header>
 
       {error && bookings.length === 0 ? (
-        <EmptyState title="Could not load bookings" description={error} />
+        <EmptyState
+          title="Could not load bookings"
+          description={error}
+          action={
+            <Link
+              href="/dashboard/bookings"
+              className="text-sm font-semibold text-merevo-accent hover:underline"
+            >
+              Try again
+            </Link>
+          }
+        />
       ) : (
         <BookingsExplorer
           businessId={context.business.id}

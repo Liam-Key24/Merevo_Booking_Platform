@@ -159,6 +159,20 @@ export function BookingsExplorer({
         </p>
       </div>
 
+      {q ? (
+        <div className="flex flex-wrap items-center gap-2 text-sm">
+          <span className="rounded-merevo-sm bg-merevo-surface-muted px-2.5 py-1 text-merevo-text">
+            Filtered by “{q}”
+          </span>
+          <Link
+            href={`/dashboard/bookings?period=${period}${status && status !== "all" ? `&status=${status}` : ""}`}
+            className="font-semibold text-merevo-accent hover:underline"
+          >
+            Clear search
+          </Link>
+        </div>
+      ) : null}
+
       <form
         method="get"
         action="/dashboard/bookings"
@@ -229,6 +243,14 @@ export function BookingsExplorer({
           <Button type="submit" size="sm">
             Apply
           </Button>
+          {status !== "all" || q || period !== "weekly" ? (
+            <Link
+              href="/dashboard/bookings"
+              className="inline-flex h-9 items-center px-2 text-sm font-semibold text-merevo-accent hover:underline"
+            >
+              Clear filters
+            </Link>
+          ) : null}
         </div>
       </form>
 
