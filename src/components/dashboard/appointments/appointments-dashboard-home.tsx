@@ -38,7 +38,7 @@ export function AppointmentsDashboardHome({
   const periodQuery = period ? `&period=${period}` : "";
 
   return (
-    <main className="flex flex-1 flex-col gap-8 px-[var(--meridian-space-page)] py-8 lg:py-10">
+    <main className="flex flex-1 flex-col gap-8 px-[var(--merevo-space-page)] py-8 lg:py-10">
       {metrics.warnings.length > 0 ? (
         <Card title="Configuration warnings">
           <ul className="list-disc space-y-1 pl-5 text-sm text-merevo-status-pending">

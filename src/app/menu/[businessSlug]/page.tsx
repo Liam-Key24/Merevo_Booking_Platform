@@ -22,7 +22,7 @@ export default async function ClientMenuPage({ params }: PageProps) {
 
   if (loadError) {
     return (
-      <main className="mx-auto flex w-full max-w-3xl flex-1 flex-col gap-8 px-[var(--meridian-space-page)] py-14">
+      <main className="mx-auto flex w-full max-w-3xl flex-1 flex-col gap-8 px-[var(--merevo-space-page)] py-14">
         <ErrorState title="Unable to load menu" description={loadError} />
       </main>
     );
@@ -30,7 +30,7 @@ export default async function ClientMenuPage({ params }: PageProps) {
 
   if (!payload) {
     return (
-      <main className="mx-auto flex w-full max-w-3xl flex-1 flex-col gap-8 px-[var(--meridian-space-page)] py-14">
+      <main className="mx-auto flex w-full max-w-3xl flex-1 flex-col gap-8 px-[var(--merevo-space-page)] py-14">
         <EmptyState
           title="Menu unavailable"
           description="This business has no publishable template assigned yet."
@@ -45,7 +45,7 @@ export default async function ClientMenuPage({ params }: PageProps) {
     <ClientSiteTheme branding={branding} templateSlug={template.slug}>
     <div className="min-h-full bg-[var(--client-background)] text-[var(--client-text)] [font-family:var(--client-font-body)] [&_h1]:[font-family:var(--client-font-heading)]">
       <header className="border-b border-[color-mix(in_srgb,var(--client-text)_8%,transparent)]">
-        <div className="mx-auto flex max-w-4xl items-center justify-between gap-4 px-[var(--meridian-space-page)] py-5">
+        <div className="mx-auto flex max-w-4xl items-center justify-between gap-4 px-[var(--merevo-space-page)] py-5">
           <a
             href={`/preview/${business.slug}`}
             className="font-serif text-xl tracking-tight"
@@ -61,7 +61,7 @@ export default async function ClientMenuPage({ params }: PageProps) {
         </div>
       </header>
 
-      <main className="mx-auto max-w-4xl px-[var(--meridian-space-page)] py-14">
+      <main className="mx-auto max-w-4xl px-[var(--merevo-space-page)] py-14">
         <div className="mb-10 space-y-3">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--client-accent)]">
             Dining
@@ -87,7 +87,7 @@ export default async function ClientMenuPage({ params }: PageProps) {
         businessSlug={business.slug}
         booking={booking}
         turnstileSiteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? null}
-        className="mx-auto max-w-3xl scroll-mt-8 border-t border-[color-mix(in_srgb,var(--client-text)_8%,transparent)] px-[var(--meridian-space-page)] py-16"
+        className="mx-auto max-w-3xl scroll-mt-8 border-t border-[color-mix(in_srgb,var(--client-text)_8%,transparent)] px-[var(--merevo-space-page)] py-16"
       />
     </div>
     </ClientSiteTheme>

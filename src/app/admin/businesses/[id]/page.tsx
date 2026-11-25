@@ -43,7 +43,7 @@ export default async function AdminBusinessDetailPage({ params }: PageProps) {
 
   if (!business) {
     return (
-      <main className="mx-auto flex w-full max-w-5xl flex-1 flex-col gap-8 px-[var(--meridian-space-page)] py-10">
+      <main className="mx-auto flex w-full max-w-5xl flex-1 flex-col gap-8 px-[var(--merevo-space-page)] py-10">
         <ErrorState
           title="Business not found"
           description="This business id does not exist."
@@ -74,7 +74,7 @@ export default async function AdminBusinessDetailPage({ params }: PageProps) {
   const settingsHref = `/admin/businesses/${business.id}/settings/details`;
 
   return (
-    <main className="mx-auto flex w-full max-w-5xl flex-1 flex-col gap-8 px-[var(--meridian-space-page)] py-10">
+    <main className="mx-auto flex w-full max-w-5xl flex-1 flex-col gap-8 px-[var(--merevo-space-page)] py-10">
       <header className="space-y-4">
         <Link
           href="/admin"

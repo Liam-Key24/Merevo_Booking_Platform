@@ -177,7 +177,7 @@ export function AdminShell({
 
       <div className="flex min-w-0 flex-1 flex-col">
         <header className="sticky top-0 z-30 border-b border-merevo-border bg-merevo-surface/95 backdrop-blur">
-          <div className="flex flex-wrap items-center gap-3 px-[var(--meridian-space-page)] py-3 lg:gap-4 lg:py-4">
+          <div className="flex flex-wrap items-center gap-3 px-[var(--merevo-space-page)] py-3 lg:gap-4 lg:py-4">
             <div className="flex min-w-0 items-center gap-3">
               <button
                 type="button"

@@ -16,7 +16,7 @@ export type AdminListColumn = {
 
 export function AdminListPage({ children }: { children: React.ReactNode }) {
   return (
-    <main className="flex w-full flex-1 flex-col gap-6 px-[var(--meridian-space-page)] py-8 lg:py-10">
+    <main className="flex w-full flex-1 flex-col gap-6 px-[var(--merevo-space-page)] py-8 lg:py-10">
       {children}
     </main>
   );

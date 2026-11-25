@@ -14,7 +14,7 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
 
   return (
     <main className="flex min-h-full flex-1 flex-col lg:flex-row">
-      <section className="relative flex flex-1 flex-col justify-between bg-merevo-surface px-[var(--meridian-space-page)] py-10 sm:py-14 lg:py-16">
+      <section className="relative flex flex-1 flex-col justify-between bg-merevo-surface px-[var(--merevo-space-page)] py-10 sm:py-14 lg:py-16">
         <div className="mx-auto flex w-full max-w-md flex-1 flex-col justify-center gap-10">
           <div className="space-y-8">
             <div className="flex items-center gap-3">
@@ -50,7 +50,7 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
 
       <aside
         aria-label="Merevo product"
-        className="relative hidden overflow-hidden bg-merevo-teal px-[var(--meridian-space-page)] py-16 text-merevo-text-inverse lg:flex lg:w-1/2 lg:flex-col lg:justify-center"
+        className="relative hidden overflow-hidden bg-merevo-teal px-[var(--merevo-space-page)] py-16 text-merevo-text-inverse lg:flex lg:w-1/2 lg:flex-col lg:justify-center"
       >
         <div aria-hidden="true" className="pointer-events-none absolute inset-0">
           <div className="absolute -top-24 -right-16 size-72 rounded-full bg-merevo-blue/35 blur-2xl" />

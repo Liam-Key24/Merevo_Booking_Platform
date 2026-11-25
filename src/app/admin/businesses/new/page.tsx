@@ -7,7 +7,7 @@ export default async function NewBusinessPage() {
   await requireMeridianAdmin();
 
   return (
-    <main className="mx-auto flex w-full max-w-3xl flex-1 flex-col gap-8 px-[var(--meridian-space-page)] py-12">
+    <main className="mx-auto flex w-full max-w-3xl flex-1 flex-col gap-8 px-[var(--merevo-space-page)] py-12">
       <div className="space-y-2">
         <Link
           href="/admin"

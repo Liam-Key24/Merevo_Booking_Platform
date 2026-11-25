@@ -31,7 +31,7 @@ export default async function NewManualBookingPage({ searchParams }: PageProps) 
     .order("name");
 
   return (
-    <main className="flex w-full flex-1 flex-col gap-6 px-[var(--meridian-space-page)] py-6 lg:py-8">
+    <main className="flex w-full flex-1 flex-col gap-6 px-[var(--merevo-space-page)] py-6 lg:py-8">
       <header className="space-y-2">
         <h1 className="text-3xl font-semibold tracking-tight text-merevo-text">
           Add a booking

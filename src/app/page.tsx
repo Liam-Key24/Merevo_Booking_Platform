@@ -3,7 +3,7 @@ import { Badge, Button, Card } from "@/components/ui";
 
 export default function HomePage() {
   return (
-    <main className="mx-auto flex w-full max-w-3xl flex-1 flex-col gap-10 px-[var(--meridian-space-page)] py-16">
+    <main className="mx-auto flex w-full max-w-3xl flex-1 flex-col gap-10 px-[var(--merevo-space-page)] py-16">
       <header className="space-y-4">
         <Badge tone="teal">Merevo Booking Platform</Badge>
         <h1 className="max-w-xl text-4xl font-semibold tracking-tight text-merevo-text sm:text-5xl">
