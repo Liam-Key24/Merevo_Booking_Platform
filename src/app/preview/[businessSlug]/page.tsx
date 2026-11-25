@@ -1,4 +1,5 @@
-import { EmptyState, ErrorState } from "@/components/ui";
+import Link from "next/link";
+import { Button, EmptyState, ErrorState } from "@/components/ui";
 import { renderClientSiteLayout } from "@/lib/templates/layouts";
 import { getClientSitePagePayload } from "@/lib/templates/payload";
 
@@ -28,7 +29,17 @@ export default async function TemplatePreviewPage({ params }: PageProps) {
   if (loadError) {
     return (
       <main className="mx-auto flex w-full max-w-3xl flex-1 flex-col gap-8 px-[var(--merevo-space-page)] py-14">
-        <ErrorState title="Unable to load preview" description={loadError} />
+        <ErrorState
+          title="Unable to load preview"
+          description={loadError}
+          action={
+            <Link href="/admin">
+              <Button type="button" variant="secondary">
+                Back to admin
+              </Button>
+            </Link>
+          }
+        />
       </main>
     );
   }
@@ -38,7 +49,12 @@ export default async function TemplatePreviewPage({ params }: PageProps) {
       <main className="mx-auto flex w-full max-w-3xl flex-1 flex-col gap-8 px-[var(--merevo-space-page)] py-14">
         <EmptyState
           title="No publishable template"
-          description="This business has no assigned active Merevo template matching its dashboard mode. Assign Hospitality Classic under Admin → Settings → Template."
+          description="Assign an active template that matches this business mode under Settings → Template."
+          action={
+            <Link href="/admin">
+              <Button type="button">Open admin</Button>
+            </Link>
+          }
         />
       </main>
     );
@@ -51,6 +67,13 @@ export default async function TemplatePreviewPage({ params }: PageProps) {
         <EmptyState
           title="Unknown template layout"
           description={`No layout is registered for slug "${payload.template.slug}".`}
+          action={
+            <Link href="/admin">
+              <Button type="button" variant="secondary">
+                Back to admin
+              </Button>
+            </Link>
+          }
         />
       </main>
     );
