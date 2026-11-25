@@ -7,6 +7,7 @@ import {
   submitBookingRequest,
   type SubmitBookingState,
 } from "@/lib/booking/actions";
+import { submitDemoBookingRequest } from "@/lib/demo/actions";
 
 type ServiceOption = {
   id: string;
@@ -22,6 +23,7 @@ type BookingRequestFormProps = {
   turnstileSiteKey?: string | null;
   submitLabel?: string;
   embed?: boolean;
+  demoMode?: boolean;
 };
 
 const initialState: SubmitBookingState = {
@@ -43,11 +45,13 @@ export function BookingRequestForm({
   turnstileSiteKey,
   submitLabel = "Submit request",
   embed = false,
+  demoMode = false,
 }: BookingRequestFormProps) {
   const [state, formAction, pending] = useActionState(
-    submitBookingRequest,
+    demoMode ? submitDemoBookingRequest : submitBookingRequest,
     initialState,
   );
+  const effectiveTurnstileKey = demoMode ? null : turnstileSiteKey;
   const turnstileId = useId();
   const idempotencyKey = useMemo(() => createIdempotencyKey(), []);
 
@@ -82,7 +86,7 @@ export function BookingRequestForm({
 
   return (
     <>
-      {turnstileSiteKey ? (
+      {effectiveTurnstileKey ? (
         <Script
           src="https://challenges.cloudflare.com/turnstile/v0/api.js"
           async
@@ -183,10 +187,10 @@ export function BookingRequestForm({
           </span>
         </label>
 
-        {turnstileSiteKey ? (
+        {effectiveTurnstileKey ? (
           <div
             className="cf-turnstile"
-            data-sitekey={turnstileSiteKey}
+            data-sitekey={effectiveTurnstileKey}
             data-theme="light"
             id={turnstileId}
           />

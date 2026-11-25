@@ -11,6 +11,7 @@ import {
   submitBookingRequest,
   type SubmitBookingState,
 } from "@/lib/booking/actions";
+import { submitDemoBookingRequest } from "@/lib/demo/actions";
 import { cn } from "@/lib/cn";
 import {
   CLIENT_SURFACE_ERROR,
@@ -29,6 +30,7 @@ type HospitalityPublicBookingFormProps = {
   turnstileSiteKey?: string | null;
   submitLabel?: string;
   embed?: boolean;
+  demoMode?: boolean;
 };
 
 const initialState: SubmitBookingState = {
@@ -130,11 +132,13 @@ export function HospitalityPublicBookingForm({
   turnstileSiteKey,
   submitLabel = "Find a Table",
   embed = false,
+  demoMode = false,
 }: HospitalityPublicBookingFormProps) {
   const [state, formAction, pending] = useActionState(
-    submitBookingRequest,
+    demoMode ? submitDemoBookingRequest : submitBookingRequest,
     initialState,
   );
+  const effectiveTurnstileKey = demoMode ? null : turnstileSiteKey;
   const turnstileId = useId();
   const idempotencyKey = useMemo(() => createIdempotencyKey(), []);
   const datePopoverRef = useRef<HTMLDivElement>(null);
@@ -253,7 +257,7 @@ export function HospitalityPublicBookingForm({
 
   return (
     <>
-      {turnstileSiteKey ? (
+      {effectiveTurnstileKey ? (
         <Script
           src="https://challenges.cloudflare.com/turnstile/v0/api.js"
           async
@@ -527,10 +531,10 @@ export function HospitalityPublicBookingForm({
           </span>
         </label>
 
-        {turnstileSiteKey ? (
+        {effectiveTurnstileKey ? (
           <div
             className="cf-turnstile"
-            data-sitekey={turnstileSiteKey}
+            data-sitekey={effectiveTurnstileKey}
             data-theme="light"
             id={turnstileId}
           />

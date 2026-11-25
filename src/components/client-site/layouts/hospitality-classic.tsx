@@ -133,6 +133,7 @@ function GalleryTile({
 export function HospitalityClassicLayout({
   payload,
   preview = false,
+  demo = false,
 }: ClientSiteLayoutProps) {
   const { business, branding, booking, template } = payload;
   const menuHref = `/menu/${business.slug}`;
@@ -156,7 +157,15 @@ export function HospitalityClassicLayout({
       id="top"
       className="min-h-full bg-[var(--client-background)] text-[var(--client-text)] [font-family:var(--client-font-body)] [&_h1]:[font-family:var(--client-font-heading)] [&_h2]:[font-family:var(--client-font-heading)] [&_blockquote]:[font-family:var(--client-font-heading)]"
     >
-      {preview ? (
+      {demo ? (
+        <div className="border-b border-merevo-border bg-merevo-surface px-[var(--merevo-space-page)] py-2 text-center text-xs text-merevo-text-muted">
+          <span className="font-semibold tracking-wide text-merevo-accent uppercase">
+            Demo
+          </span>
+          <span className="mx-2 text-merevo-border">·</span>
+          Bookings are not saved
+        </div>
+      ) : preview ? (
         <div className="border-b border-merevo-border bg-merevo-surface px-[var(--merevo-space-page)] py-2 text-center text-xs text-merevo-text-muted">
           Template preview — not published
         </div>
@@ -318,7 +327,12 @@ export function HospitalityClassicLayout({
             businessName={business.name}
             businessSlug={business.slug}
             booking={booking}
-            turnstileSiteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? null}
+            turnstileSiteKey={
+              demo
+                ? null
+                : (process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? null)
+            }
+            demoMode={demo}
           />
         ) : null}
 

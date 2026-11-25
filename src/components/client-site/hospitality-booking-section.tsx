@@ -8,6 +8,7 @@ type HospitalityBookingSectionProps = {
   turnstileSiteKey?: string | null;
   id?: string;
   className?: string;
+  demoMode?: boolean;
 };
 
 export function HospitalityBookingSection({
@@ -17,6 +18,7 @@ export function HospitalityBookingSection({
   turnstileSiteKey = null,
   id = "book",
   className,
+  demoMode = false,
 }: HospitalityBookingSectionProps) {
   return (
     <section
@@ -46,6 +48,7 @@ export function HospitalityBookingSection({
           maxPartySize={booking.settings.max_party_size}
           embed
           submitLabel="Find a Table"
+          demoMode={demoMode}
           className="[&_button]:rounded-full [&_button]:bg-[var(--client-accent)] [&_button]:text-[var(--client-background)]"
         />
       </div>

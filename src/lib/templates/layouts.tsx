@@ -10,6 +10,8 @@ import type { ClientSitePagePayload } from "@/lib/templates/payload";
 export type ClientSiteLayoutProps = {
   payload: ClientSitePagePayload;
   preview?: boolean;
+  /** Public Merevo sales demo — dry-run bookings, Demo label. */
+  demo?: boolean;
 };
 
 export const TEMPLATE_LAYOUTS: Record<
@@ -32,9 +34,15 @@ export function resolveClientSiteLayout(slug: string) {
 
 export function renderClientSiteLayout(
   payload: ClientSitePagePayload,
-  options?: { preview?: boolean },
+  options?: { preview?: boolean; demo?: boolean },
 ) {
   const Layout = resolveClientSiteLayout(payload.template.slug);
   if (!Layout) return null;
-  return <Layout payload={payload} preview={options?.preview} />;
+  return (
+    <Layout
+      payload={payload}
+      preview={options?.preview}
+      demo={options?.demo}
+    />
+  );
 }
