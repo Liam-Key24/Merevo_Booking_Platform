@@ -27,8 +27,8 @@ export default async function ServicesPage() {
           />
         ) : data.services.length === 0 ? (
           <EmptyState
-            title="No services configured"
-            description="Ask a Merevo admin to add services for this business."
+            title="No services yet"
+            description="Merevo sets up your service list when the business is onboarded. Contact Merevo if you need changes."
           />
         ) : (
           <ul className="divide-y divide-merevo-border">

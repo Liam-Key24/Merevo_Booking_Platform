@@ -23,12 +23,14 @@ type BookingCalendarProps = {
   bookings: BookingListItem[];
   todayIso: string;
   rangeLabel: string;
+  tableOptions?: string[];
+  timeOptions?: string[];
+  dayStartHour?: number;
+  dayEndHour?: number;
 };
 
-/** Settings will supply the real table plan; a single table is the default. */
-const DEFAULT_TABLES = ["1 of 1"];
+const DEFAULT_TABLES = ["Unassigned"];
 
-/** Opening time placeholder until service hours live in settings. */
 const DAY_VIEW_START_HOUR = 8;
 const DAY_VIEW_END_HOUR = 21;
 
@@ -92,6 +94,10 @@ export function BookingCalendar({
   bookings,
   todayIso,
   rangeLabel,
+  tableOptions = DEFAULT_TABLES,
+  timeOptions,
+  dayStartHour = DAY_VIEW_START_HOUR,
+  dayEndHour = DAY_VIEW_END_HOUR,
 }: BookingCalendarProps) {
   const router = useRouter();
   const titleId = useId();
@@ -183,6 +189,9 @@ export function BookingCalendar({
         <DayTableGrid
           date={days[0]!}
           bookings={bookings}
+          tableOptions={tableOptions}
+          dayStartHour={dayStartHour}
+          dayEndHour={dayEndHour}
           onOpen={(booking) => setSelectedId(booking.id)}
         />
       ) : (
@@ -200,6 +209,8 @@ export function BookingCalendar({
           businessId={businessId}
           booking={selected}
           titleId={titleId}
+          tableOptions={tableOptions}
+          timeOptions={timeOptions}
           onClose={() => setSelectedId(null)}
           onChanged={() => {
             setSelectedId(null);
@@ -325,10 +336,16 @@ function WeekTimeBlocks({
 function DayTableGrid({
   date,
   bookings,
+  tableOptions,
+  dayStartHour,
+  dayEndHour,
   onOpen,
 }: {
   date: string;
   bookings: BookingListItem[];
+  tableOptions: string[];
+  dayStartHour: number;
+  dayEndHour: number;
   onOpen: (booking: BookingListItem) => void;
 }) {
   const dayBookings = useMemo(
@@ -337,7 +354,7 @@ function DayTableGrid({
   );
 
   const { onSchedule, beforeOpening } = useMemo(() => {
-    const opening = DAY_VIEW_START_HOUR * 60;
+    const opening = dayStartHour * 60;
     return {
       onSchedule: dayBookings.filter(
         (booking) => startMinutes(booking) >= opening,
@@ -346,11 +363,11 @@ function DayTableGrid({
         (booking) => startMinutes(booking) < opening,
       ),
     };
-  }, [dayBookings]);
+  }, [dayBookings, dayStartHour]);
 
   const { startHour, hours, totalMinutes } = useMemo(() => {
-    const start = DAY_VIEW_START_HOUR;
-    let end = DAY_VIEW_END_HOUR;
+    const start = dayStartHour;
+    let end = dayEndHour;
     for (const booking of onSchedule) {
       const finish = startMinutes(booking) + durationMinutes(booking);
       end = Math.max(end, Math.min(Math.ceil(finish / 60), 24));
@@ -360,13 +377,14 @@ function DayTableGrid({
       hours: Array.from({ length: end - start }, (_, i) => start + i),
       totalMinutes: (end - start) * 60,
     };
-  }, [onSchedule]);
+  }, [onSchedule, dayStartHour, dayEndHour]);
 
   const tables = useMemo(() => {
+    const base = tableOptions.length > 0 ? tableOptions : DEFAULT_TABLES;
     const found = new Set(dayBookings.map(tableFor));
-    const extras = [...found].filter((name) => !DEFAULT_TABLES.includes(name));
-    return [...DEFAULT_TABLES, ...extras.sort()];
-  }, [dayBookings]);
+    const extras = [...found].filter((name) => !base.includes(name));
+    return [...base, ...extras.sort()];
+  }, [dayBookings, tableOptions]);
 
   const byTable = useMemo(() => {
     const grouped: Record<string, BookingListItem[]> = {};

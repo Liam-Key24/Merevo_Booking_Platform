@@ -20,11 +20,9 @@ import { MiniCalendar } from "@/components/dashboard/mini-calendar";
 
 const initialAction: BookingActionState = { status: "idle", message: null };
 
-/** Placeholder options until settings supply real tables / party sizes. */
-const TABLE_OPTIONS = ["1 of 1"] as const;
 const GUEST_OPTIONS = ["1 of 1"] as const;
 
-const TIME_OPTIONS = Array.from({ length: 28 }, (_, index) => {
+const FALLBACK_TIME_OPTIONS = Array.from({ length: 28 }, (_, index) => {
   const hour = 10 + Math.floor(index / 2);
   const minute = index % 2 === 0 ? "00" : "30";
   return `${String(hour).padStart(2, "0")}:${minute}`;
@@ -156,6 +154,8 @@ type BookingDetailPanelProps = {
   titleId: string;
   onClose: () => void;
   onChanged: () => void;
+  tableOptions?: string[];
+  timeOptions?: string[];
 };
 
 export function BookingDetailPanel({
@@ -164,17 +164,23 @@ export function BookingDetailPanel({
   titleId,
   onClose,
   onChanged,
+  tableOptions: tableOptionsProp = [],
+  timeOptions: timeOptionsProp,
 }: BookingDetailPanelProps) {
   const [editing, setEditing] = useState(false);
   const [allergyConfirmOpen, setAllergyConfirmOpen] = useState(false);
   const saveFormRef = useRef<HTMLFormElement>(null);
   const [preferredDate, setPreferredDate] = useState(booking.preferred_date);
+  const timeOptions =
+    timeOptionsProp && timeOptionsProp.length > 0
+      ? timeOptionsProp
+      : FALLBACK_TIME_OPTIONS;
   const [preferredTime, setPreferredTime] = useState(
     timeToInput(booking.preferred_time),
   );
   const [guestOption, setGuestOption] = useState<string>(GUEST_OPTIONS[0]);
   const [tableOption, setTableOption] = useState(
-    () => booking.assigned_table?.trim() || TABLE_OPTIONS[0],
+    () => booking.assigned_table?.trim() || tableOptionsProp[0] || "",
   );
   const [notes, setNotes] = useState(booking.notes ?? "");
   const [allergies, setAllergies] = useState<AllergyCode[]>(() =>
@@ -215,17 +221,18 @@ export function BookingDetailPanel({
 
   const tableOptions = useMemo(() => {
     const current = booking.assigned_table?.trim();
-    if (current && !TABLE_OPTIONS.includes(current as (typeof TABLE_OPTIONS)[number])) {
-      return [current, ...TABLE_OPTIONS];
+    const base = tableOptionsProp.length > 0 ? tableOptionsProp : [];
+    if (current && !base.includes(current)) {
+      return [current, ...base];
     }
-    return [...TABLE_OPTIONS];
-  }, [booking.assigned_table]);
+    return base;
+  }, [booking.assigned_table, tableOptionsProp]);
 
   const startEditing = () => {
     setPreferredDate(booking.preferred_date);
     setPreferredTime(timeToInput(booking.preferred_time));
     setGuestOption(GUEST_OPTIONS[0]);
-    setTableOption(booking.assigned_table?.trim() || TABLE_OPTIONS[0]);
+    setTableOption(booking.assigned_table?.trim() || tableOptions[0] || "");
     setNotes(booking.notes ?? "");
     setAllergies(normalizeAllergies(booking.allergies));
     setAllergyConfirmOpen(false);
@@ -398,10 +405,10 @@ export function BookingDetailPanel({
                     value={preferredTime}
                     onChange={(event) => setPreferredTime(event.target.value)}
                   >
-                    {!TIME_OPTIONS.includes(preferredTime) ? (
+                    {!timeOptions.includes(preferredTime) ? (
                       <option value={preferredTime}>{preferredTime}</option>
                     ) : null}
-                    {TIME_OPTIONS.map((option) => (
+                    {timeOptions.map((option) => (
                       <option key={option} value={option}>
                         {option}
                       </option>
