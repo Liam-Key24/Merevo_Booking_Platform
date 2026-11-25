@@ -34,7 +34,6 @@ const ALLOWED_IMAGE_TYPES = new Set([
   "image/png",
   "image/webp",
   "image/gif",
-  "image/svg+xml",
 ]);
 const MAX_IMAGE_BYTES = 5 * 1024 * 1024;
 
@@ -113,7 +112,6 @@ function fileExtension(file: File): string {
 }
 
 function imageExtension(file: File): string {
-  if (file.type === "image/svg+xml" || fileExtension(file) === "svg") return "svg";
   if (file.type === "image/png" || fileExtension(file) === "png") return "png";
   if (file.type === "image/webp" || fileExtension(file) === "webp") return "webp";
   if (file.type === "image/gif" || fileExtension(file) === "gif") return "gif";
@@ -125,6 +123,13 @@ function imageExtension(file: File): string {
     return "ico";
   }
   return "jpg";
+}
+
+function rejectSvgUpload(file: File): string | null {
+  if (file.type === "image/svg+xml" || fileExtension(file) === "svg") {
+    return "SVG uploads are blocked for security. Use PNG, JPEG, WebP, or GIF.";
+  }
+  return null;
 }
 
 async function storeBusinessAsset(
@@ -155,13 +160,16 @@ async function uploadBusinessAsset(
   file: File,
   kind: "logo" | "hero" | "gallery" | "favicon",
 ): Promise<{ path: string } | { error: string }> {
+  const svgError = rejectSvgUpload(file);
+  if (svgError) return { error: svgError };
+
   const allowed = kind === "favicon" ? FAVICON_TYPES : ALLOWED_IMAGE_TYPES;
   if (!allowed.has(file.type) && !(kind === "favicon" && fileExtension(file) === "ico")) {
     return {
       error:
         kind === "favicon"
-          ? "Use ICO, PNG, SVG, JPEG, WebP, or GIF for the favicon."
-          : "Use JPEG, PNG, WebP, GIF, or SVG images.",
+          ? "Use ICO, PNG, JPEG, WebP, or GIF for the favicon."
+          : "Use JPEG, PNG, WebP, or GIF images.",
     };
   }
   if (file.size > MAX_IMAGE_BYTES) {

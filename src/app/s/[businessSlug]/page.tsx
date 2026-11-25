@@ -2,6 +2,11 @@ import { notFound } from "next/navigation";
 import { ErrorState } from "@/components/ui";
 import { renderClientSiteLayout } from "@/lib/templates/layouts";
 import { getClientSitePagePayload } from "@/lib/templates/payload";
+import {
+  isMissingEnvError,
+  missingEnvDescription,
+  type MissingEnvError,
+} from "@/lib/env/missing";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
@@ -18,20 +23,30 @@ export default async function PublishedClientSitePage({ params }: PageProps) {
   const { businessSlug } = await params;
   let payload = null;
   let loadError = false;
+  let missingEnv: MissingEnvError | null = null;
 
   try {
     payload = await getClientSitePagePayload(businessSlug);
   } catch (error) {
     console.error("[s]", error);
     loadError = true;
+    if (isMissingEnvError(error)) {
+      missingEnv = error;
+    }
   }
 
   if (loadError) {
     return (
       <main className="mx-auto flex w-full max-w-3xl flex-1 flex-col gap-8 px-[var(--merevo-space-page)] py-14">
         <ErrorState
-          title="Site temporarily unavailable"
-          description="Please try again in a moment."
+          title={
+            missingEnv ? "Configuration needed" : "Site temporarily unavailable"
+          }
+          description={
+            missingEnv
+              ? missingEnvDescription(missingEnv)
+              : "Please try again in a moment."
+          }
         />
       </main>
     );
