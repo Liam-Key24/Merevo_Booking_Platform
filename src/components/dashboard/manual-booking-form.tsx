@@ -173,15 +173,7 @@ export function ManualBookingForm({
     };
   }, [dateOpen]);
 
-  if (services.length === 0) {
-    return (
-      <p className="text-sm text-merevo-text-muted">
-        Add an active service before creating a manual booking.
-      </p>
-    );
-  }
-
-  const defaultServiceId = services[0]!.id;
+  const [serviceId, setServiceId] = useState(services[0]?.id ?? "");
 
   const validate = (): FieldErrors => {
     const next: FieldErrors = {};
@@ -224,7 +216,7 @@ export function ManualBookingForm({
       noValidate
     >
       <input type="hidden" name="businessId" value={businessId} />
-      <input type="hidden" name="serviceId" value={defaultServiceId} />
+      <input type="hidden" name="serviceId" value={serviceId} />
       <input type="hidden" name="preferredDate" value={preferredDate} />
       <input type="hidden" name="preferredTime" value={preferredTime} />
       <input
@@ -239,6 +231,27 @@ export function ManualBookingForm({
 
       <div className="grid gap-6 lg:grid-cols-2">
         <div className="space-y-4">
+          {services.length > 0 ? (
+            <FieldShell label="Service (optional)">
+              <select
+                className={cn(selectClass, "border-merevo-border")}
+                value={serviceId}
+                onChange={(event) => setServiceId(event.target.value)}
+                aria-label="Service"
+              >
+                <option value="">Walk-in / no service</option>
+                {services.map((service) => (
+                  <option key={service.id} value={service.id}>
+                    {service.name} ({service.duration_minutes} min)
+                  </option>
+                ))}
+              </select>
+            </FieldShell>
+          ) : (
+            <p className="text-sm text-merevo-text-muted">
+              Walk-in booking — no service catalogue is set up for this site.
+            </p>
+          )}
           <Input
             label="Name"
             name="customerName"

@@ -622,9 +622,6 @@ export async function createManualBooking(
   if (!DATE_RE.test(preferredDate) || !TIME_RE.test(preferredTime)) {
     return { status: "error", message: "Enter a valid date and time." };
   }
-  if (!serviceId) {
-    return { status: "error", message: "Select a service." };
-  }
 
   const guestCount = guestCountRaw
     ? Number.parseInt(guestCountRaw, 10)
@@ -638,16 +635,25 @@ export async function createManualBooking(
 
   const supabase = await createClient();
 
-  const { data: service } = await supabase
-    .from("services")
-    .select("id, name, duration_minutes")
-    .eq("business_id", businessId)
-    .eq("id", serviceId)
-    .eq("is_active", true)
-    .maybeSingle();
+  let service: {
+    id: string;
+    name: string;
+    duration_minutes: number;
+  } | null = null;
 
-  if (!service) {
-    return { status: "error", message: "Select a valid active service." };
+  if (serviceId) {
+    const { data: matched } = await supabase
+      .from("services")
+      .select("id, name, duration_minutes")
+      .eq("business_id", businessId)
+      .eq("id", serviceId)
+      .eq("is_active", true)
+      .maybeSingle();
+
+    if (!matched) {
+      return { status: "error", message: "Select a valid active service." };
+    }
+    service = matched;
   }
 
   const { data: settings } = await supabase
@@ -665,7 +671,7 @@ export async function createManualBooking(
     .from("bookings")
     .insert({
       business_id: businessId,
-      service_id: service.id,
+      service_id: service?.id ?? null,
       customer_name: customerName,
       customer_email: customerEmail,
       customer_phone: customerPhone,
@@ -694,7 +700,7 @@ export async function createManualBooking(
     eventType: "booking.manual_created",
     auditAction: "booking.manual_create",
     payload: {
-      service_id: service.id,
+      service_id: service?.id ?? null,
       preferred_date: preferredDate,
       preferred_time: normalisedTime,
       assigned_table: assignedTable,
@@ -711,11 +717,12 @@ export async function createManualBooking(
         notificationEmail: settings.notification_email,
         customerName,
         customerEmail,
-        serviceName: service.name,
+        serviceName: service?.name ?? "Walk-in booking",
         preferredDate,
         preferredTime: normalisedTime,
         timezone: settings.timezone,
-        durationMinutes: service.duration_minutes,
+        durationMinutes:
+          service?.duration_minutes ?? settings.booking_slot_minutes ?? 30,
         bookingId: booking.id,
       });
     } catch (error) {
