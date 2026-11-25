@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useEffect } from "react";
 import { Button, Input, Textarea } from "@/components/ui";
 import {
   approveBooking,
@@ -17,6 +17,7 @@ type BookingActionsPanelProps = {
   status: BookingStatus;
   suggestedDate: string | null;
   suggestedTime: string | null;
+  onChanged?: () => void;
 };
 
 const initialState: BookingActionState = {
@@ -30,6 +31,7 @@ export function BookingActionsPanel({
   status,
   suggestedDate,
   suggestedTime,
+  onChanged,
 }: BookingActionsPanelProps) {
   const [approveState, approveAction, approvePending] = useActionState(
     approveBooking,
@@ -54,6 +56,23 @@ export function BookingActionsPanel({
     [approveState, declineState, suggestState, cancelState].find(
       (state) => state.status !== "idle",
     ) ?? null;
+
+  useEffect(() => {
+    if (
+      approveState.status === "success" ||
+      declineState.status === "success" ||
+      suggestState.status === "success" ||
+      cancelState.status === "success"
+    ) {
+      onChanged?.();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [
+    approveState.status,
+    declineState.status,
+    suggestState.status,
+    cancelState.status,
+  ]);
 
   if (!canDecide && !canCancel) {
     return (

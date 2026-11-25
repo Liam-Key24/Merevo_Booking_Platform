@@ -8,11 +8,10 @@ import {
 } from "@/components/dashboard/allergy-tags";
 import { StatusLabel, Button } from "@/components/ui";
 import {
-  cancelBooking,
-  declineBooking,
   updateBookingDetails,
   type BookingActionState,
 } from "@/lib/dashboard/booking-actions";
+import { BookingActionsPanel } from "@/components/dashboard/booking-actions-panel";
 import { normalizeAllergies, type AllergyCode } from "@/lib/allergies";
 import { cn } from "@/lib/cn";
 import type { BookingListItem } from "@/lib/dashboard/bookings";
@@ -66,21 +65,6 @@ function IconEdit({ className }: { className?: string }) {
       aria-hidden
     >
       <path d="M4 17.25V20h2.75L17.81 8.94l-2.75-2.75L4 17.25ZM20.71 7.04a1 1 0 0 0 0-1.41l-2.34-2.34a1 1 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83Z" />
-    </svg>
-  );
-}
-
-function IconCancel({ className }: { className?: string }) {
-  return (
-    <svg
-      className={className}
-      width="16"
-      height="16"
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      aria-hidden
-    >
-      <path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2Zm3.54 13.54-1.41 1.41L12 13.41l-2.13 2.13-1.41-1.41L10.59 12 8.46 9.87l1.41-1.41L12 10.59l2.13-2.13 1.41 1.41L13.41 12l2.13 2.13Z" />
     </svg>
   );
 }
@@ -187,37 +171,23 @@ export function BookingDetailPanel({
     normalizeAllergies(booking.allergies),
   );
 
-  const [cancelState, cancelAction, cancelPending] = useActionState(
-    cancelBooking,
-    initialAction,
-  );
-  const [declineState, declineAction, declinePending] = useActionState(
-    declineBooking,
-    initialAction,
-  );
   const [saveState, saveAction, savePending] = useActionState(
     updateBookingDetails,
     initialAction,
   );
 
   useEffect(() => {
-    if (
-      cancelState.status === "success" ||
-      declineState.status === "success" ||
-      saveState.status === "success"
-    ) {
+    if (saveState.status === "success") {
       onChanged();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [cancelState.status, declineState.status, saveState.status]);
+  }, [saveState.status]);
 
-  const canCancelConfirmed = booking.status === "confirmed";
-  const canCancelPending =
-    booking.status === "pending" || booking.status === "suggested";
-  const feedback =
-    [cancelState, declineState, saveState].find(
-      (state) => state.status !== "idle",
-    ) ?? null;
+  const feedback = saveState.status !== "idle" ? saveState : null;
+  const showDecisionActions =
+    booking.status === "pending" ||
+    booking.status === "suggested" ||
+    booking.status === "confirmed";
 
   const tableOptions = useMemo(() => {
     const current = booking.assigned_table?.trim();
@@ -262,7 +232,7 @@ export function BookingDetailPanel({
   };
 
   const displayedAllergies = editing ? allergies : booking.allergies;
-  const actionPending = savePending || cancelPending || declinePending;
+  const actionPending = savePending;
 
   const guestCountForSave =
     guestOption === "1 of 1"
@@ -472,6 +442,19 @@ export function BookingDetailPanel({
             </Section>
           ) : null}
 
+          {!editing && showDecisionActions ? (
+            <Section title="Decide">
+              <BookingActionsPanel
+                businessId={businessId}
+                bookingId={booking.id}
+                status={booking.status}
+                suggestedDate={booking.suggested_date}
+                suggestedTime={booking.suggested_time}
+                onChanged={onChanged}
+              />
+            </Section>
+          ) : null}
+
           {feedback ? (
             <p
               className={
@@ -528,39 +511,6 @@ export function BookingDetailPanel({
             </div>
           ) : (
             <div className="flex items-center gap-3">
-              {canCancelConfirmed ? (
-                <form action={cancelAction} className="flex-1">
-                  <input type="hidden" name="businessId" value={businessId} />
-                  <input type="hidden" name="bookingId" value={booking.id} />
-                  <Button
-                    type="submit"
-                    variant="danger"
-                    fullWidth
-                    disabled={cancelPending}
-                  >
-                    <IconCancel />
-                    {cancelPending ? "Cancelling…" : "Cancel"}
-                  </Button>
-                </form>
-              ) : null}
-              {canCancelPending ? (
-                <form action={declineAction} className="flex-1">
-                  <input type="hidden" name="businessId" value={businessId} />
-                  <input type="hidden" name="bookingId" value={booking.id} />
-                  <Button
-                    type="submit"
-                    variant="danger"
-                    fullWidth
-                    disabled={declinePending}
-                  >
-                    <IconCancel />
-                    {declinePending ? "Cancelling…" : "Cancel"}
-                  </Button>
-                </form>
-              ) : null}
-              {!canCancelConfirmed && !canCancelPending ? (
-                <div className="flex-1" />
-              ) : null}
               <Button
                 type="button"
                 variant="secondary"
