@@ -43,13 +43,13 @@ export default async function BusinessMembersSettingsPage({ params }: PageProps)
   return (
     <SettingsPanel
       title="Members"
-      description="Add users who have already signed up, then set owner or staff."
+      description="Invite the client to their CRM. New emails get a login invite (or a one-time temporary password if email invite is unavailable)."
     >
       <div className="space-y-6">
         {(membershipRows ?? []).length === 0 ? (
           <EmptyState
             title="No members"
-            description="Add an existing user by email after they have signed up."
+            description="Invite the client by email with owner or staff access for this site."
           />
         ) : (
           <ul className="space-y-4">

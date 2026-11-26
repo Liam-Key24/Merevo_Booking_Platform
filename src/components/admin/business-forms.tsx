@@ -316,11 +316,17 @@ export function AddMembershipForm({ businessId }: { businessId: string }) {
   return (
     <form action={action} className="space-y-3">
       <input type="hidden" name="businessId" value={businessId} />
-      <Input label="User email" name="email" type="email" required />
+      <Input
+        label="Client email"
+        name="email"
+        type="email"
+        required
+        hint="Invites a new login if they are not signed up yet."
+      />
       <Select
         label="Role"
         name="role"
-        defaultValue="staff"
+        defaultValue="owner"
         options={[
           { value: "owner", label: "Owner" },
           { value: "staff", label: "Staff" },
@@ -328,7 +334,7 @@ export function AddMembershipForm({ businessId }: { businessId: string }) {
       />
       <Feedback state={state} />
       <Button type="submit" disabled={pending}>
-        {pending ? "Adding…" : "Add member"}
+        {pending ? "Inviting…" : "Invite member"}
       </Button>
     </form>
   );
