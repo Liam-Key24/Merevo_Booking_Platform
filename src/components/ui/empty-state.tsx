@@ -33,7 +33,10 @@ export function EmptyState({
           className="flex h-12 w-12 items-center justify-center rounded-full bg-merevo-surface text-merevo-blue"
           aria-hidden
         >
-          <span className="text-xl">◇</span>
+          <svg viewBox="0 0 24 24" className="size-6" fill="none" stroke="currentColor" strokeWidth="1.8">
+            <path d="M4 8h16v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8Z" strokeLinejoin="round" />
+            <path d="M8 8V6a4 4 0 0 1 8 0v2" strokeLinecap="round" />
+          </svg>
         </div>
       )}
       <div className="space-y-1">

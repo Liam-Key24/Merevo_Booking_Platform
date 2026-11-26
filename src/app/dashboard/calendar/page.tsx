@@ -1,4 +1,5 @@
-import { ErrorState } from "@/components/ui";
+import Link from "next/link";
+import { Button, ErrorState } from "@/components/ui";
 import { BookingCalendar } from "@/components/dashboard/booking-calendar";
 import {
   calendarRange,
@@ -79,7 +80,17 @@ export default async function DashboardCalendarPage({ searchParams }: PageProps)
 
       <section className="w-full rounded-merevo border border-merevo-border bg-merevo-surface p-4 sm:p-6">
         {error ? (
-          <ErrorState title="Could not load calendar" description={error} />
+          <ErrorState
+            title="Could not load calendar"
+            description={error}
+            action={
+              <Link href="/dashboard/calendar">
+                <Button type="button" variant="secondary">
+                  Try again
+                </Button>
+              </Link>
+            }
+          />
         ) : (
           <BookingCalendar
             businessId={context.business.id}

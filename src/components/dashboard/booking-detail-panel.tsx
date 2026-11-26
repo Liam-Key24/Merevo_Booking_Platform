@@ -262,6 +262,7 @@ export function BookingDetailPanel({
   };
 
   const displayedAllergies = editing ? allergies : booking.allergies;
+  const actionPending = savePending || cancelPending || declinePending;
 
   const guestCountForSave =
     guestOption === "1 of 1"
@@ -280,12 +281,17 @@ export function BookingDetailPanel({
         className="absolute inset-0 cursor-pointer bg-[#143a44]/45 backdrop-blur-[2px]"
         aria-label="Close booking details"
         onClick={onClose}
+        disabled={actionPending}
       />
       <aside
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}
-        className="relative z-10 flex h-full w-full max-w-md flex-col overflow-hidden rounded-merevo border border-merevo-border bg-merevo-surface shadow-[0_24px_80px_rgba(20,58,68,0.28)]"
+        aria-busy={actionPending || undefined}
+        className={cn(
+          "relative z-10 flex h-full w-full max-w-md flex-col overflow-hidden rounded-merevo border border-merevo-border bg-merevo-surface shadow-[0_24px_80px_rgba(20,58,68,0.28)]",
+          actionPending && "opacity-90",
+        )}
       >
         <header className="flex items-start justify-between gap-3 border-b border-[color-mix(in_srgb,var(--merevo-accent)_28%,transparent)] px-5 py-4">
           <div className="min-w-0 space-y-2">
