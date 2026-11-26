@@ -1,50 +1,31 @@
 import Link from "next/link";
-import { Badge, Button, Card } from "@/components/ui";
+import { Button } from "@/components/ui";
 
 export default function HomePage() {
   return (
-    <main className="mx-auto flex w-full max-w-3xl flex-1 flex-col gap-10 px-[var(--merevo-space-page)] py-16">
+    <main className="mx-auto flex w-full max-w-xl flex-1 flex-col justify-center gap-8 px-[var(--merevo-space-page)] py-16">
       <header className="space-y-4">
-        <Badge tone="teal">Merevo Booking Platform</Badge>
-        <h1 className="max-w-xl text-4xl font-semibold tracking-tight text-merevo-text sm:text-5xl">
+        <p className="text-sm font-semibold tracking-wide text-merevo-teal uppercase">
           Merevo
+        </p>
+        <h1 className="text-4xl font-semibold tracking-tight text-merevo-text sm:text-5xl">
+          Booking for your business
         </h1>
-        <p className="max-w-lg text-base leading-relaxed text-merevo-text-muted sm:text-lg">
-          Shared booking-request platform for Merevo client sites. Simple
-          requests, clear decisions, and confirmed bookings — without live
-          availability or payment complexity in this foundation phase.
+        <p className="max-w-md text-base leading-relaxed text-merevo-text-muted">
+          Sign in to manage requests and bookings. Public booking links are on
+          each client site.
         </p>
       </header>
 
-      <Card
-        title="Route placeholders"
-        description="Foundation routes for later phases. No booking logic is wired yet."
-      >
-        <ul className="grid gap-3 sm:grid-cols-2">
-          {[
-            { href: "/book/demo-salon", label: "Public booking form" },
-            { href: "/login", label: "Client login" },
-            { href: "/dashboard", label: "Client dashboard" },
-            { href: "/admin", label: "Merevo admin" },
-          ].map((item) => (
-            <li key={item.href}>
-              <Link
-                href={item.href}
-                className="flex items-center justify-between rounded-merevo-sm border border-merevo-border bg-merevo-surface-muted px-4 py-3 text-sm font-medium text-merevo-text transition-colors hover:border-merevo-soft-blue hover:bg-merevo-surface"
-              >
-                <span>{item.label}</span>
-                <span className="text-merevo-text-muted">{item.href}</span>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </Card>
-
       <div className="flex flex-wrap gap-3">
-        <Button disabled>Booking flow coming soon</Button>
-        <Button variant="secondary" disabled>
-          Design tokens active
-        </Button>
+        <Link href="/login">
+          <Button type="button">Sign in</Button>
+        </Link>
+        <Link href="/login?next=/admin">
+          <Button type="button" variant="secondary">
+            Merevo admin
+          </Button>
+        </Link>
       </div>
     </main>
   );

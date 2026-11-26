@@ -201,7 +201,7 @@ export function HospitalityPublicBookingForm({
     return (
       <div
         className={cn(
-          "space-y-3 rounded-merevo px-5 py-6",
+          "space-y-4 rounded-merevo px-5 py-6",
           embed
             ? cn(
                 CLIENT_SURFACE_PANEL,
@@ -211,21 +211,42 @@ export function HospitalityPublicBookingForm({
         )}
         role="status"
       >
-        <h2
-          className={cn(
-            "text-lg font-semibold",
-            embed ? "text-[var(--client-text)]" : "text-merevo-text",
-          )}
+        <div className="space-y-3">
+          <h2
+            className={cn(
+              "text-lg font-semibold",
+              embed ? "text-[var(--client-text)]" : "text-merevo-text",
+            )}
+          >
+            Request received
+          </h2>
+          <p
+            className={cn(
+              "text-sm",
+              embed ? CLIENT_SURFACE_MUTED : "text-merevo-text-muted",
+            )}
+          >
+            {state.message}
+          </p>
+          <p
+            className={cn(
+              "text-sm",
+              embed ? CLIENT_SURFACE_MUTED : "text-merevo-text-muted",
+            )}
+          >
+            {businessName} will review your request. You have not been confirmed
+            yet.
+          </p>
+        </div>
+        <Button
+          type="button"
+          variant="secondary"
+          onClick={() => {
+            window.location.reload();
+          }}
         >
-          Request received
-        </h2>
-        <p className={cn("text-sm", embed ? CLIENT_SURFACE_MUTED : "text-merevo-text-muted")}>
-          {state.message}
-        </p>
-        <p className={cn("text-sm", embed ? CLIENT_SURFACE_MUTED : "text-merevo-text-muted")}>
-          {businessName} will review your request. You have not been confirmed
-          yet.
-        </p>
+          Submit another request
+        </Button>
       </div>
     );
   }

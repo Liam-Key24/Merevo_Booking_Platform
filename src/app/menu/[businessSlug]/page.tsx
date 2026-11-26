@@ -1,4 +1,5 @@
-import { EmptyState, ErrorState } from "@/components/ui";
+import Link from "next/link";
+import { Button, EmptyState, ErrorState } from "@/components/ui";
 import { ClientSiteTheme } from "@/components/client-site/client-site-theme";
 import { HospitalityBookingSection } from "@/components/client-site/hospitality-booking-section";
 import { MenuPdfViewer } from "@/components/client-site/menu-pdf-viewer";
@@ -23,7 +24,17 @@ export default async function ClientMenuPage({ params }: PageProps) {
   if (loadError) {
     return (
       <main className="mx-auto flex w-full max-w-3xl flex-1 flex-col gap-8 px-[var(--merevo-space-page)] py-14">
-        <ErrorState title="Unable to load menu" description={loadError} />
+        <ErrorState
+          title="Unable to load menu"
+          description={loadError}
+          action={
+            <Link href="/">
+              <Button type="button" variant="secondary">
+                Home
+              </Button>
+            </Link>
+          }
+        />
       </main>
     );
   }
@@ -33,7 +44,14 @@ export default async function ClientMenuPage({ params }: PageProps) {
       <main className="mx-auto flex w-full max-w-3xl flex-1 flex-col gap-8 px-[var(--merevo-space-page)] py-14">
         <EmptyState
           title="Menu unavailable"
-          description="This business has no publishable template assigned yet."
+          description="This site is not ready to publish yet."
+          action={
+            <Link href="/">
+              <Button type="button" variant="secondary">
+                Home
+              </Button>
+            </Link>
+          }
         />
       </main>
     );
@@ -75,7 +93,7 @@ export default async function ClientMenuPage({ params }: PageProps) {
         {branding.menu_pdfs.length === 0 ? (
           <EmptyState
             title="Menus coming soon"
-            description="Upload menu PDFs in Admin → Settings → Menus."
+            description="Check back shortly, or reserve a table below."
           />
         ) : (
           <MenuPdfViewer documents={branding.menu_pdfs} />
