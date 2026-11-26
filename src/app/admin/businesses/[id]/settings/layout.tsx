@@ -35,7 +35,7 @@ export default async function BusinessSettingsLayout({
     (business.dashboard_mode as DashboardMode | undefined) ?? "hospitality";
 
   return (
-    <main className="mx-auto flex w-full max-w-6xl flex-1 flex-col gap-6 px-[var(--meridian-space-page)] py-8">
+    <main className="mx-auto flex w-full max-w-6xl flex-1 flex-col gap-6 px-[var(--merevo-space-page)] py-8">
       <header className="space-y-3">
         <div className="flex flex-wrap items-center gap-3 text-sm">
           <Link

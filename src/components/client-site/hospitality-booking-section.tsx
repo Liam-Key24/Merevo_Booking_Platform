@@ -23,7 +23,7 @@ export function HospitalityBookingSection({
       id={id}
       className={
         className ??
-        "mx-auto max-w-3xl scroll-mt-8 px-[var(--meridian-space-page)] py-16"
+        "mx-auto max-w-3xl scroll-mt-8 px-[var(--merevo-space-page)] py-16"
       }
     >
       <div className="mb-8 space-y-3 text-center">

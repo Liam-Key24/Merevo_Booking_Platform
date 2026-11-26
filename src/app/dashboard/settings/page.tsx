@@ -22,7 +22,7 @@ export default async function DashboardSettingsPage() {
 
   if (!context) {
     return (
-      <main className="flex w-full flex-1 flex-col gap-8 px-[var(--meridian-space-page)] py-10 lg:pl-12">
+      <main className="flex w-full flex-1 flex-col gap-8 px-[var(--merevo-space-page)] py-10 lg:pl-12">
         <ErrorState
           title="No business membership"
           description="Your account is signed in but not linked to an active business."
@@ -41,7 +41,7 @@ export default async function DashboardSettingsPage() {
   const isAppointments = context.dashboardMode === "appointments";
 
   return (
-    <main className="flex w-full flex-1 flex-col gap-8 px-[var(--meridian-space-page)] py-10 lg:pl-12">
+    <main className="flex w-full flex-1 flex-col gap-8 px-[var(--merevo-space-page)] py-10 lg:pl-12">
       <header className="space-y-2">
         <h1 className="text-3xl font-semibold tracking-tight text-merevo-text">
           {isAppointments ? "Appointment settings" : "Business settings"}

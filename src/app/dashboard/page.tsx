@@ -28,7 +28,7 @@ export default async function DashboardHomePage({ searchParams }: PageProps) {
 
   if (!context) {
     return (
-      <main className="flex flex-1 flex-col gap-8 px-[var(--meridian-space-page)] py-10">
+      <main className="flex flex-1 flex-col gap-8 px-[var(--merevo-space-page)] py-10">
         <ErrorState
           title="No business membership"
           description="Your account is signed in but not linked to an active business."
@@ -47,7 +47,7 @@ export default async function DashboardHomePage({ searchParams }: PageProps) {
 
     if (error || !metrics) {
       return (
-        <main className="flex flex-1 flex-col gap-8 px-[var(--meridian-space-page)] py-10">
+        <main className="flex flex-1 flex-col gap-8 px-[var(--merevo-space-page)] py-10">
           <ErrorState
             title="Could not load appointments dashboard"
             description={error ?? "Unknown error"}
@@ -72,7 +72,7 @@ export default async function DashboardHomePage({ searchParams }: PageProps) {
 
   if (error || !metrics) {
     return (
-      <main className="flex flex-1 flex-col gap-8 px-[var(--meridian-space-page)] py-10">
+      <main className="flex flex-1 flex-col gap-8 px-[var(--merevo-space-page)] py-10">
         <ErrorState
           title="Could not load dashboard"
           description={error ?? "Unknown error"}

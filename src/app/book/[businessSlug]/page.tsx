@@ -21,7 +21,7 @@ export default async function BookPage({ params }: BookPageProps) {
 
   if (loadError) {
     return (
-      <main className="mx-auto flex w-full max-w-xl flex-1 flex-col gap-8 px-[var(--meridian-space-page)] py-14">
+      <main className="mx-auto flex w-full max-w-xl flex-1 flex-col gap-8 px-[var(--merevo-space-page)] py-14">
         <ErrorState title="Unable to load booking" description={loadError} />
       </main>
     );
@@ -29,7 +29,7 @@ export default async function BookPage({ params }: BookPageProps) {
 
   if (!page) {
     return (
-      <main className="mx-auto flex w-full max-w-xl flex-1 flex-col gap-8 px-[var(--meridian-space-page)] py-14">
+      <main className="mx-auto flex w-full max-w-xl flex-1 flex-col gap-8 px-[var(--merevo-space-page)] py-14">
         <EmptyState
           title="Business not found"
           description="This booking page is unavailable or the business is not accepting Merevo requests."
@@ -39,7 +39,7 @@ export default async function BookPage({ params }: BookPageProps) {
   }
 
   return (
-    <main className="mx-auto flex w-full max-w-xl flex-1 flex-col gap-8 px-[var(--meridian-space-page)] py-14">
+    <main className="mx-auto flex w-full max-w-xl flex-1 flex-col gap-8 px-[var(--merevo-space-page)] py-14">
       <BookingWidget
         businessName={page.business.name}
         businessSlug={page.business.slug}

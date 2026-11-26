@@ -9,7 +9,7 @@ export default async function StaffPage() {
   );
 
   return (
-    <main className="flex flex-1 flex-col gap-8 px-[var(--meridian-space-page)] py-8 lg:py-10">
+    <main className="flex flex-1 flex-col gap-8 px-[var(--merevo-space-page)] py-8 lg:py-10">
       <header className="space-y-2">
         <h2 className="text-2xl font-semibold tracking-tight text-merevo-text">
           Staff

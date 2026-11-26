@@ -27,7 +27,7 @@ export default async function TemplatePreviewPage({ params }: PageProps) {
 
   if (loadError) {
     return (
-      <main className="mx-auto flex w-full max-w-3xl flex-1 flex-col gap-8 px-[var(--meridian-space-page)] py-14">
+      <main className="mx-auto flex w-full max-w-3xl flex-1 flex-col gap-8 px-[var(--merevo-space-page)] py-14">
         <ErrorState title="Unable to load preview" description={loadError} />
       </main>
     );
@@ -35,7 +35,7 @@ export default async function TemplatePreviewPage({ params }: PageProps) {
 
   if (!payload) {
     return (
-      <main className="mx-auto flex w-full max-w-3xl flex-1 flex-col gap-8 px-[var(--meridian-space-page)] py-14">
+      <main className="mx-auto flex w-full max-w-3xl flex-1 flex-col gap-8 px-[var(--merevo-space-page)] py-14">
         <EmptyState
           title="No publishable template"
           description="This business has no assigned active Merevo template matching its dashboard mode. Assign Hospitality Classic under Admin → Settings → Template."
@@ -47,7 +47,7 @@ export default async function TemplatePreviewPage({ params }: PageProps) {
   const rendered = renderClientSiteLayout(payload, { preview: true });
   if (!rendered) {
     return (
-      <main className="mx-auto flex w-full max-w-3xl flex-1 flex-col gap-8 px-[var(--meridian-space-page)] py-14">
+      <main className="mx-auto flex w-full max-w-3xl flex-1 flex-col gap-8 px-[var(--merevo-space-page)] py-14">
         <EmptyState
           title="Unknown template layout"
           description={`No layout is registered for slug "${payload.template.slug}".`}

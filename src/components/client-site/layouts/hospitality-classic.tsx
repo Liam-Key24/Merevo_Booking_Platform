@@ -70,7 +70,7 @@ function SiteHeader({
 
   return (
     <header className="border-b border-[color-mix(in_srgb,var(--client-text)_8%,transparent)]">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-[var(--meridian-space-page)] py-5">
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-[var(--merevo-space-page)] py-5">
         <a href="#top" className="flex items-center gap-3">
           {logoUrl ? (
             // eslint-disable-next-line @next/next/no-img-element
@@ -157,7 +157,7 @@ export function HospitalityClassicLayout({
       className="min-h-full bg-[var(--client-background)] text-[var(--client-text)] [font-family:var(--client-font-body)] [&_h1]:[font-family:var(--client-font-heading)] [&_h2]:[font-family:var(--client-font-heading)] [&_blockquote]:[font-family:var(--client-font-heading)]"
     >
       {preview ? (
-        <div className="border-b border-merevo-border bg-merevo-surface px-[var(--meridian-space-page)] py-2 text-center text-xs text-merevo-text-muted">
+        <div className="border-b border-merevo-border bg-merevo-surface px-[var(--merevo-space-page)] py-2 text-center text-xs text-merevo-text-muted">
           Template preview — not published
         </div>
       ) : null}
@@ -177,7 +177,7 @@ export function HospitalityClassicLayout({
         {showHero ? (
         <>
         {/* Hero */}
-        <section className="mx-auto grid max-w-6xl gap-10 px-[var(--meridian-space-page)] py-16 lg:grid-cols-2 lg:items-center lg:py-24">
+        <section className="mx-auto grid max-w-6xl gap-10 px-[var(--merevo-space-page)] py-16 lg:grid-cols-2 lg:items-center lg:py-24">
           <div className="space-y-8">
             <div className="space-y-5">
               <h1 className="font-serif text-4xl leading-tight tracking-tight sm:text-5xl lg:text-6xl whitespace-pre-line">
@@ -219,7 +219,7 @@ export function HospitalityClassicLayout({
         {/* Story */}
         <section
           id="about"
-          className="mx-auto grid max-w-6xl scroll-mt-8 gap-10 px-[var(--meridian-space-page)] py-16 lg:grid-cols-2 lg:items-center"
+          className="mx-auto grid max-w-6xl scroll-mt-8 gap-10 px-[var(--merevo-space-page)] py-16 lg:grid-cols-2 lg:items-center"
         >
           <div className="overflow-hidden rounded-3xl bg-[color-mix(in_srgb,var(--client-accent)_12%,var(--client-background))]">
             {gallery[0] ? (
@@ -257,7 +257,7 @@ export function HospitalityClassicLayout({
         {/* Gallery */}
         <section
           id="gallery"
-          className="mx-auto max-w-6xl scroll-mt-8 px-[var(--meridian-space-page)] py-16"
+          className="mx-auto max-w-6xl scroll-mt-8 px-[var(--merevo-space-page)] py-16"
         >
           <div className="mb-10 space-y-3 text-center">
             <h2 className="font-serif text-3xl tracking-tight sm:text-4xl whitespace-pre-line">
@@ -324,7 +324,7 @@ export function HospitalityClassicLayout({
 
         {showHero ? (
         <section className="bg-[color-mix(in_srgb,var(--client-text)_4%,var(--client-background))] py-16">
-          <div className="mx-auto max-w-6xl px-[var(--meridian-space-page)]">
+          <div className="mx-auto max-w-6xl px-[var(--merevo-space-page)]">
             <h2 className="mb-10 text-center font-serif text-3xl tracking-tight sm:text-4xl whitespace-pre-line">
               {copy.testimonials_heading}
             </h2>
@@ -353,7 +353,7 @@ export function HospitalityClassicLayout({
         id="contact"
         className="scroll-mt-8 bg-[var(--client-text)] text-[var(--client-background)]"
       >
-        <div className="mx-auto grid max-w-6xl gap-10 px-[var(--meridian-space-page)] py-14 md:grid-cols-4">
+        <div className="mx-auto grid max-w-6xl gap-10 px-[var(--merevo-space-page)] py-14 md:grid-cols-4">
           <div className="space-y-3 md:col-span-1">
             <p className="font-serif text-lg">{business.name}</p>
             <p className="text-sm text-[color-mix(in_srgb,var(--client-background)_72%,transparent)] whitespace-pre-line">
@@ -427,7 +427,7 @@ export function HospitalityClassicLayout({
           </div>
         </div>
         <div className="border-t border-[color-mix(in_srgb,var(--client-background)_12%,transparent)]">
-          <div className="mx-auto flex max-w-6xl flex-col gap-3 px-[var(--meridian-space-page)] py-5 text-xs text-[color-mix(in_srgb,var(--client-background)_55%,transparent)] sm:flex-row sm:items-center sm:justify-between">
+          <div className="mx-auto flex max-w-6xl flex-col gap-3 px-[var(--merevo-space-page)] py-5 text-xs text-[color-mix(in_srgb,var(--client-background)_55%,transparent)] sm:flex-row sm:items-center sm:justify-between">
             <p>
               © {new Date().getFullYear()} {business.name}. Powered by Merevo.
             </p>
