@@ -27,6 +27,8 @@ type BookingsExplorerProps = {
   q: string;
   error: string | null;
   initialOpenId?: string | null;
+  tableOptions?: string[];
+  timeOptions?: string[];
 };
 
 const statuses: Array<{ value: BookingStatus | "all"; label: string }> = [
@@ -78,6 +80,8 @@ export function BookingsExplorer({
   businessId,
   bookings,
   period,
+  tableOptions,
+  timeOptions,
   status,
   from,
   to,
@@ -308,6 +312,8 @@ export function BookingsExplorer({
           businessId={businessId}
           booking={selected}
           titleId={titleId}
+          tableOptions={tableOptions}
+          timeOptions={timeOptions}
           onClose={() => setSelectedId(null)}
           onChanged={() => {
             setSelectedId(null);

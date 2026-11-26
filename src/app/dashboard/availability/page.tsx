@@ -1,4 +1,5 @@
-import { Card, EmptyState } from "@/components/ui";
+import Link from "next/link";
+import { Button, Card, EmptyState } from "@/components/ui";
 import {
   WEEKDAY_LABELS,
   WEEKDAYS,
@@ -24,16 +25,24 @@ export default async function AvailabilityPage() {
       ? parseWeeklyHours(settings.opening_hours)
       : defaultWeeklyHours();
 
+  const canEdit = context.role === "owner" || context.isMerevoAdmin;
+
   return (
     <main className="flex flex-1 flex-col gap-8 px-[var(--merevo-space-page)] py-8 lg:py-10">
-      <header className="space-y-2">
-        <h2 className="text-2xl font-semibold tracking-tight text-merevo-text">
-          Availability
-        </h2>
-        <p className="max-w-2xl text-merevo-text-muted">
-          Business opening hours used for appointment scheduling at{" "}
-          {context.business.name}.
-        </p>
+      <header className="flex flex-wrap items-end justify-between gap-4">
+        <div className="space-y-2">
+          <h2 className="text-2xl font-semibold tracking-tight text-merevo-text">
+            Availability
+          </h2>
+          <p className="max-w-2xl text-merevo-text-muted">
+            Opening hours for {context.business.name}.
+          </p>
+        </div>
+        {canEdit ? (
+          <Link href="/dashboard/settings">
+            <Button type="button">Edit in settings</Button>
+          </Link>
+        ) : null}
       </header>
 
       <Card title="Weekly availability">
@@ -79,7 +88,16 @@ export default async function AvailabilityPage() {
         ) : (
           <EmptyState
             title="No external booking link"
-            description="Optional. Configure in appointment settings when you use another booking system."
+            description="Optional. Add one in settings if you also use another booking system."
+            action={
+              canEdit ? (
+                <Link href="/dashboard/settings">
+                  <Button type="button" variant="secondary">
+                    Open settings
+                  </Button>
+                </Link>
+              ) : undefined
+            }
           />
         )}
       </Card>

@@ -12,6 +12,10 @@ import {
 import { type AllergyCode } from "@/lib/allergies";
 import { cn } from "@/lib/cn";
 import { todayLocalIso } from "@/lib/dashboard/calendar";
+import {
+  timeSlotsForDate,
+  type WeeklyHours,
+} from "@/lib/dashboard/hospitality-settings";
 
 type ServiceOption = {
   id: string;
@@ -24,6 +28,9 @@ type ManualBookingFormProps = {
   services: ServiceOption[];
   defaultDate?: string;
   defaultTime?: string;
+  tableOptions?: string[];
+  openingHours?: WeeklyHours;
+  bookingSlotMinutes?: number;
 };
 
 const initialState: BookingActionState = {
@@ -31,9 +38,7 @@ const initialState: BookingActionState = {
   message: null,
 };
 
-const TABLE_OPTIONS = ["1 of 1"] as const;
-
-const TIME_OPTIONS = Array.from({ length: 60 }, (_, index) => {
+const FALLBACK_TIME_OPTIONS = Array.from({ length: 60 }, (_, index) => {
   const hour = 8 + Math.floor(index / 4);
   const minute = (index % 4) * 15;
   return `${String(hour).padStart(2, "0")}:${String(minute).padStart(2, "0")}`;
@@ -102,6 +107,9 @@ export function ManualBookingForm({
   services,
   defaultDate,
   defaultTime,
+  tableOptions = [],
+  openingHours,
+  bookingSlotMinutes = 15,
 }: ManualBookingFormProps) {
   const [state, formAction, pending] = useActionState(
     createManualBooking,
@@ -117,13 +125,16 @@ export function ManualBookingForm({
   const [preferredDate, setPreferredDate] = useState(
     defaultDate ?? todayLocalIso(),
   );
-  const [preferredTime, setPreferredTime] = useState(
-    defaultTime && TIME_OPTIONS.includes(defaultTime)
-      ? defaultTime
-      : defaultTime?.slice(0, 5) && TIME_OPTIONS.includes(defaultTime.slice(0, 5))
-        ? defaultTime.slice(0, 5)
-        : "12:00",
-  );
+  const timeOptions = openingHours
+    ? timeSlotsForDate(openingHours, preferredDate, bookingSlotMinutes)
+    : FALLBACK_TIME_OPTIONS;
+  const resolvedTimeOptions =
+    timeOptions.length > 0 ? timeOptions : FALLBACK_TIME_OPTIONS;
+  const [preferredTime, setPreferredTime] = useState(() => {
+    const candidate = defaultTime?.slice(0, 5) ?? "";
+    if (candidate && resolvedTimeOptions.includes(candidate)) return candidate;
+    return resolvedTimeOptions[0] ?? "12:00";
+  });
   const [guestCount, setGuestCount] = useState("1");
   const [assignedTable, setAssignedTable] = useState("");
   const [notes, setNotes] = useState("");
@@ -132,6 +143,17 @@ export function ManualBookingForm({
   const [sendConfirmation, setSendConfirmation] = useState(true);
   const [dateOpen, setDateOpen] = useState(false);
   const [errors, setErrors] = useState<FieldErrors>({});
+
+  function selectDate(nextDate: string) {
+    setPreferredDate(nextDate);
+    const nextSlots = openingHours
+      ? timeSlotsForDate(openingHours, nextDate, bookingSlotMinutes)
+      : FALLBACK_TIME_OPTIONS;
+    const slots = nextSlots.length > 0 ? nextSlots : FALLBACK_TIME_OPTIONS;
+    if (!slots.includes(preferredTime)) {
+      setPreferredTime(slots[0] ?? "");
+    }
+  }
 
   useEffect(() => {
     if (!dateOpen) return;
@@ -172,7 +194,7 @@ export function ManualBookingForm({
     if (!/^\d{4}-\d{2}-\d{2}$/.test(preferredDate)) {
       next.preferredDate = "Choose a date.";
     }
-    if (!TIME_OPTIONS.includes(preferredTime)) {
+    if (!resolvedTimeOptions.includes(preferredTime)) {
       next.preferredTime = "Choose a time.";
     }
     const guests = Number.parseInt(guestCount, 10);
@@ -300,7 +322,7 @@ export function ManualBookingForm({
                   <MiniCalendar
                     value={preferredDate}
                     onChange={(next) => {
-                      setPreferredDate(next);
+                      selectDate(next);
                       setDateOpen(false);
                       setErrors((prev) => ({ ...prev, preferredDate: undefined }));
                     }}
@@ -325,10 +347,10 @@ export function ManualBookingForm({
               }}
               aria-invalid={errors.preferredTime ? true : undefined}
             >
-              {!TIME_OPTIONS.includes(preferredTime) ? (
+              {!resolvedTimeOptions.includes(preferredTime) ? (
                 <option value={preferredTime}>{preferredTime}</option>
               ) : null}
-              {TIME_OPTIONS.map((option) => (
+              {resolvedTimeOptions.map((option) => (
                 <option key={option} value={option}>
                   {option}
                 </option>
@@ -352,7 +374,7 @@ export function ManualBookingForm({
               onChange={(event) => setAssignedTable(event.target.value)}
             >
               <option value="">None (optional)</option>
-              {TABLE_OPTIONS.map((option) => (
+              {tableOptions.map((option) => (
                 <option key={option} value={option}>
                   {option}
                 </option>

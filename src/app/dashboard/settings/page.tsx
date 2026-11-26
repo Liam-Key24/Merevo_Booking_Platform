@@ -67,15 +67,30 @@ export default async function DashboardSettingsPage() {
         </Card>
       ) : isAppointments ? (
         <AppointmentsSettingsPanel
+          businessId={context.business.id}
           businessName={context.business.name}
           notificationEmail={settings.notification_email}
           contactPhone={settings.contact_phone}
           timezone={settings.timezone}
           bookingMode={settings.booking_mode}
           externalBookingUrl={settings.external_booking_url}
+          openingHours={
+            settings.opening_hours &&
+            typeof settings.opening_hours === "object" &&
+            Object.keys(settings.opening_hours as object).length > 0
+              ? parseWeeklyHours(settings.opening_hours)
+              : defaultWeeklyHours()
+          }
+          bookingSlotMinutes={settings.booking_slot_minutes ?? 15}
+          canEdit={context.role === "owner" || context.isMerevoAdmin}
         />
       ) : (
         <Card>
+          {context.role !== "owner" && !context.isMerevoAdmin ? (
+            <p className="mb-6 rounded-merevo-sm border border-merevo-border bg-merevo-surface-muted px-4 py-3 text-sm text-merevo-text-muted">
+              View only — ask a business owner to change these settings.
+            </p>
+          ) : null}
           <BusinessSettingsForm
             businessId={context.business.id}
             name={context.business.name}

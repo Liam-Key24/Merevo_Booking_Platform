@@ -259,3 +259,72 @@ export function holidaysFromForm(formData: FormData): HolidayEntry[] | null {
   }
   return holidays.sort((a, b) => a.date.localeCompare(b.date));
 }
+
+/** Expand seat counts + custom tables into assignable table labels for staff. */
+export function buildTableLabels(input: {
+  tables2Seat?: number | null;
+  tables4Seat?: number | null;
+  tables6Seat?: number | null;
+  customTables?: CustomTable[];
+}): string[] {
+  const labels: string[] = [];
+  const pushCounted = (count: number, seats: number) => {
+    const n = Math.max(0, Math.floor(count));
+    for (let i = 1; i <= n; i += 1) {
+      labels.push(`${seats}-seat ${i}`);
+    }
+  };
+  pushCounted(input.tables2Seat ?? 0, 2);
+  pushCounted(input.tables4Seat ?? 0, 4);
+  pushCounted(input.tables6Seat ?? 0, 6);
+  for (const table of input.customTables ?? []) {
+    const name = table.label.trim();
+    if (name) labels.push(name);
+  }
+  return labels;
+}
+
+function timeToMinutes(value: string): number {
+  const [h, m] = value.split(":").map(Number);
+  return (h ?? 0) * 60 + (m ?? 0);
+}
+
+function minutesToTime(total: number): string {
+  const hour = Math.floor(total / 60) % 24;
+  const minute = total % 60;
+  return `${String(hour).padStart(2, "0")}:${String(minute).padStart(2, "0")}`;
+}
+
+/** HH:MM slots between open and close using booking_slot_minutes. */
+export function buildTimeSlots(
+  open: string,
+  close: string,
+  slotMinutes = 15,
+): string[] {
+  if (!TIME_RE.test(open) || !TIME_RE.test(close)) return [];
+  const step = [15, 30, 60].includes(slotMinutes) ? slotMinutes : 15;
+  const start = timeToMinutes(open);
+  const end = timeToMinutes(close);
+  if (start >= end) return [];
+  const slots: string[] = [];
+  for (let t = start; t < end; t += step) {
+    slots.push(minutesToTime(t));
+  }
+  return slots;
+}
+
+export function weekdayFromIsoDate(isoDate: string): Weekday {
+  const [y, m, d] = isoDate.split("-").map(Number);
+  const date = new Date(y!, (m ?? 1) - 1, d ?? 1, 12, 0, 0, 0);
+  return WEEKDAYS[(date.getDay() + 6) % 7]!;
+}
+
+export function timeSlotsForDate(
+  hours: WeeklyHours,
+  isoDate: string,
+  slotMinutes = 15,
+): string[] {
+  const day = hours[weekdayFromIsoDate(isoDate)];
+  if (!day || day.closed) return [];
+  return buildTimeSlots(day.open, day.close, slotMinutes);
+}

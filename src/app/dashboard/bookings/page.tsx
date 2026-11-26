@@ -9,7 +9,15 @@ import {
 } from "@/lib/dashboard/bookings";
 import { resolveWeekRange } from "@/lib/dashboard/analytics-math";
 import { formatLocalDate } from "@/lib/dashboard/calendar";
+import {
+  buildTableLabels,
+  defaultWeeklyHours,
+  parseCustomTables,
+  parseWeeklyHours,
+  timeSlotsForDate,
+} from "@/lib/dashboard/hospitality-settings";
 import { requireDashboardCapability } from "@/lib/dashboard/require-context";
+import { createClient } from "@/lib/supabase/server";
 import type { BookingStatus } from "@/types/database";
 
 type PageProps = {
@@ -25,7 +33,6 @@ type PageProps = {
 
 function parseStatus(value?: string): Filters["status"] {
   if (!value || value === "all") return "all";
-  // Friendly URL aliases → DB status values
   if (value === "approved") return "confirmed";
   if (value === "rescheduled") return "suggested";
   const allowed: BookingStatus[] = [
@@ -91,14 +98,40 @@ export default async function DashboardBookingsPage({ searchParams }: PageProps)
   const openId = params.open?.trim() || null;
   const range = resolveListRange(period, fromParam, toParam);
 
-  const { data: bookings, error } = await listBookingsForBusiness(
-    context.business.id,
-    {
+  const supabase = await createClient();
+  const [{ data: bookings, error }, { data: settings }] = await Promise.all([
+    listBookingsForBusiness(context.business.id, {
       status,
       from: range.from,
       to: range.to,
       q: q || undefined,
-    },
+    }),
+    supabase
+      .from("booking_settings")
+      .select(
+        "tables_2_seat, tables_4_seat, tables_6_seat, custom_tables, opening_hours, booking_slot_minutes",
+      )
+      .eq("business_id", context.business.id)
+      .maybeSingle(),
+  ]);
+
+  const tableOptions = buildTableLabels({
+    tables2Seat: settings?.tables_2_seat,
+    tables4Seat: settings?.tables_4_seat,
+    tables6Seat: settings?.tables_6_seat,
+    customTables: parseCustomTables(settings?.custom_tables),
+  });
+  const openingHours =
+    settings?.opening_hours &&
+    typeof settings.opening_hours === "object" &&
+    Object.keys(settings.opening_hours as object).length > 0
+      ? parseWeeklyHours(settings.opening_hours)
+      : defaultWeeklyHours();
+  const slotMinutes = settings?.booking_slot_minutes ?? 15;
+  const timeOptions = timeSlotsForDate(
+    openingHours,
+    formatLocalDate(new Date()),
+    slotMinutes,
   );
 
   return (
@@ -110,10 +143,7 @@ export default async function DashboardBookingsPage({ searchParams }: PageProps)
       </header>
 
       {error && bookings.length === 0 ? (
-        <EmptyState
-          title="Could not load bookings"
-          description={error}
-        />
+        <EmptyState title="Could not load bookings" description={error} />
       ) : (
         <BookingsExplorer
           businessId={context.business.id}
@@ -125,6 +155,8 @@ export default async function DashboardBookingsPage({ searchParams }: PageProps)
           q={q}
           error={error}
           initialOpenId={openId}
+          tableOptions={tableOptions}
+          timeOptions={timeOptions}
         />
       )}
     </main>

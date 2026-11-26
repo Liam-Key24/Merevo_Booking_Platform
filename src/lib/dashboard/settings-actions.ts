@@ -64,7 +64,10 @@ export async function updateBusinessSettings(
 
   const canTables = hasCapability(context.capabilities, "tables");
   const canPartySize = hasCapability(context.capabilities, "party_size");
-  const canOpeningHours = hasCapability(context.capabilities, "opening_hours");
+  // Appointments mode uses the "availability" capability for the same hours store.
+  const canOpeningHours =
+    hasCapability(context.capabilities, "opening_hours") ||
+    hasCapability(context.capabilities, "availability");
   const canKitchen = hasCapability(context.capabilities, "kitchen_hours");
   const canBar = hasCapability(context.capabilities, "bar_hours");
 
