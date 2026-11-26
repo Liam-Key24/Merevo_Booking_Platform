@@ -29,7 +29,7 @@ export type BookingWidgetProps = {
 
 /**
  * Reusable public booking surface for Merevo client templates.
- * Supports meridian / external / hybrid modes — no calendar-provider sync.
+ * Supports Merevo / external / hybrid modes — no calendar-provider sync.
  */
 export function BookingWidget({
   businessName,

@@ -22,7 +22,7 @@ function fromAddress(): string {
 
 /**
  * Safe retry for a failed/skipped email_delivery_logs row.
- * Only meridian_admin. Does not resend if already marked sent.
+ * Only Merevo platform admins. Does not resend if already marked sent.
  * Re-sends a generic notice using stored metadata when possible;
  * otherwise marks the attempt and returns guidance.
  */

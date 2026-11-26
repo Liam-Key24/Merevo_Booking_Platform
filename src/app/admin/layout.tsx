@@ -20,7 +20,7 @@ export default async function AdminLayout({
         <main className="mx-auto flex w-full max-w-3xl flex-1 flex-col gap-8 px-[var(--merevo-space-page)] py-12">
           <ErrorState
             title="Merevo admin only"
-            description="Platform administration is separate from business membership. Your account does not have the meridian_admin platform role."
+            description="Platform administration is separate from business membership. Your account is not a Merevo platform admin."
           />
           <p className="text-center text-sm">
             <Link
