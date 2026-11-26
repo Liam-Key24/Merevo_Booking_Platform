@@ -43,11 +43,11 @@ export function MiniCalendar({
   });
 
   return (
-    <div className="rounded-meridian border border-meridian-border bg-meridian-surface-muted p-3">
+    <div className="rounded-merevo border border-merevo-border bg-merevo-surface-muted p-3">
       <div className="mb-2 flex items-center justify-between gap-2">
         <button
           type="button"
-          className="inline-flex size-8 cursor-pointer items-center justify-center rounded-full text-meridian-accent hover:bg-[color-mix(in_srgb,var(--meridian-accent)_14%,white)]"
+          className="inline-flex size-8 cursor-pointer items-center justify-center rounded-full text-merevo-accent hover:bg-[color-mix(in_srgb,var(--merevo-accent)_14%,white)]"
           aria-label="Previous month"
           onClick={() =>
             setCursor(
@@ -57,10 +57,10 @@ export function MiniCalendar({
         >
           ‹
         </button>
-        <p className="text-sm font-semibold text-meridian-text">{monthLabel}</p>
+        <p className="text-sm font-semibold text-merevo-text">{monthLabel}</p>
         <button
           type="button"
-          className="inline-flex size-8 cursor-pointer items-center justify-center rounded-full text-meridian-accent hover:bg-[color-mix(in_srgb,var(--meridian-accent)_14%,white)]"
+          className="inline-flex size-8 cursor-pointer items-center justify-center rounded-full text-merevo-accent hover:bg-[color-mix(in_srgb,var(--merevo-accent)_14%,white)]"
           aria-label="Next month"
           onClick={() =>
             setCursor(
@@ -71,7 +71,7 @@ export function MiniCalendar({
           ›
         </button>
       </div>
-      <div className="mb-1 grid grid-cols-7 gap-1 text-center text-[10px] font-semibold tracking-wide text-meridian-text-muted uppercase">
+      <div className="mb-1 grid grid-cols-7 gap-1 text-center text-[10px] font-semibold tracking-wide text-merevo-text-muted uppercase">
         {["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"].map((label) => (
           <span key={label}>{label}</span>
         ))}
@@ -89,10 +89,10 @@ export function MiniCalendar({
               className={cn(
                 "inline-flex aspect-square cursor-pointer items-center justify-center rounded-full text-xs font-medium transition-colors",
                 isSelected
-                  ? "bg-meridian-accent text-meridian-text"
+                  ? "bg-merevo-accent text-merevo-text"
                   : inMonth
-                    ? "text-meridian-text hover:bg-[color-mix(in_srgb,var(--meridian-accent)_16%,white)]"
-                    : "text-meridian-text-muted/50 hover:bg-meridian-surface",
+                    ? "text-merevo-text hover:bg-[color-mix(in_srgb,var(--merevo-accent)_16%,white)]"
+                    : "text-merevo-text-muted/50 hover:bg-merevo-surface",
               )}
             >
               {day.getDate()}

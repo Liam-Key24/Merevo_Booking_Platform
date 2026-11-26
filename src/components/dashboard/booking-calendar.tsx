@@ -114,26 +114,26 @@ export function BookingCalendar({
     <div className="space-y-4">
       <div className="space-y-1">
         <div className="flex flex-wrap items-center justify-between gap-3">
-          <h3 className="text-lg font-semibold text-meridian-text">
+          <h3 className="text-lg font-semibold text-merevo-text">
             {view === "day" ? "Day view" : "Week view"}
           </h3>
 
           <div className="flex flex-wrap items-center gap-2">
-            <div className="flex items-center gap-1 rounded-meridian-sm bg-meridian-surface-muted p-1">
+            <div className="flex items-center gap-1 rounded-merevo-sm bg-merevo-surface-muted p-1">
               <Link
                 href={prevHref}
                 aria-label={view === "day" ? "Previous day" : "Previous week"}
-                className="inline-flex size-7 cursor-pointer items-center justify-center rounded-full text-meridian-text-muted transition-colors hover:bg-meridian-surface hover:text-meridian-text"
+                className="inline-flex size-7 cursor-pointer items-center justify-center rounded-full text-merevo-text-muted transition-colors hover:bg-merevo-surface hover:text-merevo-text"
               >
                 <CaretLeft className="size-4" weight="bold" aria-hidden />
               </Link>
-              <span className="rounded-meridian-sm bg-meridian-surface px-3 py-1 text-sm font-semibold text-meridian-text">
+              <span className="rounded-merevo-sm bg-merevo-surface px-3 py-1 text-sm font-semibold text-merevo-text">
                 {rangeLabel}
               </span>
               <Link
                 href={nextHref}
                 aria-label={view === "day" ? "Next day" : "Next week"}
-                className="inline-flex size-7 cursor-pointer items-center justify-center rounded-full text-meridian-text-muted transition-colors hover:bg-meridian-surface hover:text-meridian-text"
+                className="inline-flex size-7 cursor-pointer items-center justify-center rounded-full text-merevo-text-muted transition-colors hover:bg-merevo-surface hover:text-merevo-text"
               >
                 <CaretRight className="size-4" weight="bold" aria-hidden />
               </Link>
@@ -141,13 +141,13 @@ export function BookingCalendar({
 
             <Link
               href={`/dashboard/calendar?view=${view}&date=${todayIso}`}
-              className="cursor-pointer rounded-meridian-sm bg-meridian-surface-muted px-3 py-1.5 text-sm font-medium text-meridian-text transition-colors hover:bg-meridian-surface-subtle"
+              className="cursor-pointer rounded-merevo-sm bg-merevo-surface-muted px-3 py-1.5 text-sm font-medium text-merevo-text transition-colors hover:bg-merevo-surface-subtle"
             >
               Today
             </Link>
 
             <div
-              className="inline-flex rounded-meridian-sm bg-meridian-surface-muted p-0.5"
+              className="inline-flex rounded-merevo-sm bg-merevo-surface-muted p-0.5"
               role="group"
               aria-label="Calendar view"
             >
@@ -161,8 +161,8 @@ export function BookingCalendar({
                     className={cn(
                       "cursor-pointer rounded-[10px] px-3 py-1.5 text-xs font-semibold transition-colors",
                       active
-                        ? "bg-meridian-accent text-meridian-text"
-                        : "text-meridian-text-muted hover:text-meridian-text",
+                        ? "bg-merevo-accent text-merevo-text"
+                        : "text-merevo-text-muted hover:text-merevo-text",
                     )}
                   >
                     {option === "day" ? "Day" : "Weekly"}
@@ -173,7 +173,7 @@ export function BookingCalendar({
           </div>
         </div>
 
-        <p className="text-sm text-meridian-text-muted">
+        <p className="text-sm text-merevo-text-muted">
           Confirmed bookings only — no live availability or external calendar
           sync.
         </p>
@@ -252,9 +252,9 @@ function WeekTimeBlocks({
     <div className="overflow-x-auto pb-1">
       <div className="min-w-[62rem]">
         <div
-          className={cn(columns, "rounded-meridian bg-meridian-surface-muted p-2")}
+          className={cn(columns, "rounded-merevo bg-merevo-surface-muted p-2")}
         >
-          <span className="flex items-center px-2 text-xs font-semibold tracking-wide text-meridian-text-muted uppercase">
+          <span className="flex items-center px-2 text-xs font-semibold tracking-wide text-merevo-text-muted uppercase">
             Time
           </span>
           {days.map((day) => {
@@ -263,19 +263,19 @@ function WeekTimeBlocks({
               <span
                 key={day}
                 className={cn(
-                  "rounded-meridian-sm px-3 py-1.5 text-center",
+                  "rounded-merevo-sm px-3 py-1.5 text-center",
                   isToday
                     ? "bg-[color-mix(in_srgb,#82c0cc_28%,white)]"
-                    : "bg-meridian-surface",
+                    : "bg-merevo-surface",
                 )}
               >
-                <span className="block text-[10px] font-semibold tracking-wide text-meridian-text-muted uppercase">
+                <span className="block text-[10px] font-semibold tracking-wide text-merevo-text-muted uppercase">
                   {weekdayLabel(day)}
                 </span>
                 <span
                   className={cn(
                     "block text-sm font-semibold",
-                    isToday ? "text-meridian-teal" : "text-meridian-text",
+                    isToday ? "text-merevo-teal" : "text-merevo-text",
                   )}
                 >
                   {Number(day.slice(8))}
@@ -286,14 +286,14 @@ function WeekTimeBlocks({
         </div>
 
         {slots.length === 0 ? (
-          <p className="mt-2 rounded-meridian-sm bg-meridian-surface-muted px-4 py-10 text-center text-sm text-meridian-text-muted">
+          <p className="mt-2 rounded-merevo-sm bg-merevo-surface-muted px-4 py-10 text-center text-sm text-merevo-text-muted">
             No confirmed bookings this week.
           </p>
         ) : (
           <div className="mt-2 space-y-2">
             {slots.map((slot) => (
               <div key={slot} className={cn(columns, "items-stretch")}>
-                <span className="flex items-center justify-center rounded-meridian-sm bg-meridian-surface-muted px-3 py-3 text-xs font-semibold tabular-nums text-meridian-text-muted">
+                <span className="flex items-center justify-center rounded-merevo-sm bg-merevo-surface-muted px-3 py-3 text-xs font-semibold tabular-nums text-merevo-text-muted">
                   {slot}
                 </span>
                 {days.map((day) => {
@@ -301,7 +301,7 @@ function WeekTimeBlocks({
                   return (
                     <div
                       key={`${day}-${slot}`}
-                      className="flex min-h-[4.25rem] flex-col gap-1.5 rounded-meridian-sm p-1"
+                      className="flex min-h-[4.25rem] flex-col gap-1.5 rounded-merevo-sm p-1"
                       style={TRACK_TEXTURE}
                     >
                       {cards.map((booking) => (
@@ -386,15 +386,15 @@ function DayTableGrid({
   return (
     <div className="overflow-x-auto pb-1">
       <div className="min-w-[60rem]">
-        <div className="grid grid-cols-[7rem_minmax(0,1fr)] gap-2 rounded-meridian bg-meridian-surface-muted p-2">
-          <span className="flex items-center px-2 text-xs font-semibold tracking-wide text-meridian-text-muted uppercase">
+        <div className="grid grid-cols-[7rem_minmax(0,1fr)] gap-2 rounded-merevo bg-merevo-surface-muted p-2">
+          <span className="flex items-center px-2 text-xs font-semibold tracking-wide text-merevo-text-muted uppercase">
             Tables
           </span>
           <div className="grid gap-2" style={trackColumns}>
             {hours.map((hour) => (
               <span
                 key={hour}
-                className="rounded-meridian-sm bg-meridian-surface px-3 py-1.5 text-center text-xs font-semibold tabular-nums text-meridian-text-muted"
+                className="rounded-merevo-sm bg-merevo-surface px-3 py-1.5 text-center text-xs font-semibold tabular-nums text-merevo-text-muted"
               >
                 {hourLabel(hour)}
               </span>
@@ -408,10 +408,10 @@ function DayTableGrid({
               key={table}
               className="grid grid-cols-[7rem_minmax(0,1fr)] items-stretch gap-2"
             >
-              <span className="flex items-center gap-2 rounded-meridian-sm bg-meridian-surface-muted px-3 py-3 text-sm font-semibold text-meridian-text">
-                <span className="inline-flex size-6 shrink-0 items-center justify-center rounded-meridian-sm bg-meridian-surface">
+              <span className="flex items-center gap-2 rounded-merevo-sm bg-merevo-surface-muted px-3 py-3 text-sm font-semibold text-merevo-text">
+                <span className="inline-flex size-6 shrink-0 items-center justify-center rounded-merevo-sm bg-merevo-surface">
                   <ForkKnife
-                    className="size-3.5 text-meridian-text-muted"
+                    className="size-3.5 text-merevo-text-muted"
                     weight="regular"
                     aria-hidden
                   />
@@ -420,7 +420,7 @@ function DayTableGrid({
               </span>
 
               <div
-                className="relative min-h-[4.25rem] rounded-meridian-sm"
+                className="relative min-h-[4.25rem] rounded-merevo-sm"
                 style={TRACK_TEXTURE}
               >
                 {(byTable[table] ?? []).map((booking) => {
@@ -450,7 +450,7 @@ function DayTableGrid({
 
           {beforeOpening.length > 0 ? (
             <div className="grid grid-cols-[7rem_minmax(0,1fr)] items-stretch gap-2">
-              <span className="flex items-center rounded-meridian-sm bg-meridian-surface-muted px-3 py-3 text-xs font-semibold tracking-wide text-meridian-text-muted uppercase">
+              <span className="flex items-center rounded-merevo-sm bg-merevo-surface-muted px-3 py-3 text-xs font-semibold tracking-wide text-merevo-text-muted uppercase">
                 Before opening
               </span>
               <div className="flex flex-wrap gap-2">
@@ -488,12 +488,12 @@ function TimelineCard({
       onClick={() => onOpen(booking)}
       title={allergy ? "Allergies recorded" : request ? "Request added" : undefined}
       className={cn(
-        "relative flex h-full w-full cursor-pointer items-center overflow-hidden rounded-meridian-sm text-left shadow-[0_1px_4px_rgba(20,58,68,0.12)] transition-colors",
+        "relative flex h-full w-full cursor-pointer items-center overflow-hidden rounded-merevo-sm text-left shadow-[0_1px_4px_rgba(20,58,68,0.12)] transition-colors",
         allergy
           ? "bg-[color-mix(in_srgb,#e11d48_8%,white)] hover:bg-[color-mix(in_srgb,#e11d48_13%,white)]"
           : request
-            ? "bg-[color-mix(in_srgb,var(--meridian-accent)_16%,white)] hover:bg-[color-mix(in_srgb,var(--meridian-accent)_24%,white)]"
-            : "bg-meridian-surface hover:bg-meridian-surface-subtle",
+            ? "bg-[color-mix(in_srgb,var(--merevo-accent)_16%,white)] hover:bg-[color-mix(in_srgb,var(--merevo-accent)_24%,white)]"
+            : "bg-merevo-surface hover:bg-merevo-surface-subtle",
       )}
     >
       <span
@@ -502,16 +502,16 @@ function TimelineCard({
           allergy
             ? "bg-[#e11d48]"
             : request
-              ? "bg-meridian-accent"
-              : "bg-meridian-blue",
+              ? "bg-merevo-accent"
+              : "bg-merevo-blue",
         )}
         aria-hidden
       />
       <span className="min-w-0 flex-1 py-2 pr-2.5 pl-3">
-        <span className="block truncate text-sm font-medium text-meridian-text">
+        <span className="block truncate text-sm font-medium text-merevo-text">
           {booking.customer_name}
         </span>
-        <span className="mt-0.5 flex items-center gap-1.5 truncate text-xs text-meridian-text-muted">
+        <span className="mt-0.5 flex items-center gap-1.5 truncate text-xs text-merevo-text-muted">
           <Users className="size-3 shrink-0" weight="regular" aria-hidden />
           <span className="truncate">
             {dense ? (booking.guest_count ?? "—") : guestsLabel(booking.guest_count)}

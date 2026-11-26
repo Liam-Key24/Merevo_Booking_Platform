@@ -27,19 +27,19 @@ function ChartShell({
   children,
 }: ChartShellProps) {
   return (
-    <section className="rounded-meridian border border-meridian-border bg-meridian-surface p-5 shadow-[0_10px_30px_rgba(20,58,68,0.04)]">
+    <section className="rounded-merevo border border-merevo-border bg-merevo-surface p-5 shadow-[0_10px_30px_rgba(20,58,68,0.04)]">
       <header className="mb-5 flex items-start justify-between gap-3">
         <div className="space-y-1">
-          <h2 className="text-base font-semibold text-meridian-text">{title}</h2>
+          <h2 className="text-base font-semibold text-merevo-text">{title}</h2>
           {rangeLabel ? (
-            <p className="text-xs text-meridian-text-muted">{rangeLabel}</p>
+            <p className="text-xs text-merevo-text-muted">{rangeLabel}</p>
           ) : null}
           <p className="sr-only">{summary}</p>
         </div>
         {actions ? <div className="shrink-0">{actions}</div> : null}
       </header>
       {empty ? (
-        <p className="py-10 text-center text-sm text-meridian-text-muted">
+        <p className="py-10 text-center text-sm text-merevo-text-muted">
           No data in this range.
         </p>
       ) : (
@@ -169,7 +169,7 @@ export function StatusDistributionChart({
             x={cx}
             y={cy - 4}
             textAnchor="middle"
-            className="fill-meridian-text"
+            className="fill-merevo-text"
             fontSize="22"
             fontWeight="700"
           >
@@ -189,7 +189,7 @@ export function StatusDistributionChart({
           {entries.map((item) => (
             <li
               key={item.key}
-              className="flex items-center gap-2 text-sm text-meridian-text"
+              className="flex items-center gap-2 text-sm text-merevo-text"
             >
               <span
                 className="size-3 rounded-[4px]"
@@ -197,7 +197,7 @@ export function StatusDistributionChart({
                 aria-hidden
               />
               <span>{item.label}</span>
-              <span className="text-meridian-text-muted">
+              <span className="text-merevo-text-muted">
                 {item.value}
                 {total > 0
                   ? ` (${Math.round((item.value / total) * 100)}%)`
@@ -221,11 +221,11 @@ export function RequestsPeriodToggle({
   const options: RequestsPeriod[] = ["daily", "weekly", "monthly"];
   return (
     <div className="flex items-center gap-2">
-      <span className="hidden text-xs text-meridian-text-muted sm:inline">
+      <span className="hidden text-xs text-merevo-text-muted sm:inline">
         View:
       </span>
       <div
-        className="inline-flex rounded-meridian-sm border border-meridian-border bg-meridian-surface p-0.5"
+        className="inline-flex rounded-merevo-sm border border-merevo-border bg-merevo-surface p-0.5"
         role="group"
         aria-label="Booking requests period"
       >
@@ -242,8 +242,8 @@ export function RequestsPeriodToggle({
               className={cn(
                 "rounded-[10px] px-2.5 py-1.5 text-xs font-semibold capitalize transition-colors",
                 active
-                  ? "bg-meridian-accent text-meridian-text"
-                  : "text-meridian-text-muted hover:text-meridian-text",
+                  ? "bg-merevo-accent text-merevo-text"
+                  : "text-merevo-text-muted hover:text-merevo-text",
               )}
               aria-current={active ? "true" : undefined}
             >
@@ -309,7 +309,7 @@ export function RequestsByDayChart({
       }
     >
       {total === 0 ? (
-        <p className="py-10 text-center text-sm text-meridian-text-muted">
+        <p className="py-10 text-center text-sm text-merevo-text-muted">
           No data in this range.
         </p>
       ) : (
@@ -421,14 +421,14 @@ export function TopServicesChart({
         {data.map((item) => (
           <li key={`${item.serviceId}-${item.name}`} className="space-y-1">
             <div className="flex justify-between gap-3 text-sm">
-              <span className="truncate font-medium text-meridian-text">
+              <span className="truncate font-medium text-merevo-text">
                 {item.name}
               </span>
-              <span className="text-meridian-text-muted">{item.count}</span>
+              <span className="text-merevo-text-muted">{item.count}</span>
             </div>
-            <div className="h-2 rounded-full bg-meridian-surface-subtle">
+            <div className="h-2 rounded-full bg-merevo-surface-subtle">
               <div
-                className="h-2 rounded-full bg-meridian-soft-blue"
+                className="h-2 rounded-full bg-merevo-soft-blue"
                 style={{ width: `${Math.round((item.count / max) * 100)}%` }}
               />
             </div>

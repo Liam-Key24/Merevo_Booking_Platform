@@ -128,8 +128,8 @@ function Section({
   children: React.ReactNode;
 }) {
   return (
-    <section className="space-y-3.5 border-t border-[color-mix(in_srgb,var(--meridian-accent)_28%,transparent)] pt-6 first:border-t-0 first:pt-0">
-      <h3 className="text-xs font-semibold tracking-wide text-meridian-accent uppercase">
+    <section className="space-y-3.5 border-t border-[color-mix(in_srgb,var(--merevo-accent)_28%,transparent)] pt-6 first:border-t-0 first:pt-0">
+      <h3 className="text-xs font-semibold tracking-wide text-merevo-accent uppercase">
         {title}
       </h3>
       {children}
@@ -140,10 +140,10 @@ function Section({
 function DetailRow({ label, value }: { label: string; value: string }) {
   return (
     <div>
-      <dt className="text-xs font-semibold tracking-wide text-meridian-text-muted uppercase">
+      <dt className="text-xs font-semibold tracking-wide text-merevo-text-muted uppercase">
         {label}
       </dt>
-      <dd className="mt-1.5 whitespace-pre-wrap text-sm text-meridian-text">
+      <dd className="mt-1.5 whitespace-pre-wrap text-sm text-merevo-text">
         {value}
       </dd>
     </div>
@@ -262,7 +262,7 @@ export function BookingDetailPanel({
       : Number(guestOption) || booking.guest_count || 1;
 
   const selectClass =
-    "h-10 w-full cursor-pointer appearance-none rounded-meridian-sm border border-meridian-border bg-meridian-surface px-3 pr-9 text-sm text-meridian-text " +
+    "h-10 w-full cursor-pointer appearance-none rounded-merevo-sm border border-merevo-border bg-merevo-surface px-3 pr-9 text-sm text-merevo-text " +
     "bg-[length:1rem] bg-[right_0.75rem_center] bg-no-repeat " +
     "bg-[url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 fill=%22none%22 viewBox=%220 0 20 20%22%3E%3Cpath stroke=%22%235a7580%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 stroke-width=%221.5%22 d=%22m6 8 4 4 4-4%22/%3E%3C/svg%3E')]";
 
@@ -278,14 +278,14 @@ export function BookingDetailPanel({
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}
-        className="relative z-10 flex h-full w-full max-w-md flex-col overflow-hidden rounded-meridian border border-meridian-border bg-meridian-surface shadow-[0_24px_80px_rgba(20,58,68,0.28)]"
+        className="relative z-10 flex h-full w-full max-w-md flex-col overflow-hidden rounded-merevo border border-merevo-border bg-merevo-surface shadow-[0_24px_80px_rgba(20,58,68,0.28)]"
       >
-        <header className="flex items-start justify-between gap-3 border-b border-[color-mix(in_srgb,var(--meridian-accent)_28%,transparent)] px-5 py-4">
+        <header className="flex items-start justify-between gap-3 border-b border-[color-mix(in_srgb,var(--merevo-accent)_28%,transparent)] px-5 py-4">
           <div className="min-w-0 space-y-2">
             <StatusLabel status={booking.status} />
             <h2
               id={titleId}
-              className="truncate text-xl font-semibold tracking-tight text-meridian-text"
+              className="truncate text-xl font-semibold tracking-tight text-merevo-text"
             >
               {booking.customer_name}
             </h2>
@@ -293,7 +293,7 @@ export function BookingDetailPanel({
           <button
             type="button"
             onClick={onClose}
-            className="inline-flex size-10 shrink-0 cursor-pointer items-center justify-center rounded-full border border-meridian-border text-meridian-text-muted transition-colors hover:border-meridian-accent hover:bg-[color-mix(in_srgb,var(--meridian-accent)_12%,white)] hover:text-meridian-text"
+            className="inline-flex size-10 shrink-0 cursor-pointer items-center justify-center rounded-full border border-merevo-border text-merevo-text-muted transition-colors hover:border-merevo-accent hover:bg-[color-mix(in_srgb,var(--merevo-accent)_12%,white)] hover:text-merevo-text"
             aria-label="Close"
           >
             <IconClose />
@@ -314,7 +314,7 @@ export function BookingDetailPanel({
           <Section title="Table & guests">
             {editing ? (
               <div className="grid gap-3.5 sm:grid-cols-2">
-                <label className="space-y-2 text-xs font-semibold tracking-wide text-meridian-text-muted uppercase">
+                <label className="space-y-2 text-xs font-semibold tracking-wide text-merevo-text-muted uppercase">
                   Guests
                   <select
                     className={selectClass}
@@ -328,7 +328,7 @@ export function BookingDetailPanel({
                     ))}
                   </select>
                 </label>
-                <label className="space-y-2 text-xs font-semibold tracking-wide text-meridian-text-muted uppercase">
+                <label className="space-y-2 text-xs font-semibold tracking-wide text-merevo-text-muted uppercase">
                   Table assigned
                   <select
                     className={selectClass}
@@ -360,12 +360,12 @@ export function BookingDetailPanel({
           <Section title="Allergies">
             <div
               className={cn(
-                "rounded-meridian-sm px-3 py-3",
+                "rounded-merevo-sm px-3 py-3",
                 editing
-                  ? "border border-meridian-border bg-meridian-surface"
+                  ? "border border-merevo-border bg-merevo-surface"
                   : hasAllergies(displayedAllergies)
                     ? "bg-[color-mix(in_srgb,#e11d48_4.5%,white)]"
-                    : "bg-meridian-surface-muted",
+                    : "bg-merevo-surface-muted",
               )}
             >
               {editing ? (
@@ -383,7 +383,7 @@ export function BookingDetailPanel({
             {editing ? (
               <div className="space-y-5">
                 <div className="space-y-2">
-                  <p className="text-xs font-semibold tracking-wide text-meridian-text-muted uppercase">
+                  <p className="text-xs font-semibold tracking-wide text-merevo-text-muted uppercase">
                     Date
                   </p>
                   <MiniCalendar
@@ -391,7 +391,7 @@ export function BookingDetailPanel({
                     onChange={setPreferredDate}
                   />
                 </div>
-                <label className="block space-y-2 text-xs font-semibold tracking-wide text-meridian-text-muted uppercase">
+                <label className="block space-y-2 text-xs font-semibold tracking-wide text-merevo-text-muted uppercase">
                   Time
                   <select
                     className={selectClass}
@@ -447,11 +447,11 @@ export function BookingDetailPanel({
                   onChange={(event) => setNotes(event.target.value)}
                   rows={4}
                   aria-label="Request notes"
-                  className="mt-0.5 w-full cursor-text rounded-meridian-sm border border-meridian-border bg-meridian-surface px-3 py-2.5 text-sm text-meridian-text"
+                  className="mt-0.5 w-full cursor-text rounded-merevo-sm border border-merevo-border bg-merevo-surface px-3 py-2.5 text-sm text-merevo-text"
                 />
               ) : (
-                <div className="rounded-meridian-sm border border-meridian-border bg-meridian-surface-muted px-3 py-2.5">
-                  <p className="whitespace-pre-wrap text-sm text-meridian-text">
+                <div className="rounded-merevo-sm border border-merevo-border bg-merevo-surface-muted px-3 py-2.5">
+                  <p className="whitespace-pre-wrap text-sm text-merevo-text">
                     {booking.notes?.trim()}
                   </p>
                 </div>
@@ -463,8 +463,8 @@ export function BookingDetailPanel({
             <p
               className={
                 feedback.status === "error"
-                  ? "pt-4 text-sm text-meridian-status-declined"
-                  : "pt-4 text-sm text-meridian-teal"
+                  ? "pt-4 text-sm text-merevo-status-declined"
+                  : "pt-4 text-sm text-merevo-teal"
               }
               role="status"
             >
@@ -473,7 +473,7 @@ export function BookingDetailPanel({
           ) : null}
         </div>
 
-        <footer className="border-t border-[color-mix(in_srgb,var(--meridian-accent)_28%,transparent)] px-5 py-4">
+        <footer className="border-t border-[color-mix(in_srgb,var(--merevo-accent)_28%,transparent)] px-5 py-4">
           {editing ? (
             <div className="flex items-center gap-3">
               <Button
@@ -575,17 +575,17 @@ export function BookingDetailPanel({
             aria-modal="true"
             aria-labelledby="allergy-confirm-title"
             aria-describedby="allergy-confirm-desc"
-            className="relative z-10 w-full max-w-sm rounded-meridian border border-meridian-border bg-meridian-surface p-5 shadow-[0_24px_80px_rgba(20,58,68,0.35)]"
+            className="relative z-10 w-full max-w-sm rounded-merevo border border-merevo-border bg-merevo-surface p-5 shadow-[0_24px_80px_rgba(20,58,68,0.35)]"
           >
             <h3
               id="allergy-confirm-title"
-              className="text-base font-semibold tracking-tight text-meridian-text"
+              className="text-base font-semibold tracking-tight text-merevo-text"
             >
               Allergy noticed
             </h3>
             <p
               id="allergy-confirm-desc"
-              className="mt-2 text-sm text-meridian-text-muted"
+              className="mt-2 text-sm text-merevo-text-muted"
             >
               Make sure to alert the team and kitchen before saving this
               booking.

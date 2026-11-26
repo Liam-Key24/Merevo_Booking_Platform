@@ -33,7 +33,7 @@ export function TemplateColorCircles({
           key={role}
           title={color}
           className={cn(
-            "rounded-full ring-2 ring-meridian-surface",
+            "rounded-full ring-2 ring-merevo-surface",
             SWATCH_SIZES[size],
           )}
           style={{ backgroundColor: color }}
@@ -53,7 +53,7 @@ export function TemplateBrandingPreview({
   return (
     <div className="flex flex-wrap items-center gap-3">
       <TemplateColorCircles branding={branding} size={compact ? "sm" : "md"} />
-      <span className="text-xs text-meridian-text-muted">
+      <span className="text-xs text-merevo-text-muted">
         {branding.headingFontLabel} · {branding.bodyFontLabel}
       </span>
     </div>

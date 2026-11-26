@@ -66,7 +66,7 @@ export function AdminBusinessesList({
         actions={
           <Link
             href="/admin/businesses/new"
-            className="inline-flex h-10 items-center justify-center rounded-meridian bg-meridian-accent px-4 text-sm font-semibold text-meridian-text-inverse"
+            className="inline-flex h-10 items-center justify-center rounded-merevo bg-merevo-accent px-4 text-sm font-semibold text-merevo-text-inverse"
           >
             New business
           </Link>
@@ -82,13 +82,13 @@ export function AdminBusinessesList({
           />
         }
       >
-        <p className="pb-1 text-sm text-meridian-text-muted">
+        <p className="pb-1 text-sm text-merevo-text-muted">
           Showing {filtered.length} of {businesses.length}
         </p>
       </AdminListToolbar>
 
       {loadError ? (
-        <p className="text-sm text-meridian-status-declined">
+        <p className="text-sm text-merevo-status-declined">
           Could not load businesses.
         </p>
       ) : (
@@ -118,23 +118,23 @@ export function AdminBusinessesList({
                   <Link
                     key="name"
                     href={`/admin/businesses/${business.id}`}
-                    className="font-semibold text-meridian-text hover:text-meridian-accent"
+                    className="font-semibold text-merevo-text hover:text-merevo-accent"
                   >
                     {business.name}
                   </Link>,
                   <span
                     key="slug"
-                    className="text-meridian-text-muted tabular-nums"
+                    className="text-merevo-text-muted tabular-nums"
                   >
                     /book/{business.slug}
                   </span>,
-                  <span key="type" className="text-meridian-text-muted">
+                  <span key="type" className="text-merevo-text-muted">
                     {typeLabel}
                   </span>,
-                  <span key="mode" className="text-meridian-text-muted">
+                  <span key="mode" className="text-merevo-text-muted">
                     {DASHBOARD_MODE_LABELS[mode]}
                   </span>,
-                  <span key="subscription" className="text-meridian-text-muted">
+                  <span key="subscription" className="text-merevo-text-muted">
                     {SUBSCRIPTION_STATUS_LABELS[subscription]}
                   </span>,
                   <AdminSoftStatus

@@ -24,17 +24,17 @@ export function Select({
   return (
     <label className="flex w-full flex-col gap-1.5 text-sm">
       {label ? (
-        <span className="font-medium text-meridian-text">{label}</span>
+        <span className="font-medium text-merevo-text">{label}</span>
       ) : null}
       <select
         id={selectId}
         className={cn(
-          "h-11 w-full appearance-none rounded-meridian border border-meridian-border bg-meridian-surface py-2 pr-10 pl-4 text-meridian-text",
+          "h-11 w-full appearance-none rounded-merevo border border-merevo-border bg-merevo-surface py-2 pr-10 pl-4 text-merevo-text",
           "bg-[length:1rem] bg-[right_0.85rem_center] bg-no-repeat",
           "bg-[url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 fill=%22none%22 viewBox=%220 0 20 20%22%3E%3Cpath stroke=%22%235a7580%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 stroke-width=%221.5%22 d=%22m6 8 4 4 4-4%22/%3E%3C/svg%3E')]",
-          "transition-[border-color,box-shadow] focus-visible:border-meridian-blue focus-visible:shadow-[var(--meridian-focus-ring)]",
-          "disabled:cursor-not-allowed disabled:bg-meridian-surface-subtle disabled:opacity-70",
-          error && "border-meridian-status-declined",
+          "transition-[border-color,box-shadow] focus-visible:border-merevo-blue focus-visible:shadow-[var(--merevo-focus-ring)]",
+          "disabled:cursor-not-allowed disabled:bg-merevo-surface-subtle disabled:opacity-70",
+          error && "border-merevo-status-declined",
           className,
         )}
         aria-invalid={error ? true : undefined}
@@ -61,12 +61,12 @@ export function Select({
       {error ? (
         <span
           id={`${selectId}-error`}
-          className="text-meridian-status-declined"
+          className="text-merevo-status-declined"
         >
           {error}
         </span>
       ) : hint ? (
-        <span id={`${selectId}-hint`} className="text-meridian-text-muted">
+        <span id={`${selectId}-hint`} className="text-merevo-text-muted">
           {hint}
         </span>
       ) : null}

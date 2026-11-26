@@ -13,11 +13,11 @@ export function SettingsPanel({
     <Card padding="lg">
       <div className="space-y-6">
         <div className="space-y-1">
-          <h2 className="text-lg font-semibold tracking-tight text-meridian-text">
+          <h2 className="text-lg font-semibold tracking-tight text-merevo-text">
             {title}
           </h2>
           {description ? (
-            <p className="text-sm text-meridian-text-muted">{description}</p>
+            <p className="text-sm text-merevo-text-muted">{description}</p>
           ) : null}
         </div>
         {children}

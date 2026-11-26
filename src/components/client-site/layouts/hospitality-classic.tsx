@@ -157,7 +157,7 @@ export function HospitalityClassicLayout({
       className="min-h-full bg-[var(--client-background)] text-[var(--client-text)] [font-family:var(--client-font-body)] [&_h1]:[font-family:var(--client-font-heading)] [&_h2]:[font-family:var(--client-font-heading)] [&_blockquote]:[font-family:var(--client-font-heading)]"
     >
       {preview ? (
-        <div className="border-b border-meridian-border bg-meridian-surface px-[var(--meridian-space-page)] py-2 text-center text-xs text-meridian-text-muted">
+        <div className="border-b border-merevo-border bg-merevo-surface px-[var(--meridian-space-page)] py-2 text-center text-xs text-merevo-text-muted">
           Template preview — not published
         </div>
       ) : null}
@@ -429,7 +429,7 @@ export function HospitalityClassicLayout({
         <div className="border-t border-[color-mix(in_srgb,var(--client-background)_12%,transparent)]">
           <div className="mx-auto flex max-w-6xl flex-col gap-3 px-[var(--meridian-space-page)] py-5 text-xs text-[color-mix(in_srgb,var(--client-background)_55%,transparent)] sm:flex-row sm:items-center sm:justify-between">
             <p>
-              © {new Date().getFullYear()} {business.name}. Powered by Meridian.
+              © {new Date().getFullYear()} {business.name}. Powered by Merevo.
             </p>
             <p>Preview template: {template.name}</p>
           </div>

@@ -40,19 +40,19 @@ export default async function BusinessSettingsLayout({
         <div className="flex flex-wrap items-center gap-3 text-sm">
           <Link
             href={`/admin/businesses/${business.id}`}
-            className="font-medium text-meridian-accent hover:underline"
+            className="font-medium text-merevo-accent hover:underline"
           >
             ← Usage overview
           </Link>
         </div>
         <div>
-          <p className="text-xs font-semibold tracking-wide text-meridian-text-muted uppercase">
+          <p className="text-xs font-semibold tracking-wide text-merevo-text-muted uppercase">
             Settings · {DASHBOARD_MODE_LABELS[mode]}
           </p>
-          <h1 className="mt-1 text-2xl font-semibold tracking-tight text-meridian-text sm:text-3xl">
+          <h1 className="mt-1 text-2xl font-semibold tracking-tight text-merevo-text sm:text-3xl">
             {business.name}
           </h1>
-          <p className="mt-1 text-sm text-meridian-text-muted">
+          <p className="mt-1 text-sm text-merevo-text-muted">
             /{business.slug} · {business.status}
           </p>
         </div>

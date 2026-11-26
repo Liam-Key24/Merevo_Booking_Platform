@@ -88,16 +88,16 @@ export function AdminShell({
   const pageTitle = pageTitleForPath(pathname);
 
   const sidebar = (
-    <aside className="flex h-full w-72 flex-col gap-6 border-r border-meridian-border bg-meridian-surface px-5 py-6">
+    <aside className="flex h-full w-72 flex-col gap-6 border-r border-merevo-border bg-merevo-surface px-5 py-6">
       <div className="flex items-center gap-3">
-        <span className="flex size-10 items-center justify-center rounded-meridian-sm bg-meridian-accent text-sm font-bold text-meridian-text-inverse">
+        <span className="flex size-10 items-center justify-center rounded-merevo-sm bg-merevo-accent text-sm font-bold text-merevo-text-inverse">
           M
         </span>
         <div>
-          <p className="text-xs font-semibold tracking-wide text-meridian-accent uppercase">
+          <p className="text-xs font-semibold tracking-wide text-merevo-accent uppercase">
             Merevo
           </p>
-          <p className="text-sm font-semibold text-meridian-text">
+          <p className="text-sm font-semibold text-merevo-text">
             Platform admin
           </p>
         </div>
@@ -106,7 +106,7 @@ export function AdminShell({
       <nav className="flex flex-1 flex-col gap-6" aria-label="Admin">
         {NAV_GROUPS.map((group) => (
           <div key={group.label} className="space-y-2">
-            <p className="px-2 text-[11px] font-semibold tracking-wide text-meridian-text-muted uppercase">
+            <p className="px-2 text-[11px] font-semibold tracking-wide text-merevo-text-muted uppercase">
               {group.label}
             </p>
             <ul className="space-y-1">
@@ -119,10 +119,10 @@ export function AdminShell({
                       href={item.href}
                       onClick={() => setOpen(false)}
                       className={cn(
-                        "flex items-center gap-3 rounded-meridian-sm px-3 py-2.5 text-sm font-medium transition-colors",
+                        "flex items-center gap-3 rounded-merevo-sm px-3 py-2.5 text-sm font-medium transition-colors",
                         active
-                          ? "bg-[color-mix(in_srgb,var(--meridian-accent)_14%,white)] text-meridian-text shadow-[inset_3px_0_0_var(--meridian-accent)]"
-                          : "text-meridian-text-muted hover:bg-meridian-surface-muted hover:text-meridian-text",
+                          ? "bg-[color-mix(in_srgb,var(--merevo-accent)_14%,white)] text-merevo-text shadow-[inset_3px_0_0_var(--merevo-accent)]"
+                          : "text-merevo-text-muted hover:bg-merevo-surface-muted hover:text-merevo-text",
                       )}
                       aria-current={active ? "page" : undefined}
                     >
@@ -137,19 +137,19 @@ export function AdminShell({
         ))}
       </nav>
 
-      <div className="space-y-3 border-t border-meridian-border pt-4">
-        <div className="rounded-meridian border border-meridian-border bg-meridian-surface-muted px-3 py-3">
-          <p className="truncate text-sm font-semibold text-meridian-text">
+      <div className="space-y-3 border-t border-merevo-border pt-4">
+        <div className="rounded-merevo border border-merevo-border bg-merevo-surface-muted px-3 py-3">
+          <p className="truncate text-sm font-semibold text-merevo-text">
             {accountEmail}
           </p>
-          <p className="mt-0.5 text-[11px] font-semibold tracking-wide text-meridian-accent uppercase">
+          <p className="mt-0.5 text-[11px] font-semibold tracking-wide text-merevo-accent uppercase">
             Merevo admin
           </p>
         </div>
         <form action={signOut}>
           <button
             type="submit"
-            className="inline-flex h-10 w-full cursor-pointer items-center justify-center gap-2 rounded-meridian-sm border border-meridian-border text-sm font-semibold text-meridian-text hover:border-meridian-accent"
+            className="inline-flex h-10 w-full cursor-pointer items-center justify-center gap-2 rounded-merevo-sm border border-merevo-border text-sm font-semibold text-merevo-text hover:border-merevo-accent"
           >
             <SignOut className="size-4" weight="regular" />
             Sign out
@@ -160,7 +160,7 @@ export function AdminShell({
   );
 
   return (
-    <div className="flex min-h-full flex-1 bg-[color-mix(in_srgb,var(--meridian-surface-muted)_55%,white)]">
+    <div className="flex min-h-full flex-1 bg-[color-mix(in_srgb,var(--merevo-surface-muted)_55%,white)]">
       <div className="hidden lg:block">{sidebar}</div>
 
       {open ? (
@@ -176,12 +176,12 @@ export function AdminShell({
       ) : null}
 
       <div className="flex min-w-0 flex-1 flex-col">
-        <header className="sticky top-0 z-30 border-b border-meridian-border bg-meridian-surface/95 backdrop-blur">
+        <header className="sticky top-0 z-30 border-b border-merevo-border bg-merevo-surface/95 backdrop-blur">
           <div className="flex flex-wrap items-center gap-3 px-[var(--meridian-space-page)] py-3 lg:gap-4 lg:py-4">
             <div className="flex min-w-0 items-center gap-3">
               <button
                 type="button"
-                className="inline-flex h-10 w-10 shrink-0 cursor-pointer items-center justify-center rounded-meridian-sm border border-meridian-border text-meridian-text lg:hidden"
+                className="inline-flex h-10 w-10 shrink-0 cursor-pointer items-center justify-center rounded-merevo-sm border border-merevo-border text-merevo-text lg:hidden"
                 aria-expanded={open}
                 aria-controls={titleId}
                 onClick={() => setOpen((value) => !value)}
@@ -192,12 +192,12 @@ export function AdminShell({
                 </span>
               </button>
               <div className="min-w-0">
-                <p className="truncate text-xs font-semibold tracking-wide text-meridian-accent uppercase">
+                <p className="truncate text-xs font-semibold tracking-wide text-merevo-accent uppercase">
                   Admin
                 </p>
                 <h1
                   id={titleId}
-                  className="truncate text-lg font-semibold tracking-tight text-meridian-text sm:text-xl"
+                  className="truncate text-lg font-semibold tracking-tight text-merevo-text sm:text-xl"
                 >
                   {pageTitle}
                 </h1>
@@ -213,7 +213,7 @@ export function AdminShell({
                 placeholder="Search bookings…"
                 size="md"
                 className="w-full"
-                inputClassName="bg-meridian-surface-muted"
+                inputClassName="bg-merevo-surface-muted"
                 onSelectHit={(hit) => {
                   router.push(
                     `/admin/bookings?q=${encodeURIComponent(hit.customer_name)}`,

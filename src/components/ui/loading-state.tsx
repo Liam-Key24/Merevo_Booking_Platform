@@ -21,7 +21,7 @@ export function LoadingState({
   return (
     <div
       className={cn(
-        "flex flex-col items-center justify-center gap-3 py-10 text-meridian-text-muted",
+        "flex flex-col items-center justify-center gap-3 py-10 text-merevo-text-muted",
         className,
       )}
       role="status"
@@ -30,7 +30,7 @@ export function LoadingState({
     >
       <span
         className={cn(
-          "animate-spin rounded-full border-meridian-soft-blue border-t-meridian-teal",
+          "animate-spin rounded-full border-merevo-soft-blue border-t-merevo-teal",
           sizeClasses[size],
         )}
         aria-hidden

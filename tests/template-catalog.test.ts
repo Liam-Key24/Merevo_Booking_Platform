@@ -33,7 +33,7 @@ describe("template catalog", () => {
     });
   });
 
-  it("detects Meridian default colours", () => {
+  it("detects Merevo default colours", () => {
     expect(siteSettingsUseDefaultColors(DEFAULT_BRAND_COLORS)).toBe(true);
     expect(
       siteSettingsUseDefaultColors({

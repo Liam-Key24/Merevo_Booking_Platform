@@ -20,7 +20,7 @@ export async function assignBusinessTemplate(
   formData: FormData,
 ): Promise<TemplateAssignState> {
   const snapshot = await getAuthSnapshot();
-  if (!snapshot?.isMeridianAdmin) {
+  if (!snapshot?.isMerevoAdmin) {
     return { status: "error", message: "Merevo admin only." };
   }
 

@@ -27,10 +27,10 @@ export default async function AvailabilityPage() {
   return (
     <main className="flex flex-1 flex-col gap-8 px-[var(--meridian-space-page)] py-8 lg:py-10">
       <header className="space-y-2">
-        <h2 className="text-2xl font-semibold tracking-tight text-meridian-text">
+        <h2 className="text-2xl font-semibold tracking-tight text-merevo-text">
           Availability
         </h2>
-        <p className="max-w-2xl text-meridian-text-muted">
+        <p className="max-w-2xl text-merevo-text-muted">
           Business opening hours used for appointment scheduling at{" "}
           {context.business.name}.
         </p>
@@ -43,7 +43,7 @@ export default async function AvailabilityPage() {
             description="Please try again."
           />
         ) : (
-          <ul className="divide-y divide-meridian-border">
+          <ul className="divide-y divide-merevo-border">
             {WEEKDAYS.map((day) => {
               const dayHours = hours[day];
               return (
@@ -51,10 +51,10 @@ export default async function AvailabilityPage() {
                   key={day}
                   className="flex items-center justify-between gap-3 py-3 text-sm"
                 >
-                  <span className="font-medium text-meridian-text">
+                  <span className="font-medium text-merevo-text">
                     {WEEKDAY_LABELS[day]}
                   </span>
-                  <span className="text-meridian-text-muted">
+                  <span className="text-merevo-text-muted">
                     {!dayHours || dayHours.closed
                       ? "Closed"
                       : `${dayHours.open}–${dayHours.close}`}
@@ -72,7 +72,7 @@ export default async function AvailabilityPage() {
             href={settings.external_booking_url}
             target="_blank"
             rel="noopener noreferrer"
-            className="break-all text-sm font-semibold text-meridian-accent hover:underline"
+            className="break-all text-sm font-semibold text-merevo-accent hover:underline"
           >
             {settings.external_booking_url}
           </a>

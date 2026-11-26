@@ -54,14 +54,14 @@ export function BookingRequestForm({
   if (state.status === "success") {
     return (
       <div
-        className="space-y-3 rounded-meridian border border-meridian-status-confirmed/30 bg-meridian-status-confirmed-bg px-5 py-6"
+        className="space-y-3 rounded-merevo border border-merevo-status-confirmed/30 bg-merevo-status-confirmed-bg px-5 py-6"
         role="status"
       >
-        <h2 className="text-lg font-semibold text-meridian-text">
+        <h2 className="text-lg font-semibold text-merevo-text">
           Request received
         </h2>
-        <p className="text-sm text-meridian-text-muted">{state.message}</p>
-        <p className="text-sm text-meridian-text-muted">
+        <p className="text-sm text-merevo-text-muted">{state.message}</p>
+        <p className="text-sm text-merevo-text-muted">
           {businessName} will review your request. You have not been confirmed
           yet.
         </p>
@@ -158,11 +158,11 @@ export function BookingRequestForm({
           rows={3}
         />
 
-        <label className="flex items-start gap-3 text-sm text-meridian-text">
+        <label className="flex items-start gap-3 text-sm text-merevo-text">
           <input
             type="checkbox"
             name="privacyConsent"
-            className="mt-1 h-4 w-4 rounded border-meridian-border"
+            className="mt-1 h-4 w-4 rounded border-merevo-border"
             required
           />
           <span>
@@ -182,7 +182,7 @@ export function BookingRequestForm({
         ) : null}
 
         {state.status === "error" && state.message ? (
-          <p className="text-sm text-meridian-status-declined" role="alert">
+          <p className="text-sm text-merevo-status-declined" role="alert">
             {state.message}
           </p>
         ) : null}

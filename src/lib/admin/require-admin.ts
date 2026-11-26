@@ -7,7 +7,7 @@ import {
 } from "@/lib/auth/business-context";
 
 export type MeridianAdminContext = AuthSnapshot & {
-  isMeridianAdmin: true;
+  isMerevoAdmin: true;
 };
 
 export async function requireMeridianAdmin(): Promise<MeridianAdminContext> {
@@ -15,7 +15,7 @@ export async function requireMeridianAdmin(): Promise<MeridianAdminContext> {
   if (!snapshot) {
     redirect("/login?next=/admin");
   }
-  if (!snapshot.isMeridianAdmin) {
+  if (!snapshot.isMerevoAdmin) {
     redirect("/admin");
   }
   return snapshot as MeridianAdminContext;

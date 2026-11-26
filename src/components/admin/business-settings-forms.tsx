@@ -52,8 +52,8 @@ function Feedback({
     <p
       className={
         state.status === "error"
-          ? "text-sm text-meridian-status-declined"
-          : "text-sm text-meridian-accent"
+          ? "text-sm text-merevo-status-declined"
+          : "text-sm text-merevo-accent"
       }
       role="status"
     >
@@ -74,16 +74,16 @@ function OnOffToggle({
   onChange: (next: boolean) => void;
 }) {
   return (
-    <label className="flex cursor-pointer items-center justify-between gap-3 rounded-meridian border border-meridian-border bg-meridian-surface px-4 py-3 select-none">
+    <label className="flex cursor-pointer items-center justify-between gap-3 rounded-merevo border border-merevo-border bg-merevo-surface px-4 py-3 select-none">
       {label ? (
-        <span className="text-sm font-medium text-meridian-text">{label}</span>
+        <span className="text-sm font-medium text-merevo-text">{label}</span>
       ) : null}
       <span className="inline-flex items-center gap-2.5">
         <span
           className={
             checked
-              ? "text-sm font-medium text-meridian-text"
-              : "text-sm text-meridian-text-muted"
+              ? "text-sm font-medium text-merevo-text"
+              : "text-sm text-merevo-text-muted"
           }
         >
           {checked ? "On" : "Off"}
@@ -99,11 +99,11 @@ function OnOffToggle({
           />
           <span
             aria-hidden
-            className="pointer-events-none h-7 w-full rounded-full border border-meridian-border bg-meridian-surface-subtle transition-colors peer-checked:border-meridian-accent peer-checked:bg-meridian-accent peer-focus-visible:shadow-[var(--meridian-focus-ring)]"
+            className="pointer-events-none h-7 w-full rounded-full border border-merevo-border bg-merevo-surface-subtle transition-colors peer-checked:border-merevo-accent peer-checked:bg-merevo-accent peer-focus-visible:shadow-[var(--merevo-focus-ring)]"
           />
           <span
             aria-hidden
-            className="pointer-events-none absolute top-0.5 left-0.5 size-6 rounded-full bg-meridian-surface shadow-sm transition-transform peer-checked:translate-x-5"
+            className="pointer-events-none absolute top-0.5 left-0.5 size-6 rounded-full bg-merevo-surface shadow-sm transition-transform peer-checked:translate-x-5"
           />
         </span>
       </span>
@@ -131,7 +131,7 @@ function WeeklyHoursFields({
             key={`${prefix}-${day}`}
             className="grid grid-cols-1 gap-2 sm:grid-cols-[7rem_1fr_1fr_4.5rem] sm:items-end"
           >
-            <span className="text-sm font-medium text-meridian-text sm:pb-2.5">
+            <span className="text-sm font-medium text-merevo-text sm:pb-2.5">
               {WEEKDAY_LABELS[day]}
             </span>
             <Input
@@ -153,7 +153,7 @@ function WeeklyHoursFields({
                 type="checkbox"
                 name={`${prefix}.${day}.closed`}
                 defaultChecked={value.closed}
-                className="size-4 rounded border-meridian-border"
+                className="size-4 rounded border-merevo-border"
               />
               Closed
             </label>
@@ -263,7 +263,7 @@ export function AdminHospitalityHoursForm({
     <form action={action} className="space-y-8">
       <input type="hidden" name="businessId" value={businessId} />
       <div className="space-y-3">
-        <h3 className="text-base font-semibold text-meridian-text">
+        <h3 className="text-base font-semibold text-merevo-text">
           Opening times
         </h3>
         <WeeklyHoursFields prefix="opening" hours={openingHours} />
@@ -291,7 +291,7 @@ export function AdminHospitalityHoursForm({
         ) : null}
       </div>
       <div className="space-y-3">
-        <h3 className="text-base font-semibold text-meridian-text">
+        <h3 className="text-base font-semibold text-merevo-text">
           Holidays & closed days
         </h3>
         {holidays.map((holiday, index) => (
@@ -401,7 +401,7 @@ export function AdminHospitalityTablesForm({
         />
       </div>
       <div className="space-y-2">
-        <p className="text-sm font-medium text-meridian-text">Custom tables</p>
+        <p className="text-sm font-medium text-merevo-text">Custom tables</p>
         {customTables.map((table, index) => (
           <div
             key={`custom-${index}`}
@@ -564,7 +564,7 @@ export function AdminBrandingForm({
             href={previewHref}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex h-11 items-center justify-center rounded-meridian border border-meridian-border bg-meridian-surface px-5 text-sm font-semibold text-meridian-text hover:border-meridian-border-strong hover:bg-meridian-surface-subtle"
+            className="inline-flex h-11 items-center justify-center rounded-merevo border border-merevo-border bg-merevo-surface px-5 text-sm font-semibold text-merevo-text hover:border-merevo-border-strong hover:bg-merevo-surface-subtle"
           >
             Show preview
           </a>
@@ -589,9 +589,9 @@ function FontUploadField({
   return (
     <div className="space-y-2">
       {fileName ? (
-        <div className="flex flex-wrap items-center gap-3 text-sm text-meridian-text-muted">
+        <div className="flex flex-wrap items-center gap-3 text-sm text-merevo-text-muted">
           <span>{fileName}</span>
-          <label className="flex items-center gap-2 text-sm text-meridian-text">
+          <label className="flex items-center gap-2 text-sm text-merevo-text">
             <input type="checkbox" name={clearName} className="size-4" />
             Remove
           </label>
@@ -619,13 +619,13 @@ function ContentSection({
   children: ReactNode;
 }) {
   return (
-    <section className="space-y-4 rounded-meridian border border-meridian-border p-5">
+    <section className="space-y-4 rounded-merevo border border-merevo-border p-5">
       <div className="space-y-1">
-        <p className="text-xs font-semibold uppercase tracking-wide text-meridian-teal">
+        <p className="text-xs font-semibold uppercase tracking-wide text-merevo-teal">
           {section}
         </p>
-        <h3 className="text-base font-semibold text-meridian-text">{title}</h3>
-        <p className="text-sm text-meridian-text-muted">{description}</p>
+        <h3 className="text-base font-semibold text-merevo-text">{title}</h3>
+        <p className="text-sm text-merevo-text-muted">{description}</p>
       </div>
       {children}
     </section>
@@ -652,8 +652,8 @@ function CurrentAsset({
         height={wide ? 120 : 80}
         className={
           wide
-            ? "max-h-32 rounded-meridian-sm border border-meridian-border object-cover"
-            : "size-20 rounded-meridian-sm border border-meridian-border object-contain"
+            ? "max-h-32 rounded-merevo-sm border border-merevo-border object-cover"
+            : "size-20 rounded-merevo-sm border border-merevo-border object-contain"
         }
         unoptimized
       />
@@ -715,12 +715,12 @@ export function AdminContentForm({
     <form action={action} className="space-y-6">
       <input type="hidden" name="businessId" value={businessId} />
       {assignedTemplateName || previewHref ? (
-        <p className="text-sm text-meridian-text-muted">
+        <p className="text-sm text-merevo-text-muted">
           {assignedTemplateName ? `${assignedTemplateName}. ` : null}
           {previewHref ? (
             <a
               href={previewHref}
-              className="font-medium text-meridian-teal hover:underline"
+              className="font-medium text-merevo-teal hover:underline"
               target="_blank"
               rel="noreferrer"
             >
@@ -851,21 +851,21 @@ export function AdminContentForm({
             <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
               {galleryUrls.map(({ path, url, label, note }) => (
                 <li key={path} className="space-y-2">
-                  <p className="text-sm font-medium text-meridian-text">
+                  <p className="text-sm font-medium text-merevo-text">
                     {label}
                   </p>
                   {note ? (
-                    <p className="text-xs text-meridian-text-muted">{note}</p>
+                    <p className="text-xs text-merevo-text-muted">{note}</p>
                   ) : null}
                   <Image
                     src={url}
                     alt={label}
                     width={160}
                     height={120}
-                    className="h-28 w-full rounded-meridian-sm border border-meridian-border object-cover"
+                    className="h-28 w-full rounded-merevo-sm border border-merevo-border object-cover"
                     unoptimized
                   />
-                  <label className="flex items-center gap-2 text-xs text-meridian-text-muted">
+                  <label className="flex items-center gap-2 text-xs text-merevo-text-muted">
                     <input
                       type="checkbox"
                       name="removeGalleryPath"
@@ -880,13 +880,13 @@ export function AdminContentForm({
           ) : null}
           {galleryUrls.length < GALLERY_SLOT_LABELS.length ? (
             <div className="space-y-2">
-              <p className="text-sm font-medium text-meridian-text">
+              <p className="text-sm font-medium text-merevo-text">
                 Next: {GALLERY_SLOT_LABELS[galleryUrls.length]}
               </p>
               <ImageDropField name="galleryImage" />
             </div>
           ) : (
-            <p className="text-sm text-meridian-text-muted">
+            <p className="text-sm text-merevo-text-muted">
               All {GALLERY_SLOT_LABELS.length} gallery slots are filled.
             </p>
           )}
@@ -990,7 +990,7 @@ export function AdminMenuPdfsForm({
       {documents.map((doc) => (
         <div
           key={doc.id}
-          className="space-y-4 rounded-meridian border border-meridian-border p-4"
+          className="space-y-4 rounded-merevo border border-merevo-border p-4"
         >
           <input type="hidden" name="pdfIds" value={doc.id} />
           {doc.path ? (
@@ -1026,19 +1026,19 @@ export function AdminMenuPdfsForm({
             />
           </div>
           {doc.path ? (
-            <p className="text-sm text-meridian-text-muted">
+            <p className="text-sm text-merevo-text-muted">
               Current file: <code>{doc.path.split("/").pop()}</code>
             </p>
           ) : null}
           <div>
-            <label className="mb-2 block text-sm font-medium text-meridian-text">
+            <label className="mb-2 block text-sm font-medium text-merevo-text">
               {doc.path ? "Replace PDF" : "Upload PDF"}
             </label>
             <input
               type="file"
               name={`file-${doc.id}`}
               accept="application/pdf"
-              className="block w-full text-sm text-meridian-text-muted file:mr-4 file:rounded-full file:border-0 file:bg-meridian-surface-subtle file:px-4 file:py-2 file:text-sm file:font-medium file:text-meridian-text"
+              className="block w-full text-sm text-merevo-text-muted file:mr-4 file:rounded-full file:border-0 file:bg-merevo-surface-subtle file:px-4 file:py-2 file:text-sm file:font-medium file:text-merevo-text"
             />
           </div>
           <Button

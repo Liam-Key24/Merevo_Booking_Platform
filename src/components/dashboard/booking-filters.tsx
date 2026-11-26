@@ -27,14 +27,14 @@ export function BookingFilters({
     <form
       method="get"
       action={action}
-      className="flex flex-col gap-3 rounded-meridian border border-meridian-border bg-meridian-surface p-4 sm:flex-row sm:flex-wrap sm:items-end"
+      className="flex flex-col gap-3 rounded-merevo border border-merevo-border bg-merevo-surface p-4 sm:flex-row sm:flex-wrap sm:items-end"
     >
       <label className="flex min-w-[10rem] flex-1 flex-col gap-1.5 text-sm">
-        <span className="font-medium text-meridian-text">Status</span>
+        <span className="font-medium text-merevo-text">Status</span>
         <select
           name="status"
           defaultValue={status}
-          className="h-11 rounded-meridian border border-meridian-border bg-meridian-surface px-3 text-meridian-text"
+          className="h-11 rounded-merevo border border-merevo-border bg-merevo-surface px-3 text-merevo-text"
         >
           {statuses.map((item) => (
             <option key={item.value} value={item.value}>
@@ -44,21 +44,21 @@ export function BookingFilters({
         </select>
       </label>
       <label className="flex min-w-[10rem] flex-1 flex-col gap-1.5 text-sm">
-        <span className="font-medium text-meridian-text">From date</span>
+        <span className="font-medium text-merevo-text">From date</span>
         <input
           type="date"
           name="from"
           defaultValue={from}
-          className="h-11 rounded-meridian border border-meridian-border bg-meridian-surface px-3 text-meridian-text"
+          className="h-11 rounded-merevo border border-merevo-border bg-merevo-surface px-3 text-merevo-text"
         />
       </label>
       <label className="flex min-w-[10rem] flex-1 flex-col gap-1.5 text-sm">
-        <span className="font-medium text-meridian-text">To date</span>
+        <span className="font-medium text-merevo-text">To date</span>
         <input
           type="date"
           name="to"
           defaultValue={to}
-          className="h-11 rounded-meridian border border-meridian-border bg-meridian-surface px-3 text-meridian-text"
+          className="h-11 rounded-merevo border border-merevo-border bg-merevo-surface px-3 text-merevo-text"
         />
       </label>
       <div className="flex gap-2">
@@ -67,7 +67,7 @@ export function BookingFilters({
         </Button>
         <Link
           href={action}
-          className="inline-flex h-9 items-center rounded-meridian border border-meridian-border px-3.5 text-sm font-semibold text-meridian-text"
+          className="inline-flex h-9 items-center rounded-merevo border border-merevo-border px-3.5 text-sm font-semibold text-merevo-text"
         >
           Clear
         </Link>

@@ -67,10 +67,10 @@ export function BookingWidget({
             <Badge tone="soft">
               {bookingMode === "hybrid" ? "Hybrid booking" : "Public booking"}
             </Badge>
-            <h1 className="text-3xl font-semibold tracking-tight text-meridian-text">
+            <h1 className="text-3xl font-semibold tracking-tight text-merevo-text">
               {businessName}
             </h1>
-            <p className="text-meridian-text-muted">
+            <p className="text-merevo-text-muted">
               {bookingMode === "hybrid"
                 ? "Request a time through Merevo, or continue with the business’s existing booking provider."
                 : isHospitality
@@ -87,7 +87,7 @@ export function BookingWidget({
           >
             <a
               href={externalBookingUrl!}
-              className="inline-flex h-11 items-center justify-center rounded-meridian bg-meridian-accent px-5 text-sm font-semibold text-meridian-text"
+              className="inline-flex h-11 items-center justify-center rounded-merevo bg-merevo-accent px-5 text-sm font-semibold text-merevo-text"
               rel="noopener noreferrer"
               target="_blank"
             >
@@ -153,10 +153,10 @@ function ExternalBookingPanel({
     <div className="space-y-8">
       <header className="space-y-3">
         <Badge tone="soft">External booking</Badge>
-        <h1 className="text-3xl font-semibold tracking-tight text-meridian-text">
+        <h1 className="text-3xl font-semibold tracking-tight text-merevo-text">
           {businessName}
         </h1>
-        <p className="text-meridian-text-muted">
+        <p className="text-merevo-text-muted">
           This business uses an external booking provider.
         </p>
       </header>
@@ -164,7 +164,7 @@ function ExternalBookingPanel({
         <Card>
           <a
             href={externalBookingUrl}
-            className="inline-flex h-11 items-center justify-center rounded-meridian bg-meridian-teal px-5 text-sm font-semibold text-meridian-text-inverse"
+            className="inline-flex h-11 items-center justify-center rounded-merevo bg-merevo-teal px-5 text-sm font-semibold text-merevo-text-inverse"
             rel="noopener noreferrer"
             target="_blank"
           >

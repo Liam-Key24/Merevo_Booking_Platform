@@ -12,15 +12,15 @@ export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 
 const variantClasses: Record<ButtonVariant, string> = {
   primary:
-    "bg-meridian-teal text-meridian-text-inverse hover:bg-[#125a69] active:bg-[#0f4d5a]",
+    "bg-merevo-teal text-merevo-text-inverse hover:bg-[#125a69] active:bg-[#0f4d5a]",
   secondary:
-    "bg-meridian-surface text-meridian-text border border-meridian-border hover:border-meridian-border-strong hover:bg-meridian-surface-subtle",
+    "bg-merevo-surface text-merevo-text border border-merevo-border hover:border-merevo-border-strong hover:bg-merevo-surface-subtle",
   ghost:
-    "bg-transparent text-meridian-text hover:bg-meridian-surface-subtle",
+    "bg-transparent text-merevo-text hover:bg-merevo-surface-subtle",
   accent:
-    "bg-meridian-accent text-meridian-text hover:bg-[#f09820] active:bg-[#e08c18]",
+    "bg-merevo-accent text-merevo-text hover:bg-[#f09820] active:bg-[#e08c18]",
   danger:
-    "bg-meridian-status-declined text-meridian-text-inverse hover:bg-[#9a1e14]",
+    "bg-merevo-status-declined text-merevo-text-inverse hover:bg-[#9a1e14]",
 };
 
 const sizeClasses: Record<ButtonSize, string> = {
@@ -43,8 +43,8 @@ export function Button({
       type={type}
       disabled={disabled}
       className={cn(
-        "cursor-pointer inline-flex items-center justify-center gap-2 rounded-meridian font-semibold tracking-tight transition-colors",
-        "focus-visible:shadow-[var(--meridian-focus-ring)]",
+        "cursor-pointer inline-flex items-center justify-center gap-2 rounded-merevo font-semibold tracking-tight transition-colors",
+        "focus-visible:shadow-[var(--merevo-focus-ring)]",
         "disabled:pointer-events-none disabled:opacity-50",
         variantClasses[variant],
         sizeClasses[size],

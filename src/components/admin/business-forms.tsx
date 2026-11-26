@@ -47,8 +47,8 @@ function Feedback({ state }: { state: AdminActionState }) {
     <p
       className={
         state.status === "error"
-          ? "text-sm text-meridian-status-declined"
-          : "text-sm text-meridian-accent"
+          ? "text-sm text-merevo-status-declined"
+          : "text-sm text-merevo-accent"
       }
       role="status"
     >
@@ -70,14 +70,14 @@ function OnOffToggle({
   onChange: (next: boolean) => void;
 }) {
   return (
-    <label className="flex cursor-pointer items-center justify-between gap-3 rounded-meridian border border-meridian-border bg-meridian-surface px-4 py-3 select-none">
-      <span className="text-sm font-medium text-meridian-text">{label}</span>
+    <label className="flex cursor-pointer items-center justify-between gap-3 rounded-merevo border border-merevo-border bg-merevo-surface px-4 py-3 select-none">
+      <span className="text-sm font-medium text-merevo-text">{label}</span>
       <span className="inline-flex items-center gap-2.5">
         <span
           className={
             checked
-              ? "text-sm font-medium text-meridian-text"
-              : "text-sm text-meridian-text-muted"
+              ? "text-sm font-medium text-merevo-text"
+              : "text-sm text-merevo-text-muted"
           }
         >
           {checked ? "On" : "Off"}
@@ -93,11 +93,11 @@ function OnOffToggle({
           />
           <span
             aria-hidden
-            className="pointer-events-none h-7 w-full rounded-full border border-meridian-border bg-meridian-surface-subtle transition-colors peer-checked:border-meridian-accent peer-checked:bg-meridian-accent peer-focus-visible:shadow-[var(--meridian-focus-ring)]"
+            className="pointer-events-none h-7 w-full rounded-full border border-merevo-border bg-merevo-surface-subtle transition-colors peer-checked:border-merevo-accent peer-checked:bg-merevo-accent peer-focus-visible:shadow-[var(--merevo-focus-ring)]"
           />
           <span
             aria-hidden
-            className="pointer-events-none absolute top-0.5 left-0.5 size-6 rounded-full bg-meridian-surface shadow-sm transition-transform peer-checked:translate-x-5"
+            className="pointer-events-none absolute top-0.5 left-0.5 size-6 rounded-full bg-merevo-surface shadow-sm transition-transform peer-checked:translate-x-5"
           />
         </span>
       </span>
@@ -216,11 +216,11 @@ export function BusinessDashboardModeForm({
           label: DASHBOARD_MODE_LABELS[value],
         }))}
       />
-      <label className="flex items-center gap-2 text-sm text-meridian-text">
+      <label className="flex items-center gap-2 text-sm text-merevo-text">
         <input
           type="checkbox"
           name="resetCapabilities"
-          className="size-4 rounded border-meridian-border"
+          className="size-4 rounded border-merevo-border"
         />
         Force reset capabilities to mode defaults
       </label>
@@ -456,7 +456,7 @@ export function AdminServiceForm({
     initialState,
   );
   return (
-    <form action={action} className="space-y-3 border-t border-meridian-border pt-4 first:border-0 first:pt-0">
+    <form action={action} className="space-y-3 border-t border-merevo-border pt-4 first:border-0 first:pt-0">
       <input type="hidden" name="businessId" value={businessId} />
       {service ? (
         <input type="hidden" name="serviceId" value={service.id} />
@@ -481,12 +481,12 @@ export function AdminServiceForm({
         defaultValue={service?.duration_minutes ?? 60}
         required
       />
-      <label className="flex items-center gap-2 text-sm text-meridian-text">
+      <label className="flex items-center gap-2 text-sm text-merevo-text">
         <input
           type="checkbox"
           name="isActive"
           defaultChecked={service?.is_active ?? true}
-          className="size-4 rounded border-meridian-border"
+          className="size-4 rounded border-merevo-border"
         />
         Active
       </label>

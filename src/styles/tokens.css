@@ -1,43 +1,43 @@
 /**
- * Meridian design tokens.
+ * Merevo design tokens.
  * Client templates may override these CSS variables for brand customisation.
  */
 :root {
   /* Brand palette (platform defaults — overridable per business later) */
-  --meridian-teal: #16697a;
-  --meridian-blue: #489fb5;
-  --meridian-soft-blue: #82c0cc;
-  --meridian-accent: #ffa62b;
+  --merevo-teal: #16697a;
+  --merevo-blue: #489fb5;
+  --merevo-soft-blue: #82c0cc;
+  --merevo-accent: #ffa62b;
 
   /* Surfaces */
-  --meridian-surface: #ffffff;
-  --meridian-surface-muted: #f4f8fa;
-  --meridian-surface-subtle: #eef4f6;
-  --meridian-border: #d7e4e8;
-  --meridian-border-strong: #b8cdd4;
+  --merevo-surface: #ffffff;
+  --merevo-surface-muted: #f4f8fa;
+  --merevo-surface-subtle: #eef4f6;
+  --merevo-border: #d7e4e8;
+  --merevo-border-strong: #b8cdd4;
 
   /* Text */
-  --meridian-text: #143a44;
-  --meridian-text-muted: #5a7580;
-  --meridian-text-inverse: #ffffff;
+  --merevo-text: #143a44;
+  --merevo-text-muted: #5a7580;
+  --merevo-text-inverse: #ffffff;
 
   /* Status — distinct readable tints per booking state */
-  --meridian-status-pending: #b45309;
-  --meridian-status-pending-bg: #fef3c7;
-  --meridian-status-confirmed: #047857;
-  --meridian-status-confirmed-bg: #d1fae5;
-  --meridian-status-declined: #b91c1c;
-  --meridian-status-declined-bg: #fee2e2;
-  --meridian-status-cancelled: #57534e;
-  --meridian-status-cancelled-bg: #f5f5f4;
-  --meridian-status-suggested: #0369a1;
-  --meridian-status-suggested-bg: #e0f2fe;
+  --merevo-status-pending: #b45309;
+  --merevo-status-pending-bg: #fef3c7;
+  --merevo-status-confirmed: #047857;
+  --merevo-status-confirmed-bg: #d1fae5;
+  --merevo-status-declined: #b91c1c;
+  --merevo-status-declined-bg: #fee2e2;
+  --merevo-status-cancelled: #57534e;
+  --merevo-status-cancelled-bg: #f5f5f4;
+  --merevo-status-suggested: #0369a1;
+  --merevo-status-suggested-bg: #e0f2fe;
 
   /* Shape & focus */
-  --meridian-radius: 20px;
-  --meridian-radius-sm: 12px;
-  --meridian-focus-ring: 0 0 0 3px color-mix(in srgb, var(--meridian-blue) 45%, transparent);
+  --merevo-radius: 20px;
+  --merevo-radius-sm: 12px;
+  --merevo-focus-ring: 0 0 0 3px color-mix(in srgb, var(--merevo-blue) 45%, transparent);
 
   /* Spacing rhythm */
-  --meridian-space-page: clamp(1.25rem, 3vw, 2.5rem);
+  --merevo-space-page: clamp(1.25rem, 3vw, 2.5rem);
 }

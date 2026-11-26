@@ -125,26 +125,26 @@ export function DashboardShell({
   const productLabel = isAppointments ? "Appointments" : "Bookings";
 
   const sidebar = (
-    <aside className="flex h-full w-72 flex-col gap-5 border-r border-meridian-border bg-meridian-surface px-5 py-6">
+    <aside className="flex h-full w-72 flex-col gap-5 border-r border-merevo-border bg-merevo-surface px-5 py-6">
       <div className="space-y-3">
         <div className="flex items-center gap-3">
-          <span className="flex size-10 items-center justify-center rounded-meridian-sm bg-meridian-teal text-sm font-bold text-meridian-text-inverse">
+          <span className="flex size-10 items-center justify-center rounded-merevo-sm bg-merevo-teal text-sm font-bold text-merevo-text-inverse">
             M
           </span>
           <div>
-            <p className="text-xs font-semibold tracking-wide text-meridian-blue uppercase">
+            <p className="text-xs font-semibold tracking-wide text-merevo-blue uppercase">
               Merevo
             </p>
-            <p className="text-sm font-semibold text-meridian-text">
+            <p className="text-sm font-semibold text-merevo-text">
               {productLabel}
             </p>
           </div>
         </div>
 
-        <div className="space-y-3 rounded-meridian border border-meridian-border bg-meridian-surface-muted px-3 py-3">
+        <div className="space-y-3 rounded-merevo border border-merevo-border bg-merevo-surface-muted px-3 py-3">
           <div className="space-y-1">
-            <p className="font-semibold text-meridian-text">{businessName}</p>
-            <span className="inline-flex items-center gap-1.5 rounded-meridian-sm bg-meridian-surface px-2 py-1 text-[11px] font-semibold tracking-wide text-meridian-teal uppercase">
+            <p className="font-semibold text-merevo-text">{businessName}</p>
+            <span className="inline-flex items-center gap-1.5 rounded-merevo-sm bg-merevo-surface px-2 py-1 text-[11px] font-semibold tracking-wide text-merevo-teal uppercase">
               <ModeIcon className="size-3.5" weight="fill" aria-hidden />
               {membershipLabel}
             </span>
@@ -152,12 +152,12 @@ export function DashboardShell({
 
           {businesses.length > 1 ? (
             <form action={switchAction} className="space-y-1.5">
-              <label className="block text-[11px] font-semibold tracking-wide text-meridian-text-muted uppercase">
+              <label className="block text-[11px] font-semibold tracking-wide text-merevo-text-muted uppercase">
                 Active business
                 <select
                   name="businessId"
                   defaultValue={activeBusinessId ?? businesses[0]?.id}
-                  className="mt-1 h-9 w-full cursor-pointer rounded-meridian-sm border border-meridian-border bg-meridian-surface px-2 text-xs font-medium text-meridian-text"
+                  className="mt-1 h-9 w-full cursor-pointer rounded-merevo-sm border border-merevo-border bg-merevo-surface px-2 text-xs font-medium text-merevo-text"
                   onChange={(event) => {
                     event.currentTarget.form?.requestSubmit();
                   }}
@@ -171,14 +171,14 @@ export function DashboardShell({
                 </select>
               </label>
               {switchState.status === "error" && switchState.message ? (
-                <p className="text-xs text-meridian-status-declined" role="alert">
+                <p className="text-xs text-merevo-status-declined" role="alert">
                   {switchState.message}
                 </p>
               ) : null}
             </form>
           ) : null}
 
-          <dl className="space-y-2 text-xs text-meridian-text-muted">
+          <dl className="space-y-2 text-xs text-merevo-text-muted">
             <div className="flex items-start gap-2">
               <EnvelopeSimple
                 className="mt-0.5 size-3.5 shrink-0"
@@ -187,7 +187,7 @@ export function DashboardShell({
               />
               <div>
                 <dt className="sr-only">Email</dt>
-                <dd className="break-all text-meridian-text">
+                <dd className="break-all text-merevo-text">
                   {notificationEmail?.trim() || "—"}
                 </dd>
               </div>
@@ -200,7 +200,7 @@ export function DashboardShell({
               />
               <div>
                 <dt className="sr-only">Phone</dt>
-                <dd className="text-meridian-text">
+                <dd className="text-merevo-text">
                   {contactPhone?.trim() || "—"}
                 </dd>
               </div>
@@ -213,7 +213,7 @@ export function DashboardShell({
               />
               <div>
                 <dt className="sr-only">{hoursLabel}</dt>
-                <dd className="text-meridian-text">{openingLabel}</dd>
+                <dd className="text-merevo-text">{openingLabel}</dd>
               </div>
             </div>
           </dl>
@@ -223,7 +223,7 @@ export function DashboardShell({
               href={publicBookHref}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex h-9 w-full cursor-pointer items-center justify-center rounded-meridian bg-meridian-accent px-3 text-xs font-semibold text-meridian-text transition-colors hover:brightness-105"
+              className="inline-flex h-9 w-full cursor-pointer items-center justify-center rounded-merevo bg-merevo-accent px-3 text-xs font-semibold text-merevo-text transition-colors hover:brightness-105"
             >
               View public booking form
             </Link>
@@ -241,10 +241,10 @@ export function DashboardShell({
               href={item.href}
               onClick={() => setOpen(false)}
               className={cn(
-                "inline-flex cursor-pointer items-center gap-2.5 rounded-meridian-sm px-3 py-2.5 text-sm font-medium transition-colors",
+                "inline-flex cursor-pointer items-center gap-2.5 rounded-merevo-sm px-3 py-2.5 text-sm font-medium transition-colors",
                 active
-                  ? "bg-meridian-teal text-meridian-text-inverse"
-                  : "text-meridian-text-muted hover:bg-meridian-surface-muted hover:text-meridian-text",
+                  ? "bg-merevo-teal text-merevo-text-inverse"
+                  : "text-merevo-text-muted hover:bg-merevo-surface-muted hover:text-merevo-text",
               )}
               aria-current={active ? "page" : undefined}
             >
@@ -255,16 +255,16 @@ export function DashboardShell({
         })}
       </nav>
 
-      <div className="space-y-3 border-t border-meridian-border pt-4">
+      <div className="space-y-3 border-t border-merevo-border pt-4">
         <div className="flex items-center gap-3 px-1">
-          <span className="inline-flex size-11 shrink-0 items-center justify-center rounded-full bg-meridian-surface-muted text-meridian-teal">
+          <span className="inline-flex size-11 shrink-0 items-center justify-center rounded-full bg-merevo-surface-muted text-merevo-teal">
             <UserCircle className="size-8" weight="duotone" aria-hidden />
           </span>
           <div className="min-w-0">
-            <p className="truncate text-sm font-semibold text-meridian-text">
+            <p className="truncate text-sm font-semibold text-merevo-text">
               {accountName}
             </p>
-            <p className="truncate text-xs text-meridian-text-muted">
+            <p className="truncate text-xs text-merevo-text-muted">
               {accountTitle}
             </p>
           </div>
@@ -275,10 +275,10 @@ export function DashboardShell({
             href="/dashboard/settings"
             onClick={() => setOpen(false)}
             className={cn(
-              "inline-flex h-10 cursor-pointer items-center gap-2 rounded-meridian border px-3 text-sm font-semibold transition-colors",
+              "inline-flex h-10 cursor-pointer items-center gap-2 rounded-merevo border px-3 text-sm font-semibold transition-colors",
               pathname.startsWith("/dashboard/settings")
-                ? "border-meridian-teal bg-meridian-teal text-meridian-text-inverse"
-                : "border-meridian-border bg-meridian-surface text-meridian-text hover:border-meridian-accent hover:bg-meridian-surface-muted",
+                ? "border-merevo-teal bg-merevo-teal text-merevo-text-inverse"
+                : "border-merevo-border bg-merevo-surface text-merevo-text hover:border-merevo-accent hover:bg-merevo-surface-muted",
             )}
             aria-current={
               pathname.startsWith("/dashboard/settings") ? "page" : undefined
@@ -291,7 +291,7 @@ export function DashboardShell({
           <form action={signOut}>
             <button
               type="submit"
-              className="inline-flex h-10 w-full cursor-pointer items-center gap-2 rounded-meridian border border-meridian-border bg-meridian-surface px-3 text-sm font-semibold text-meridian-text transition-colors hover:border-meridian-accent hover:bg-meridian-surface-muted"
+              className="inline-flex h-10 w-full cursor-pointer items-center gap-2 rounded-merevo border border-merevo-border bg-merevo-surface px-3 text-sm font-semibold text-merevo-text transition-colors hover:border-merevo-accent hover:bg-merevo-surface-muted"
             >
               <SignOut className="size-4 shrink-0" weight="regular" aria-hidden />
               Sign out
@@ -300,7 +300,7 @@ export function DashboardShell({
 
           <a
             href="mailto:support@meridian.example"
-            className="inline-flex h-10 cursor-pointer items-center gap-2 rounded-meridian border border-meridian-border bg-meridian-surface px-3 text-sm font-semibold text-meridian-text transition-colors hover:border-meridian-accent hover:bg-meridian-surface-muted"
+            className="inline-flex h-10 cursor-pointer items-center gap-2 rounded-merevo border border-merevo-border bg-merevo-surface px-3 text-sm font-semibold text-merevo-text transition-colors hover:border-merevo-accent hover:bg-merevo-surface-muted"
           >
             <Lifebuoy className="size-4 shrink-0" weight="regular" aria-hidden />
             Help and support
@@ -311,7 +311,7 @@ export function DashboardShell({
   );
 
   return (
-    <div className="flex min-h-full flex-1 bg-meridian-surface-muted">
+    <div className="flex min-h-full flex-1 bg-merevo-surface-muted">
       <div className="hidden lg:sticky lg:top-0 lg:flex lg:h-screen lg:shrink-0">
         {sidebar}
       </div>
@@ -329,12 +329,12 @@ export function DashboardShell({
       ) : null}
 
       <div className="flex min-w-0 flex-1 flex-col">
-        <header className="sticky top-0 z-30 border-b border-meridian-border bg-meridian-surface/95 backdrop-blur">
+        <header className="sticky top-0 z-30 border-b border-merevo-border bg-merevo-surface/95 backdrop-blur">
           <div className="flex flex-wrap items-center gap-3 px-[var(--meridian-space-page)] py-3 lg:gap-4 lg:py-4">
             <div className="flex min-w-0 items-center gap-3">
               <button
                 type="button"
-                className="inline-flex h-10 w-10 shrink-0 cursor-pointer items-center justify-center rounded-meridian-sm border border-meridian-border text-meridian-text lg:hidden"
+                className="inline-flex h-10 w-10 shrink-0 cursor-pointer items-center justify-center rounded-merevo-sm border border-merevo-border text-merevo-text lg:hidden"
                 aria-expanded={open}
                 aria-controls={titleId}
                 onClick={() => setOpen((value) => !value)}
@@ -345,12 +345,12 @@ export function DashboardShell({
                 </span>
               </button>
               <div className="min-w-0">
-                <p className="truncate text-xs font-semibold tracking-wide text-meridian-accent uppercase">
+                <p className="truncate text-xs font-semibold tracking-wide text-merevo-accent uppercase">
                   {businessName}
                 </p>
                 <h1
                   id={titleId}
-                  className="truncate text-lg font-semibold tracking-tight text-meridian-text sm:text-xl"
+                  className="truncate text-lg font-semibold tracking-tight text-merevo-text sm:text-xl"
                 >
                   {pageTitle}
                 </h1>
@@ -368,7 +368,7 @@ export function DashboardShell({
                 placeholder={searchPlaceholder}
                 size="md"
                 className="mx-auto w-full max-w-xl"
-                inputClassName="bg-meridian-surface-muted"
+                inputClassName="bg-merevo-surface-muted"
               />
             </form>
 
@@ -376,7 +376,7 @@ export function DashboardShell({
               {publicBookHref ? (
                 <Link
                   href={publicBookHref}
-                  className="inline-flex h-11 cursor-pointer items-center rounded-meridian border border-meridian-border bg-meridian-surface px-3 text-sm font-semibold text-meridian-text hover:border-meridian-accent sm:px-4"
+                  className="inline-flex h-11 cursor-pointer items-center rounded-merevo border border-merevo-border bg-merevo-surface px-3 text-sm font-semibold text-merevo-text hover:border-merevo-accent sm:px-4"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -385,7 +385,7 @@ export function DashboardShell({
               ) : null}
               <Link
                 href="/dashboard/bookings/new"
-                className="inline-flex h-11 cursor-pointer items-center rounded-meridian bg-meridian-accent px-3 text-sm font-semibold text-meridian-text hover:brightness-105 sm:px-4"
+                className="inline-flex h-11 cursor-pointer items-center rounded-merevo bg-merevo-accent px-3 text-sm font-semibold text-merevo-text hover:brightness-105 sm:px-4"
               >
                 {addLabel}
               </Link>

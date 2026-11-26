@@ -11,15 +11,15 @@ export default async function NewBusinessPage() {
       <div className="space-y-2">
         <Link
           href="/admin"
-          className="text-sm font-semibold text-meridian-teal hover:underline"
+          className="text-sm font-semibold text-merevo-teal hover:underline"
         >
           ← Businesses
         </Link>
         <Badge tone="accent">Onboarding</Badge>
-        <h1 className="text-3xl font-semibold tracking-tight text-meridian-text">
+        <h1 className="text-3xl font-semibold tracking-tight text-merevo-text">
           Create business
         </h1>
-        <p className="text-meridian-text-muted">
+        <p className="text-merevo-text-muted">
           Creates the tenant row and default Merevo booking settings.
         </p>
       </div>

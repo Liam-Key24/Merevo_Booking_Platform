@@ -6,10 +6,10 @@ export default function HomePage() {
     <main className="mx-auto flex w-full max-w-3xl flex-1 flex-col gap-10 px-[var(--meridian-space-page)] py-16">
       <header className="space-y-4">
         <Badge tone="teal">Merevo Booking Platform</Badge>
-        <h1 className="max-w-xl text-4xl font-semibold tracking-tight text-meridian-text sm:text-5xl">
+        <h1 className="max-w-xl text-4xl font-semibold tracking-tight text-merevo-text sm:text-5xl">
           Merevo
         </h1>
-        <p className="max-w-lg text-base leading-relaxed text-meridian-text-muted sm:text-lg">
+        <p className="max-w-lg text-base leading-relaxed text-merevo-text-muted sm:text-lg">
           Shared booking-request platform for Merevo client sites. Simple
           requests, clear decisions, and confirmed bookings — without live
           availability or payment complexity in this foundation phase.
@@ -30,10 +30,10 @@ export default function HomePage() {
             <li key={item.href}>
               <Link
                 href={item.href}
-                className="flex items-center justify-between rounded-meridian-sm border border-meridian-border bg-meridian-surface-muted px-4 py-3 text-sm font-medium text-meridian-text transition-colors hover:border-meridian-soft-blue hover:bg-meridian-surface"
+                className="flex items-center justify-between rounded-merevo-sm border border-merevo-border bg-merevo-surface-muted px-4 py-3 text-sm font-medium text-merevo-text transition-colors hover:border-merevo-soft-blue hover:bg-merevo-surface"
               >
                 <span>{item.label}</span>
-                <span className="text-meridian-text-muted">{item.href}</span>
+                <span className="text-merevo-text-muted">{item.href}</span>
               </Link>
             </li>
           ))}

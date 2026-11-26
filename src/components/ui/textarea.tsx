@@ -34,7 +34,7 @@ export function Textarea({
       {label ? (
         <span
           className={cn(
-            isClient ? CLIENT_SURFACE_LABEL : "font-medium text-meridian-text",
+            isClient ? CLIENT_SURFACE_LABEL : "font-medium text-merevo-text",
           )}
         >
           {label}
@@ -47,13 +47,13 @@ export function Textarea({
           isClient
             ? cn("w-full resize-y px-4 py-3", CLIENT_SURFACE_FIELD)
             : cn(
-                "w-full resize-y rounded-meridian border border-meridian-border bg-meridian-surface px-4 py-3 text-meridian-text",
-                "placeholder:text-meridian-text-muted/70",
-                "transition-[border-color,box-shadow] focus-visible:border-meridian-blue focus-visible:shadow-[var(--meridian-focus-ring)]",
-                "disabled:cursor-not-allowed disabled:bg-meridian-surface-subtle disabled:opacity-70",
+                "w-full resize-y rounded-merevo border border-merevo-border bg-merevo-surface px-4 py-3 text-merevo-text",
+                "placeholder:text-merevo-text-muted/70",
+                "transition-[border-color,box-shadow] focus-visible:border-merevo-blue focus-visible:shadow-[var(--merevo-focus-ring)]",
+                "disabled:cursor-not-allowed disabled:bg-merevo-surface-subtle disabled:opacity-70",
               ),
           error &&
-            (isClient ? CLIENT_SURFACE_FIELD_ERROR : "border-meridian-status-declined"),
+            (isClient ? CLIENT_SURFACE_FIELD_ERROR : "border-merevo-status-declined"),
           className,
         )}
         aria-invalid={error ? true : undefined}
@@ -69,14 +69,14 @@ export function Textarea({
       {error ? (
         <span
           id={`${textareaId}-error`}
-          className={isClient ? CLIENT_SURFACE_ERROR : "text-meridian-status-declined"}
+          className={isClient ? CLIENT_SURFACE_ERROR : "text-merevo-status-declined"}
         >
           {error}
         </span>
       ) : hint ? (
         <span
           id={`${textareaId}-hint`}
-          className={isClient ? CLIENT_SURFACE_HINT : "text-meridian-text-muted"}
+          className={isClient ? CLIENT_SURFACE_HINT : "text-merevo-text-muted"}
         >
           {hint}
         </span>

@@ -12,10 +12,10 @@ export default async function CustomersPage() {
   return (
     <main className="flex flex-1 flex-col gap-8 px-[var(--meridian-space-page)] py-8 lg:py-10">
       <header className="space-y-2">
-        <h2 className="text-2xl font-semibold tracking-tight text-meridian-text">
+        <h2 className="text-2xl font-semibold tracking-tight text-merevo-text">
           Customers
         </h2>
-        <p className="max-w-2xl text-meridian-text-muted">
+        <p className="max-w-2xl text-merevo-text-muted">
           Clients who have requested or held appointments at{" "}
           {context.business.name}. Built from real booking records.
         </p>
@@ -33,19 +33,19 @@ export default async function CustomersPage() {
             description="Customers appear after appointment requests are submitted."
           />
         ) : (
-          <ul className="divide-y divide-meridian-border">
+          <ul className="divide-y divide-merevo-border">
             {data.customers.map((customer) => (
               <li
                 key={customer.email}
                 className="flex flex-wrap items-center justify-between gap-3 py-3"
               >
                 <div>
-                  <p className="font-medium text-meridian-text">{customer.name}</p>
-                  <p className="text-xs text-meridian-text-muted">
+                  <p className="font-medium text-merevo-text">{customer.name}</p>
+                  <p className="text-xs text-merevo-text-muted">
                     {customer.email}
                   </p>
                 </div>
-                <div className="text-right text-sm text-meridian-text-muted">
+                <div className="text-right text-sm text-merevo-text-muted">
                   <p className="tabular-nums">
                     {customer.appointmentCount} appointment
                     {customer.appointmentCount === 1 ? "" : "s"}
@@ -55,7 +55,7 @@ export default async function CustomersPage() {
                   ) : null}
                   <Link
                     href={`/dashboard/bookings?q=${encodeURIComponent(customer.email)}`}
-                    className="text-xs font-semibold text-meridian-accent hover:underline"
+                    className="text-xs font-semibold text-merevo-accent hover:underline"
                   >
                     View bookings
                   </Link>

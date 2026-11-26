@@ -77,13 +77,13 @@ function FieldShell({
 }) {
   return (
     <div className="flex w-full flex-col gap-1.5 text-sm">
-      <span className="font-medium text-meridian-text">
+      <span className="font-medium text-merevo-text">
         {label}
-        {required ? <span className="text-meridian-status-declined"> *</span> : null}
+        {required ? <span className="text-merevo-status-declined"> *</span> : null}
       </span>
       {children}
       {error ? (
-        <span className="text-meridian-status-declined" role="alert">
+        <span className="text-merevo-status-declined" role="alert">
           {error}
         </span>
       ) : null}
@@ -92,8 +92,8 @@ function FieldShell({
 }
 
 const selectClass =
-  "h-11 w-full cursor-pointer appearance-none rounded-meridian border bg-meridian-surface px-4 pr-10 text-sm text-meridian-text " +
-  "transition-[border-color,box-shadow] focus-visible:border-meridian-blue focus-visible:shadow-[var(--meridian-focus-ring)] " +
+  "h-11 w-full cursor-pointer appearance-none rounded-merevo border bg-merevo-surface px-4 pr-10 text-sm text-merevo-text " +
+  "transition-[border-color,box-shadow] focus-visible:border-merevo-blue focus-visible:shadow-[var(--merevo-focus-ring)] " +
   "bg-[length:1rem] bg-[right_0.85rem_center] bg-no-repeat " +
   "bg-[url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 fill=%22none%22 viewBox=%220 0 20 20%22%3E%3Cpath stroke=%22%235a7580%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 stroke-width=%221.5%22 d=%22m6 8 4 4 4-4%22/%3E%3C/svg%3E')]";
 
@@ -153,7 +153,7 @@ export function ManualBookingForm({
 
   if (services.length === 0) {
     return (
-      <p className="text-sm text-meridian-text-muted">
+      <p className="text-sm text-merevo-text-muted">
         Add an active service before creating a manual booking.
       </p>
     );
@@ -270,23 +270,23 @@ export function ManualBookingForm({
                 aria-expanded={dateOpen}
                 aria-haspopup="dialog"
                 className={cn(
-                  "flex h-11 w-full cursor-pointer items-center justify-between gap-2 rounded-meridian border bg-meridian-surface px-4 text-left text-sm text-meridian-text",
-                  "transition-[border-color,box-shadow] focus-visible:border-meridian-blue focus-visible:shadow-[var(--meridian-focus-ring)]",
+                  "flex h-11 w-full cursor-pointer items-center justify-between gap-2 rounded-merevo border bg-merevo-surface px-4 text-left text-sm text-merevo-text",
+                  "transition-[border-color,box-shadow] focus-visible:border-merevo-blue focus-visible:shadow-[var(--merevo-focus-ring)]",
                   errors.preferredDate
-                    ? "border-meridian-status-declined"
-                    : "border-meridian-border",
+                    ? "border-merevo-status-declined"
+                    : "border-merevo-border",
                 )}
               >
                 <span className="inline-flex items-center gap-2">
                   <CalendarBlank
-                    className="size-4 text-meridian-text-muted"
+                    className="size-4 text-merevo-text-muted"
                     weight="regular"
                     aria-hidden
                   />
                   {formatDateLabel(preferredDate)}
                 </span>
                 <CaretDown
-                  className="size-4 text-meridian-text-muted"
+                  className="size-4 text-merevo-text-muted"
                   weight="bold"
                   aria-hidden
                 />
@@ -295,7 +295,7 @@ export function ManualBookingForm({
                 <div
                   role="dialog"
                   aria-labelledby={dateButtonId}
-                  className="absolute z-30 mt-2 w-[min(100%,20rem)] rounded-meridian border border-meridian-border bg-meridian-surface p-2 shadow-[0_16px_40px_rgba(20,58,68,0.18)]"
+                  className="absolute z-30 mt-2 w-[min(100%,20rem)] rounded-merevo border border-merevo-border bg-merevo-surface p-2 shadow-[0_16px_40px_rgba(20,58,68,0.18)]"
                 >
                   <MiniCalendar
                     value={preferredDate}
@@ -315,8 +315,8 @@ export function ManualBookingForm({
               className={cn(
                 selectClass,
                 errors.preferredTime
-                  ? "border-meridian-status-declined"
-                  : "border-meridian-border",
+                  ? "border-merevo-status-declined"
+                  : "border-merevo-border",
               )}
               value={preferredTime}
               onChange={(event) => {
@@ -340,14 +340,14 @@ export function ManualBookingForm({
             label={
               <>
                 Table number
-                <span className="ml-2 font-normal text-meridian-text-muted">
+                <span className="ml-2 font-normal text-merevo-text-muted">
                   Staff only
                 </span>
               </>
             }
           >
             <select
-              className={cn(selectClass, "border-meridian-border")}
+              className={cn(selectClass, "border-merevo-border")}
               value={assignedTable}
               onChange={(event) => setAssignedTable(event.target.value)}
             >
@@ -365,10 +365,10 @@ export function ManualBookingForm({
       <FieldShell label="Allergies" required error={errors.allergies}>
         <div
           className={cn(
-            "rounded-meridian border bg-meridian-surface p-3",
+            "rounded-merevo border bg-merevo-surface p-3",
             errors.allergies
-              ? "border-meridian-status-declined"
-              : "border-meridian-border",
+              ? "border-merevo-status-declined"
+              : "border-merevo-border",
           )}
         >
           <div className="mb-3 flex flex-wrap gap-1.5">
@@ -381,10 +381,10 @@ export function ManualBookingForm({
                 setErrors((prev) => ({ ...prev, allergies: undefined }));
               }}
               className={cn(
-                "inline-flex cursor-pointer items-center rounded-meridian-sm border px-2.5 py-1 text-[11px] font-semibold tracking-wide uppercase transition-colors",
+                "inline-flex cursor-pointer items-center rounded-merevo-sm border px-2.5 py-1 text-[11px] font-semibold tracking-wide uppercase transition-colors",
                 noAllergies
-                  ? "border-transparent bg-meridian-teal text-meridian-text-inverse"
-                  : "border-meridian-border bg-meridian-surface text-meridian-text-muted hover:border-meridian-accent hover:text-meridian-text",
+                  ? "border-transparent bg-merevo-teal text-merevo-text-inverse"
+                  : "border-merevo-border bg-merevo-surface text-merevo-text-muted hover:border-merevo-accent hover:text-merevo-text",
               )}
             >
               No allergies
@@ -416,34 +416,34 @@ export function ManualBookingForm({
         aria-checked={sendConfirmation}
         onClick={() => setSendConfirmation((value) => !value)}
         className={cn(
-          "flex w-full cursor-pointer items-center gap-3 rounded-meridian border px-4 py-3 text-left transition-colors",
+          "flex w-full cursor-pointer items-center gap-3 rounded-merevo border px-4 py-3 text-left transition-colors",
           sendConfirmation
-            ? "border-[color-mix(in_srgb,var(--meridian-teal)_35%,white)] bg-[color-mix(in_srgb,var(--meridian-teal)_8%,white)]"
-            : "border-meridian-border bg-meridian-surface hover:bg-meridian-surface-muted",
+            ? "border-[color-mix(in_srgb,var(--merevo-teal)_35%,white)] bg-[color-mix(in_srgb,var(--merevo-teal)_8%,white)]"
+            : "border-merevo-border bg-merevo-surface hover:bg-merevo-surface-muted",
         )}
       >
         <span
           className={cn(
             "inline-flex size-10 shrink-0 items-center justify-center rounded-full",
             sendConfirmation
-              ? "bg-meridian-teal text-meridian-text-inverse"
-              : "bg-meridian-surface-muted text-meridian-text-muted",
+              ? "bg-merevo-teal text-merevo-text-inverse"
+              : "bg-merevo-surface-muted text-merevo-text-muted",
           )}
         >
           <EnvelopeSimple className="size-5" weight="regular" aria-hidden />
         </span>
         <span className="min-w-0 flex-1">
-          <span className="block text-sm font-semibold text-meridian-text">
+          <span className="block text-sm font-semibold text-merevo-text">
             Send confirmation email
           </span>
-          <span className="mt-0.5 block text-xs text-meridian-text-muted">
+          <span className="mt-0.5 block text-xs text-merevo-text-muted">
             Includes a calendar invite for the guest.
           </span>
         </span>
         <span
           className={cn(
             "relative h-6 w-11 shrink-0 rounded-full transition-colors",
-            sendConfirmation ? "bg-meridian-teal" : "bg-meridian-border-strong",
+            sendConfirmation ? "bg-merevo-teal" : "bg-merevo-border-strong",
           )}
         >
           <span
@@ -456,7 +456,7 @@ export function ManualBookingForm({
       </button>
 
       {state.status === "error" ? (
-        <p className="text-sm text-meridian-status-declined" role="alert">
+        <p className="text-sm text-merevo-status-declined" role="alert">
           {state.message}
         </p>
       ) : null}

@@ -13,32 +13,32 @@ const statusConfig: Record<
   pending: {
     label: "Pending",
     className:
-      "bg-meridian-status-pending-bg text-meridian-status-pending",
+      "bg-merevo-status-pending-bg text-merevo-status-pending",
   },
   confirmed: {
     label: "Approved",
     className:
-      "bg-meridian-status-confirmed-bg text-meridian-status-confirmed",
+      "bg-merevo-status-confirmed-bg text-merevo-status-confirmed",
   },
   declined: {
     label: "Declined",
     className:
-      "bg-meridian-status-declined-bg text-meridian-status-declined",
+      "bg-merevo-status-declined-bg text-merevo-status-declined",
   },
   cancelled: {
     label: "Cancelled",
     className:
-      "bg-meridian-status-cancelled-bg text-meridian-status-cancelled",
+      "bg-merevo-status-cancelled-bg text-merevo-status-cancelled",
   },
   suggested: {
     label: "Rescheduled",
     className:
-      "bg-meridian-status-suggested-bg text-meridian-status-suggested",
+      "bg-merevo-status-suggested-bg text-merevo-status-suggested",
   },
   no_show: {
     label: "No-show",
     className:
-      "bg-meridian-surface-muted text-meridian-text-muted",
+      "bg-merevo-surface-muted text-merevo-text-muted",
   },
 };
 
@@ -52,7 +52,7 @@ export function StatusLabel({
   return (
     <span
       className={cn(
-        "inline-flex items-center rounded-meridian-sm px-2.5 py-1 text-xs font-semibold ring-1 ring-inset ring-current/20",
+        "inline-flex items-center rounded-merevo-sm px-2.5 py-1 text-xs font-semibold ring-1 ring-inset ring-current/20",
         config.className,
         className,
       )}

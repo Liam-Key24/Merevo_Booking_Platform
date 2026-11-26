@@ -43,7 +43,7 @@ export function TemplatePickerList({
       <input type="hidden" name="businessId" value={businessId} />
       <input type="hidden" name="templateId" value={selectedId} />
 
-      <ul className="divide-y divide-meridian-border rounded-meridian border border-meridian-border">
+      <ul className="divide-y divide-merevo-border rounded-merevo border border-merevo-border">
         <li>
           <label
             className={cn(
@@ -58,7 +58,7 @@ export function TemplatePickerList({
               checked={selectedId === ""}
               onChange={() => setSelectedId("")}
             />
-            <span className="text-sm text-meridian-text">No template</span>
+            <span className="text-sm text-merevo-text">No template</span>
           </label>
         </li>
 
@@ -85,7 +85,7 @@ export function TemplatePickerList({
                   onChange={() => setSelectedId(template.id)}
                   className="shrink-0"
                 />
-                <div className="relative h-14 w-20 shrink-0 overflow-hidden rounded-meridian bg-meridian-surface-muted">
+                <div className="relative h-14 w-20 shrink-0 overflow-hidden rounded-merevo bg-meridian-surface-muted">
                   <Image
                     src={template.previewImage}
                     alt=""
@@ -97,10 +97,10 @@ export function TemplatePickerList({
                 </div>
                 <div className="min-w-0 flex-1">
                   <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
-                    <p className="text-sm font-medium text-meridian-text">
+                    <p className="text-sm font-medium text-merevo-text">
                       {template.name}
                     </p>
-                    <span className="text-xs text-meridian-text-muted">
+                    <span className="text-xs text-merevo-text-muted">
                       {template.status === "active"
                         ? selectable
                           ? "Ready"
@@ -116,10 +116,10 @@ export function TemplatePickerList({
         })}
       </ul>
 
-      <p className="text-xs text-meridian-text-muted">
+      <p className="text-xs text-merevo-text-muted">
         <a
           href={`/preview/${businessSlug}`}
-          className="font-medium text-meridian-teal hover:underline"
+          className="font-medium text-merevo-teal hover:underline"
           target="_blank"
           rel="noreferrer"
         >
@@ -128,12 +128,12 @@ export function TemplatePickerList({
       </p>
 
       {stateStatus === "error" && stateMessage ? (
-        <p className="text-sm text-meridian-status-declined" role="alert">
+        <p className="text-sm text-merevo-status-declined" role="alert">
           {stateMessage}
         </p>
       ) : null}
       {stateStatus === "success" && stateMessage ? (
-        <p className="text-sm text-meridian-status-confirmed" role="status">
+        <p className="text-sm text-merevo-status-confirmed" role="status">
           {stateMessage}
         </p>
       ) : null}
