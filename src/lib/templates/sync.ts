@@ -198,6 +198,7 @@ export async function revalidatePublishedClientSitePaths(businessId: string) {
 
   if (!business?.slug) return;
 
+  revalidatePath(`/s/${business.slug}`);
   revalidatePath(`/preview/${business.slug}`);
   revalidatePath(`/menu/${business.slug}`);
   revalidatePath(`/book/${business.slug}`);
