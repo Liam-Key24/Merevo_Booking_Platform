@@ -761,7 +761,7 @@ export function AdminContentForm({
         ) : null}
         <ImageDropField
           name="favicon"
-          accept=".ico,image/x-icon,image/png,image/svg+xml,image/webp,image/jpeg"
+          accept=".ico,image/x-icon,image/png,image/webp,image/jpeg"
           formatsHint="Supports: ICO, PNG, SVG, JPEG, WEBP"
         />
       </ContentSection>

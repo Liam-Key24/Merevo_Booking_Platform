@@ -2,6 +2,7 @@ import "server-only";
 
 import { createClient } from "@supabase/supabase-js";
 import type { Database } from "@/types/database";
+import { MissingEnvError } from "@/lib/env/missing";
 import { getSupabaseUrl } from "@/lib/supabase/env";
 
 /**
@@ -12,7 +13,7 @@ import { getSupabaseUrl } from "@/lib/supabase/env";
 export function createServiceRoleClient() {
   const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
   if (!serviceRoleKey) {
-    throw new Error("Missing environment variable: SUPABASE_SERVICE_ROLE_KEY");
+    throw new MissingEnvError("SUPABASE_SERVICE_ROLE_KEY");
   }
 
   return createClient<Database>(getSupabaseUrl(), serviceRoleKey, {

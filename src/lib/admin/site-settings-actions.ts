@@ -125,6 +125,13 @@ function imageExtension(file: File): string {
   return "jpg";
 }
 
+function rejectSvgUpload(file: File): string | null {
+  if (file.type === "image/svg+xml" || fileExtension(file) === "svg") {
+    return "SVG uploads are blocked for security. Use PNG, JPEG, WebP, or GIF.";
+  }
+  return null;
+}
+
 async function storeBusinessAsset(
   businessId: string,
   file: File,
@@ -153,6 +160,9 @@ async function uploadBusinessAsset(
   file: File,
   kind: "logo" | "hero" | "gallery" | "favicon",
 ): Promise<{ path: string } | { error: string }> {
+  const svgError = rejectSvgUpload(file);
+  if (svgError) return { error: svgError };
+
   const allowed = kind === "favicon" ? FAVICON_TYPES : ALLOWED_IMAGE_TYPES;
   if (!allowed.has(file.type) && !(kind === "favicon" && fileExtension(file) === "ico")) {
     return {
