@@ -13,7 +13,24 @@ type AppointmentsLayoutProps = ClientSiteLayoutProps & {
   variant?: AppointmentsLayoutVariant;
 };
 
-function PreviewBanner({ preview }: { preview: boolean }) {
+function SiteBanner({
+  preview,
+  demo,
+}: {
+  preview: boolean;
+  demo: boolean;
+}) {
+  if (demo) {
+    return (
+      <div className="border-b border-merevo-border bg-merevo-surface px-[var(--merevo-space-page)] py-2 text-center text-xs text-merevo-text-muted">
+        <span className="font-semibold tracking-wide text-merevo-accent uppercase">
+          Demo
+        </span>
+        <span className="mx-2 text-merevo-border">·</span>
+        Bookings are not saved
+      </div>
+    );
+  }
   if (!preview) return null;
   return (
     <div className="border-b border-merevo-border bg-merevo-surface px-[var(--merevo-space-page)] py-2 text-center text-xs text-merevo-text-muted">
@@ -25,6 +42,7 @@ function PreviewBanner({ preview }: { preview: boolean }) {
 export function AppointmentsClassicLayout({
   payload,
   preview = false,
+  demo = false,
   variant = "classic",
 }: AppointmentsLayoutProps) {
   const { business, branding, booking, template } = payload;
@@ -54,7 +72,7 @@ export function AppointmentsClassicLayout({
         id="top"
         className="min-h-full bg-[var(--client-background)] text-[var(--client-text)] [font-family:var(--client-font-body)] [&_h1]:[font-family:var(--client-font-heading)] [&_h2]:[font-family:var(--client-font-heading)]"
       >
-        <PreviewBanner preview={preview} />
+        <SiteBanner preview={preview} demo={demo} />
 
         <header className="border-b border-[color-mix(in_srgb,var(--client-text)_8%,transparent)]">
           <div className="mx-auto flex max-w-5xl items-center justify-between gap-6 px-[var(--merevo-space-page)] py-5">
@@ -266,12 +284,15 @@ export function AppointmentsClassicLayout({
                   externalBookingUrl={booking.settings.external_booking_url}
                   services={booking.services}
                   turnstileSiteKey={
-                    process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? null
+                    demo
+                      ? null
+                      : (process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? null)
                   }
                   dashboardMode={booking.dashboardMode}
                   maxPartySize={booking.settings.max_party_size}
                   embed
                   submitLabel="Request appointment"
+                  demoMode={demo}
                   className="[&_button]:rounded-full [&_button]:bg-[var(--client-accent)] [&_button]:text-[var(--client-background)]"
                 />
               </div>

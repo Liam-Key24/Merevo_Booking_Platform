@@ -25,6 +25,8 @@ export type BookingWidgetProps = {
   submitLabel?: string;
   /** Optional className for embed layouts on Merevo client sites. */
   className?: string;
+  /** Dry-run public demo — never writes CRM bookings. */
+  demoMode?: boolean;
 };
 
 /**
@@ -43,6 +45,7 @@ export function BookingWidget({
   embed = false,
   submitLabel,
   className,
+  demoMode = false,
 }: BookingWidgetProps) {
   if (bookingMode === "external") {
     return (
@@ -125,6 +128,7 @@ export function BookingWidget({
               turnstileSiteKey={turnstileSiteKey}
               submitLabel={submitLabel ?? "Find a Table"}
               embed={embed}
+              demoMode={demoMode}
             />
           ) : (
             <BookingRequestForm
@@ -134,6 +138,7 @@ export function BookingWidget({
               turnstileSiteKey={turnstileSiteKey}
               submitLabel={submitLabel}
               embed={embed}
+              demoMode={demoMode}
             />
           )}
         </Card>
